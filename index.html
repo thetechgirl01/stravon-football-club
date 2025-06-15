@@ -1,0 +1,448 @@
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <title>Stravon FC</title>
+
+ 
+</head>
+<body class="bg-gray-100">
+
+  <!-- sponsor / lang / register and sign in -->
+   <div>
+  <div class="w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
+
+    <!-- LEFT: Sign in / Register / Language Dropdown -->
+    <div class="flex items-center gap-4 relative">
+     
+
+      <!-- Language Dropdown -->
+      <div class="relative">
+        <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
+          <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+          ENG
+          <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+          </li>
+        </ul>
+      </div>
+
+       <button class="text-[#002B5C] font-medium hover:underline">Sign In</button>
+      <button class="bg-[#002B5C] text-white px-4 py-1.5 rounded-md hover:bg-[#001d3f] transition">Register</button>
+    </div>
+
+    <!-- RIGHT: Logo Carousel -->
+    <div class="w-[360px] overflow-hidden">
+      <div class="flex gap-6 logo-scroll">
+        <!-- Logos -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+        <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+
+        <!-- Duplicate set for infinite loop -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+        <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+      </div>
+    </div>
+  </div>
+
+
+    <!-- Navbar 2 -->
+ <nav>
+  <div class="w-full bg-primary shadow-md px-4 py-3">
+    <div class="spacing-small max-w-screen-xl mx-auto flex items-center justify-between">
+      <!-- Left Nav Links -->
+      <div class="flex items-center gap-6 capitalize">
+        <a href="#" class="text-white font-medium hover:text-secondary">latest</a>
+        <a href="#" class="text-white font-medium hover:text-secondary">tickets & hospitality</a>
+        <a href="#" class="text-white font-medium hover:text-secondary">fixtures</a>
+        <a href="#" class="text-white font-medium hover:text-secondary">players</a>
+      </div>
+
+      <!-- Logo Centered -->
+      <div class="w-[76px] h-auto flex justify-center">
+  <img src="images/logo.png" alt="Logo" class="w-[76px] h-auto object-contain" />
+</div>
+
+
+      <!-- Right Nav Links -->
+      <div class="flex items-center gap-6 capitalize">
+        <a href="#" class="text-white font-medium hover:text-secondary">fixtures</a>
+        <a href="#" class="text-white font-medium hover:text-secondary">fans</a>
+        <a href="#" class="text-white font-medium hover:text-secondary">shop</a>
+        <input
+          type="text"
+          placeholder="Search"
+          class="bg-white border border-gray-300 rounded-md px-3 py-1 text-sm text-[#002B5C] focus:outline-none focus:ring-2 focus:ring-[#002B5C]"
+        />
+      </div>
+    </div>
+  </div>
+</nav>
+
+</div>
+
+<!-- Hero Section -->
+<section id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
+  <!-- Yellow flash overlay -->
+  <div id="flashOverlay" class="absolute inset-0 bg-[#002B5C] bg-opacity-30 backdrop-blur-md opacity-0 transition-opacity duration-500 z-10"></div>
+
+   <div class="spacing-smaller w-[136px] mt-4 flex items-center justify-center gap-2 p-2 rounded-full backdrop-blur-md bg-[#FFD100]/20 border border-yellow-400 shadow-md">
+  <!-- Bell Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD100" viewBox="0 0 24 24" class="w-5 h-5">
+    <path d="M12 2a2 2 0 00-2 2v.34C7.67 5.165 6 7.388 6 10v3.16c0 .54-.22 1.06-.59 1.44L4 16.999h16l-1.41-1.4a2.03 2.03 0 01-.59-1.44V10a6.002 6.002 0 00-4-5.66V4a2 2 0 00-2-2zm0 20c1.1 0 2-.89 2-2h-4c0 1.11.9 2 2 2z"/>
+  </svg>
+
+  <!-- Text -->
+  <span class="text-sm font-semibold text-yellow-300">Subscribe</span>
+</div>
+
+
+
+
+<!-- Content Wrapper -->
+<div class="spacing-small relative z-20 w-full max-w-6xl flex flex-col items-right gap-12">
+
+<!-- Hero Section -->
+<section class="relative w-full h-screen bg-cover bg-center bg-no-repeat">
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-6xl mx-auto px-6 pt-24 md:pt-32 flex flex-col items-start h-full text-white text-left">
+    <h1 class="text-5xl font-old leading-tight mb-6">
+       Club World Cup diary: Reece <br>
+       James
+    </h1>
+    <button class="px-6 py-3 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500 transition">
+      BUY TICKETS
+    </button>
+
+    <!-- Match Info Card -->
+    <div class="mt-16 w-full h-38 max-w-3xl bg-[#002b5c] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between text-white shadow-xl gap-6 backdrop-blur-md">
+
+      <!-- Match Info Left -->
+      <div class="flex flex-col text-left">
+        <p class="text-2xl font-bold uppercase mb-2">Next Match</p>
+        <div class="flex flex-col gap-1">
+          <div class="flex items-center gap-4">
+            <p class="text-sm text-gray-300">As</p>
+            <h3 class="text-lg font-semibold capitalize">Manchester United</h3>
+          </div>
+          <div class="flex items-center gap-4">
+            <p class="text-sm text-gray-300">ER</p>
+            <h3 class="text-lg font-semibold capitalize">Premier League</h3>
+          </div>
+        </div>
+      </div>
+
+      <!-- Logos & VS -->
+      <div class="flex flex-col items-center gap-2 text-center">
+        <p class="text-sm text-gray-300 font-medium uppercase">ALS</p>
+        <div class="flex items-center gap-4">
+          <img src="images/logo.png" alt="Chelsea Logo" class="h-14 w-14 object-contain" />
+          <p class="text-xl font-bold text-yellow-300">VS</p>
+          <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Man Utd Logo" class="h-12 w-12 object-contain" />
+        </div>
+        <p class="text-sm text-gray-300">Stadium ABC</p>
+      </div>
+
+      <!-- Countdown Timer -->
+      <div class="text-center">
+        <p class="text-sm text-gray-300 font-semibold mb-2 uppercase">TIMER</p>
+        <div class="flex space-x-4 text-white font-bold text-lg">
+          <div>
+            <span id="days" class="text-2xl">--</span>
+            <p class="text-xs text-gray-300 uppercase">Days</p>
+          </div>
+          <div>
+            <span id="hours" class="text-2xl">--</span>
+            <p class="text-xs text-gray-300 uppercase">Hrs</p>
+          </div>
+          <div>
+            <span id="minutes" class="text-2xl">--</span>
+            <p class="text-xs text-gray-300 uppercase">Min</p>
+          </div>
+          <div>
+            <span id="seconds" class="text-2xl">--</span>
+            <p class="text-xs text-gray-300 uppercase">Sec</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<!-- Countdown Timer Script -->
+<script>
+  const countdown = () => {
+    const endTime = new Date("2025-07-01T20:00:00").getTime(); // Set match date & time
+    const interval = setInterval(() => {
+      const now = new Date().getTime();
+      const diff = endTime - now;
+
+      if (diff <= 0) {
+        clearInterval(interval);
+        document.getElementById("days").textContent = "00";
+        document.getElementById("hours").textContent = "00";
+        document.getElementById("minutes").textContent = "00";
+        document.getElementById("seconds").textContent = "00";
+        return;
+      }
+
+      const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }, 1000);
+  };
+
+  countdown();
+</script>
+
+</div>
+</section>
+
+
+<!-- Latest News Section -->
+
+
+<section class="bg-[#011e3c] text-white py-16 px-6">
+  <div class="max-w-7xl mx-auto">
+
+    <!-- Section Title -->
+    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Latest News</h2>
+
+    <!-- Asymmetric Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      
+      <!-- Featured Article (2/3 Width) -->
+      <div class="lg:col-span-2 relative group overflow-hidden rounded-xl shadow-xl">
+        <img src="images/players/player1.png"
+             class="w-full h-[400px] object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
+          <div class="flex items-center gap-3 mb-3">
+            <span class="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full">Match Report</span>
+            <span class="text-gray-300 text-sm">April 19, 2024</span>
+          </div>
+          <h3 class="text-3xl font-extrabold mb-2 group-hover:text-yellow-400 transition">Captain Reflects on Derby Day Glory</h3>
+          <p class="text-gray-200 text-sm max-w-2xl">After a tense battle, the team captain shares insights on what drove the comeback win.</p>
+        </div>
+      </div>
+
+      <!-- Right-hand Vertical Cards -->
+      <div class="flex flex-col gap-8">
+        <!-- Sub article 1 -->
+        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+          <img src="https://images.unsplash.com/photo-1605032653232-2e0b7a0be0cd?auto=format&fit=crop&w=800&q=80"
+               class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-blue-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Player Focus</span>
+              <span class="text-sm text-gray-300">April 19, 2024</span>
+            </div>
+            <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Midfielder’s Magic Moment</h4>
+            <p class="text-sm text-gray-300">Player of the match dazzled with a goal and 2 assists.</p>
+          </div>
+        </div>
+
+        <!-- Sub article 2 -->
+        <div class="relative group rounded-xl overflow-hidden shadow-lg">
+          <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=800&q=80"
+               class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
+          <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Club News</span>
+              <span class="text-sm text-gray-300">April 19, 2024</span>
+            </div>
+            <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Coach’s Tactical Brilliance</h4>
+            <p class="text-sm text-gray-300">Breaking down smart substitutions and formation shifts.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- View All Button -->
+    <div class="mt-12 text-center">
+      <a href="#" class="inline-block bg-yellow-400 text-black font-bold py-3 px-6 rounded hover:bg-yellow-500 transition">View All News</a>
+    </div>
+  </div>
+</section>
+
+
+    <section class="bg-white py-16 px-6 text-[#002B5C]">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Title -->
+    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Fixtures & Results</h2>
+
+    <!-- Fixtures List -->
+    <div class="space-y-8">
+
+      <!-- Fixture Item -->
+      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <!-- Date + Venue -->
+        <div class="flex flex-col mb-4 md:mb-0">
+          <p class="text-xl font-bold">July 3, 2025</p>
+          <p class="text-sm text-gray-500 flex items-center gap-1">
+            🏟 Stamford Bridge
+          </p>
+        </div>
+
+        <!-- Teams & VS -->
+        <div class="flex items-center gap-6 text-center">
+          <!-- Team A -->
+          <div class="flex flex-col items-center">
+            <img src="images/logo.png" alt="Stravon FC" class="h-12 w-12 object-contain" />
+            <p class="text-sm font-semibold mt-2">Stravon FC</p>
+          </div>
+
+          <p class="text-lg font-bold text-gray-600">VS</p>
+
+          <!-- Team B -->
+          <div class="flex flex-col items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Opponent" class="h-12 w-12 object-contain" />
+            <p class="text-sm font-semibold mt-2">Man United</p>
+          </div>
+        </div>
+
+        <!-- Match Status + Button -->
+        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+          <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Upcoming</span>
+          <a href="#" class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition">Buy Tickets</a>
+        </div>
+      </div>
+
+      <!-- Past Result Example -->
+      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+        <!-- Date + Venue -->
+        <div class="flex flex-col mb-4 md:mb-0">
+          <p class="text-xl font-bold">June 22, 2025</p>
+          <p class="text-sm text-gray-500 flex items-center gap-1">
+            🏟 Old Trafford
+          </p>
+        </div>
+
+        <!-- Teams & Score -->
+        <div class="flex items-center gap-6 text-center">
+          <!-- Team A -->
+          <div class="flex flex-col items-center">
+            <img src="images/logo.png" alt="Stravon FC" class="h-12 w-12 object-contain" />
+            <p class="text-sm font-semibold mt-2">Stravon FC</p>
+          </div>
+
+          <p class="text-lg font-bold text-gray-800">2 - 2</p>
+
+          <!-- Team B -->
+          <div class="flex flex-col items-center">
+            <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Opponent" class="h-12 w-12 object-contain" />
+            <p class="text-sm font-semibold mt-2">Man United</p>
+          </div>
+        </div>
+
+        <!-- Match Status -->
+        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+          <span class="text-xs font-bold bg-gray-500 text-white px-3 py-1 rounded-full">FT</span>
+          <a href="#" class="text-sm font-medium text-[#002B5C] hover:underline">Match Report</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+   
+
+
+
+
+
+
+  <!-- Script to toggle dropdown -->
+  <script>
+
+
+const section = document.getElementById('heroSection');
+  const flash = document.getElementById('flashOverlay');
+
+const images = [
+  "url('images/hero.png')",
+  "url('images/hero2.png')",
+  "url('images/players/player1.png')"
+];
+
+
+  let current = 0;
+
+  function changeBackground() {
+    // Start flash
+    flash.classList.remove('opacity-0');
+    flash.classList.add('opacity-100');
+
+    setTimeout(() => {
+      // Switch background after flash
+      current = (current + 1) % images.length;
+      section.style.backgroundImage = images[current];
+
+      // End flash
+      flash.classList.remove('opacity-100');
+      flash.classList.add('opacity-0');
+    }, 500); // Flash duration (0.5s)
+  }
+
+  // Initial background
+  section.style.backgroundImage = images[current];
+
+  // Loop every 4s
+  setInterval(changeBackground, 4000);
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Close dropdown if clicking outside
+    window.addEventListener('click', function (e) {
+      const menu = document.getElementById('dropdown-menu');
+      const button = e.target.closest('button');
+      if (!e.target.closest('#dropdown-menu') && !button) {
+        menu.classList.add('hidden');
+      }
+    });
+  </script>
+
+  <script src="js/hero.js"></script>
+
+</body>
+</html>

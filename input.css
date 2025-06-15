@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@tailwind screens;
+
+*{
+    padding: 0;
+    margin: 0;
+}
+
+.spacing-small {
+    margin: 0 6rem;
+
+}
+
+.spacing-smaller{
+    margin-left: 7rem;
+}
+
+/*keyframes
+
+-- sponsors carousel */
+
+ @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .logo-scroll {
+      animation: scroll 12s linear infinite;
+    }
+
+    .blue-filter {
+      filter: brightness(0) saturate(100%) invert(12%) sepia(78%) saturate(548%) hue-rotate(175deg) brightness(94%) contrast(105%);
+    }
+
