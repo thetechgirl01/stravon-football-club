@@ -1,4 +1,33 @@
-// ========== Footer Year Auto Update ==========
+// ========== Countdown Timer ==========
+const countdown = () => {
+  const endTime = new Date("2025-07-01T20:00:00").getTime();
+  const interval = setInterval(() => {
+    const now = new Date().getTime();
+    const diff = endTime - now;
+
+    if (diff <= 0) {
+      clearInterval(interval);
+      ["days", "hours", "minutes", "seconds"].forEach(id => {
+        document.getElementById(id).textContent = "00";
+      });
+      return;
+    }
+
+    const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
+    const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+    const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+    const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent = hours;
+    document.getElementById("minutes").textContent = minutes;
+    document.getElementById("seconds").textContent = seconds;
+  }, 1000);
+};
+countdown();
+
+
+// ========== Footer Year ==========
 document.getElementById('year').textContent = new Date().getFullYear();
 
 
@@ -24,7 +53,7 @@ const section = document.getElementById('heroSection');
 const flash = document.getElementById('flashOverlay');
 
 const images = [
-  "url('images/hero.png')",
+ "url('images/hero.png')",
   "url('images/hero2.png')",
   "url('images/players/player1.png')"
 ];
@@ -46,7 +75,7 @@ function changeBackground() {
   }, 500); // Flash duration
 }
 
-// Initial background
+// Set initial background
 section.style.backgroundImage = images[current];
 
 // Auto-change background every 4s

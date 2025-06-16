@@ -197,37 +197,6 @@
 
 
 
-<!-- Countdown Timer Script -->
-<script>
-  const countdown = () => {
-    const endTime = new Date("2025-07-01T20:00:00").getTime(); // Set match date & time
-    const interval = setInterval(() => {
-      const now = new Date().getTime();
-      const diff = endTime - now;
-
-      if (diff <= 0) {
-        clearInterval(interval);
-        document.getElementById("days").textContent = "00";
-        document.getElementById("hours").textContent = "00";
-        document.getElementById("minutes").textContent = "00";
-        document.getElementById("seconds").textContent = "00";
-        return;
-      }
-
-      const days = String(Math.floor(diff / (1000 * 60 * 60 * 24))).padStart(2, '0');
-      const hours = String(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
-
-      document.getElementById("days").textContent = days;
-      document.getElementById("hours").textContent = hours;
-      document.getElementById("minutes").textContent = minutes;
-      document.getElementById("seconds").textContent = seconds;
-    }, 1000);
-  };
-
-  countdown();
-</script>
 
 </div>
 </section>
@@ -657,7 +626,7 @@
 
       <!-- Product 3 -->
       <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-        <img src="images/products/product1.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+        <img src="mages/products/product1.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
         <div class="p-4">
           <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Club Baseball Cap</h3>
           <p class="text-sm text-gray-300 mt-1 mb-3">Embroidered logo, adjustable fit</p>
