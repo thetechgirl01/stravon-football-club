@@ -53,9 +53,9 @@ const section = document.getElementById('heroSection');
 const flash = document.getElementById('flashOverlay');
 
 const images = [
- "url('images/hero.png')",
-  "url('images/hero2.png')",
-  "url('images/players/player1.png')"
+ "url('/images/hero1.png')",
+  "url('/images/hero2.png')",
+  "url('/images/players/player1.png')"
 ];
 
 let current = 0;
