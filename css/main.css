@@ -1993,6 +1993,10 @@ video {
 }
 
 @media screen and (max-width: 860px){
+  .navbar{
+    height: 2rem
+  }
+
   .left-nav{
     width: 100%;
   }
