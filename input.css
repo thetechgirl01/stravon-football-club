@@ -8,6 +8,164 @@
     margin: 0;
 }
 
+
+
+/* Base styles */
+.navbar {
+  background-color: #002b5c;
+  padding: 1rem;
+  color: white;
+  position: relative;
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+  text-transform: capitalize;
+}
+
+.nav-links a {
+
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-right.nav-links input{
+
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.nav-links a:hover {
+  color: #ffcc00;
+}
+
+.nav-logo img {
+  width: 76px;
+}
+
+.hamburger,
+.close-icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 30;
+}
+
+/* Mobile menu hidden by default */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: #002b5c;
+}
+
+/* Responsive (tablet and smaller) */
+@media screen and (max-width: 1000px) {
+  .nav-left,
+  .nav-right {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  .close-icon {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+  }
+
+  .nav-logo {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+@media screen and (max-width: 860px){
+  .left-nav{
+    width: 100%;
+  }
+  .left-nav-contents{
+    width: 80%;
+
+  }
+  .logo-scroll{
+
+ 
+  margin-right: 3rem;
+
+  }
+  .hamburger, .close-icon{
+    margin-right: 2rem;
+  }
+    .hamburger{
+      z-index: 100;
+      background-color: #002B5C;
+      
+    }
+    .close-icon{
+      z-index: 0;
+
+    }
+
+ 
+  #heroSection{
+    align-items: center;
+    
+  }
+  .hero-text{
+    justify-items: center;
+    text-align: center;
+   
+  }
+  .hero-text h1{
+    margin-top: -4rem;
+    font-size: 30px;
+    text-align: center;
+  }
+  .hero-btn{
+    align-self: center;
+     font-size: 15px;
+  }
+  .sub-btn{
+    align-self: flex-end;
+    width: 3rem;
+    margin-right: 2rem;
+  }
+  .sub-btn-text {
+   display: none;
+  }
+  .match-info{
+    width: fit-content;
+    align-self: center;
+ 
+  }
+
+}
+
+/*players page**/
+.pitch{
+  width:500px
+}
+
+
 .spacing-small {
     margin: 0 6rem;
 
@@ -21,6 +179,9 @@
  .player {
       transform: translate(-50%, -50%);
     }
+
+
+    
 
 /*keyframes
 

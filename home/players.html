@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="assets/css/main.css">
+   <link rel="stylesheet" href="/client/input.css">
     <link rel="icon" href="assets/images/logo.png" type="image/png">
   <title>Geezers FC | Players</title>
   <script src="https://cdn.tailwindcss.com"></script>
@@ -17,12 +18,14 @@
 <body class="bg-[#011e3c] text-white">
 
 
-     <!-- sponsor / lang / register and sign in -->
-   <div>
-  <div class="w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
 
-    <!-- LEFT: Sign in / Register / Language Dropdown -->
-    <div class="flex items-center gap-4 relative">
+
+  <!-- sponsor / lang / register and sign in -->
+   <div>
+  <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
+
+    <!-- LEFT: Sign in / Register / Language Dro]pdown -->
+    <div class="left-nav-contents flex items-center gap-4 relative ">
      
 
       <!-- Language Dropdown -->
@@ -52,8 +55,8 @@
     </div>
 
     <!-- RIGHT: Logo Carousel -->
-    <div class="w-[360px] overflow-hidden">
-      <div class="flex gap-6 logo-scroll">
+    <div class="w-[360px]  overflow-hidden">
+      <div class="flex gap-4 logo-scroll ">
         <!-- Logos -->
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
@@ -73,44 +76,58 @@
     </div>
   </div>
 
-
-    <!-- Navbar 2 -->
- <nav>
-  <div class="w-full bg-primary shadow-md px-4 py-3">
-    <div class="spacing-small max-w-screen-xl mx-auto flex items-center justify-between">
-      <!-- Left Nav Links -->
-      <div class="flex items-center gap-6 capitalize">
-        <a href="#" class="text-white font-medium hover:text-secondary">latest</a>
-        <a href="#" class="text-white font-medium hover:text-secondary">tickets & hospitality</a>
-        <a href="#" class="text-white font-medium hover:text-secondary">fixtures</a>
-        <a href="#" class="text-white font-medium hover:text-secondary">players</a>
-      </div>
-
-      <!-- Logo Centered -->
-      <div class="w-[76px] h-auto flex justify-center">
-        <a href="../index.html">
-  <img src="../assets/images/logo.png" alt="Logo" class="w-[76px] h-auto object-contain" />
-  </a>
-</div>
-
-
-      <!-- Right Nav Links -->
-      <div class="flex items-center gap-6 capitalize">
-        <a href="#" class="text-white font-medium hover:text-secondary">fixtures</a>
-        <a href="#" class="text-white font-medium hover:text-secondary">fans</a>
-        <a href="#" class="text-white font-medium hover:text-secondary">shop</a>
-        <input
-          type="text"
-          placeholder="Search"
-          class="bg-white border border-gray-300 rounded-md px-3 py-1 text-sm text-[#002B5C] focus:outline-none focus:ring-2 focus:ring-[#002B5C]"
-        />
-      </div>
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container capitalize">
+    <!-- Left Nav -->
+    <div class="nav-left nav-links capitalize ">
+      <a href="#">latest</a>
+      <a href="#">tickets & hospitality</a>
+      <a href="#">fixtures</a>
+      <a href="./home/players.html">players</a>
     </div>
+
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="../index.html">
+        <img src="../assets/images/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Right Nav -->
+    <div class="nav-right nav-links capitalize">
+      <a href="#">fixtures</a>
+      <a href="#">fans</a>
+      <a href="#">shop</a>
+      <input type="text" placeholder="Search..."/>
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+
+    <!-- Close Button -->
+    <div class="close-icon" id="closeBtn">&times;</div>
   </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">latest</a>
+    <a href="#">tickets & hospitality</a>
+    <a href="#">fixtures</a>
+    <a href="home/players.html">players</a>
+    <a href="#">fans</a>
+    <a href="#">shop</a>
+    <input type="text" placeholder="Search..."/>
+  </div>
+
+<script>
+
+</script>
+
 </nav>
 
-</div>
 
+</div>
     <!-- Main Players Content -->
     <main>
         <!-- Hero Section -->
@@ -209,22 +226,19 @@
       <h2 class="text-3xl font-bold text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Pitch Formation</h2>
       <div class="inline-block bg-yellow-500 text-black px-4 py-2 rounded-lg font-bold text-lg mb-8">4-3-3</div>
 
-      <div class="relative w-full max-w-4xl mx-auto h-[600px] bg-cover bg-center border-4 border-green-700 rounded-xl shadow-lg"
+      <div class="pitch relative w-[600px] max-w-4xl mx-auto h-[600px] bg-cover bg-center border-4 border-green-700 rounded-xl shadow-lg"
            style="background-image: url('../assets/images/pitch.png');"
            id="formation">
         <!-- refer to players.js -->
       </div>
     </div>
-  </section>
-<!-- Footer -->
-
 <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
   <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 
     <div>
       <img src="../assets/images/logo.png" alt="Stravon FC Logo" class="w-24  h-24 mb-4" />
       <p class="text-sm text-gray-400">
-        Geezerz FC – Passion. Power. Pride. <br>
+        Stravon FC – Passion. Power. Pride. <br>
         United by football. Driven by legacy.
       </p>
     </div>
@@ -236,7 +250,7 @@
         <li><a href="#squad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
         <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
         <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
-        <li><a href="#highlights" class="hover:text-yellow-400 transition">Match Highlights</a></li>
+        <li><a href="contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
       </ul>
     </div>
 
@@ -246,7 +260,7 @@
       <ul class="space-y-2 text-sm text-gray-300">
         <li>📍  Abuja, Nigeria</li>
         <li>📞 +234 800 000 0000</li>
-        <li>✉️ contact@geezerzfc.com</li>
+        <li>✉️ contact@stravonfc.com</li>
         <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
       </ul>
     </div>
@@ -277,7 +291,6 @@
   </div>
 
 </footer>
-
 
   <script src="../assets/js/players.js"></script>
   <script src="../assets/js/hero.js"></script>

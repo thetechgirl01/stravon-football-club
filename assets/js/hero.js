@@ -1,4 +1,23 @@
+  const hamburger = document.getElementById('hamburger');
+  const closeBtn = document.getElementById('closeBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+    hamburger.style.display = 'none';
+    closeBtn.style.display = 'block';
+  });
+
+  closeBtn.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+    hamburger.style.display = 'block';
+    closeBtn.style.display = 'none';
+  });
+
 // ========== Countdown Timer ==========
+
+
+
 const countdown = () => {
   const endTime = new Date("2025-07-01T20:00:00").getTime();
   const interval = setInterval(() => {
@@ -53,10 +72,11 @@ const section = document.getElementById('heroSection');
 const flash = document.getElementById('flashOverlay');
 
 const images = [
- "url('/images/hero1.png')",
-  "url('/images/hero2.png')",
-  "url('/images/players/player1.png')"
+  "url('assets/images/players/herog.png')",
+  "url('assets/images/hero2.png')",
+  "url('assets/images/players/player1.png')"
 ];
+
 
 let current = 0;
 
