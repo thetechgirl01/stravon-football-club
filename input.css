@@ -74,6 +74,105 @@
   background-color: #002b5c;
 }
 
+ /* Cart Modal Styles */
+      .cart-container {
+        position: relative;
+        display: inline-block;
+      }
+      
+      #cartModal {
+        position: absolute;
+        right: 0;
+        top: 100%;
+        width: 320px;
+        max-height: 400px;
+        background: #011e3c;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 100;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+        transition: all 0.2s ease;
+        overflow-y: auto;
+      }
+      
+      #cartModal.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+      
+      .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #fbbf24;
+        color: #002B5C;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 10px;
+        font-weight: bold;
+      }
+      
+      .cart-item {
+        padding: 12px;
+        border-bottom: 1px solid #1e3a8a;
+      }
+      
+      .cart-summary {
+        padding: 12px;
+        background: #002B5C;
+        border-radius: 0 0 8px 8px;
+      }
+      
+      .close-cart {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+      }
+      
+      /* Backdrop for mobile */
+      @media (max-width: 768px) {
+        #cartModal {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) scale(0.9);
+          width: 90%;
+          max-width: 350px;
+          max-height: 70vh;
+        }
+        
+        #cartModal.show {
+          transform: translate(-50%, -50%) scale(1);
+        }
+        
+        .cart-backdrop {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.5);
+          z-index: 99;
+          display: none;
+        }
+        
+        .cart-backdrop.show {
+          display: block;
+        }
+      }
+
 /* Responsive (tablet and smaller) */
 @media screen and (max-width: 1000px) {
   .nav-left,

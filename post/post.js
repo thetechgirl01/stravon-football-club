@@ -3,7 +3,7 @@
   const cards = [
     {
       type: 'big',
-      image: 'assets/images/players/player1.png',
+      image: '../assets/images/players/player1.png',
       tag: 'Match Report',
       tagColor: 'bg-yellow-400 text-black',
       title: 'Captain Reflects on Derby Day Glory',
@@ -12,7 +12,7 @@
     },
     {
       type: 'small',
-      image: 'assets/images/players/player2.png',
+      image: '../assets/images/players/player1.png',
       tag: 'Player Focus',
       tagColor: 'bg-blue-500 text-white',
       title: 'Midfielder’s Magic Moment',
@@ -21,7 +21,7 @@
     },
     {
       type: 'small',
-      image: 'assets/images/players/player3.png',
+      image: '../assets/images/players/player3.png',
       tag: 'Club News',
       tagColor: 'bg-green-500 text-white',
       title: 'Coach’s Tactical Brilliance',
