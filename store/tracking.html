@@ -1,1 +1,205 @@
 <!-- This page will enable user to track their billing status before delivery -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../assets/css/main.css">
+    <link rel="stylesheet" href="../input.css">
+    <link rel="icon" href=".assets/images/logo.png" type="image/png">
+        <title>Document</title>
+</head>
+<body>
+
+    <!-- Navbar -->
+<nav class="navbar">
+  <div class="navbar-container capitalize">
+    <!-- Left Nav -->
+    <div class="nav-left nav-links capitalize ">
+      <a href="./post/blog-posts.html">latest</a>
+      <a href="#">tickets & hospitality</a>
+      <a href="#">fixtures</a>
+      <a href="./home/players.html">players</a>
+    </div>
+
+    <!-- Logo -->
+    <div class="nav-logo">
+      <a href="../index.html">
+        <img src="./assets/images/logo.png" alt="Logo" />
+      </a>
+    </div>
+
+    <!-- Right Nav -->
+    <div class="nav-right nav-links capitalize">
+      
+      <a href="#">fans</a>
+      <a href="./store/products.html">shop</a>
+      <a href="./home/contact-us.html">contact us</a>
+      <input type="text" placeholder="Search..."/>
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+
+    <!-- Close Button -->
+    <div class="close-icon" id="closeBtn">&times;</div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="./post/blog-posts.html">latest</a>
+    <a href="#">tickets & hospitality</a>
+    <a href="#">fixtures</a>
+    <a href="home/players.html">players</a>
+    <a href="./post/blog-posts.html">fixtures</a>
+    <a href="#">fans</a>
+    <a href="#">shop</a>
+    <input type="text" placeholder="Search..."/>
+  </div>
+
+<script>
+
+</script>
+
+</nav>
+
+        <!-- Navbar -->
+<section class="py-16 px-6 bg-white text-white min-h-screen">
+  <div class="max-w-4xl mx-auto space-y-10">
+
+    <!-- Heading -->
+    <div>
+      <h1 class="text-3xl font-bold mb-2 text-black">Track Your Order</h1>
+      <p class="text-gray-400">Order #123456 · Placed on May 5, 2025 · Estimated delivery: May 10, 2025</p>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="bg-[#022e55] p-6 rounded-xl shadow-lg">
+      <h2 class="text-xl font-semibold mb-6 border-b border-gray-600 pb-3">Order Progress</h2>
+
+      <ol class="relative border-l border-yellow-400 ml-3 space-y-10">
+  <!-- Step 1 (Shipped - Now at Top) -->
+  <li class="relative">
+    <span class="absolute left-0 top-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[#002B5C] font-bold">1</span>
+    <div class="p-6">
+      <h3 class="font-bold">Shipped</h3>
+      <p class="text-sm text-gray-300 mt-2">Order has left our facility and is in transit.</p>
+      <span class="text-xs text-gray-400">May 7, 2025 - 5:00 PM</span>
+    </div>
+  </li>
+
+  <!-- Step 2 (Billing Confirmed - Shifted Down) -->
+  <li class="relative">
+    <span class="absolute left-0 top-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[#002B5C] font-bold">2</span>
+    <div class="p-6">
+      <h3 class="font-bold">Billing Confirmed</h3>
+      <p class="text-sm text-gray-300 mt-2">Payment has been successfully received.</p>
+      <span class="text-xs text-gray-400">May 5, 2025 - 10:00 AM</span>
+    </div>
+  </li>
+
+  <!-- Step 3 (Order Processing - Shifted Down) -->
+  <li class="relative">
+    <span class="absolute left-0 top-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[#002B5C] font-bold">3</span>
+    <div class="p-6">
+      <h3 class="font-bold">Order Processing</h3>
+      <p class="text-sm text-gray-300 mt-2">Your items are being prepared for shipment.</p>
+      <span class="text-xs text-gray-400">May 6, 2025 - 9:00 AM</span>
+    </div>
+  </li>
+
+  <!-- Step 4 (Delivered - Still Last) -->
+  <li class="relative ">
+      <span class="absolute left-0 top-1 w-6 h-6 bg-yellow-400 rounded-full flex items-center justify-center text-[#002B5C] font-bold ">4</span>
+    <div class="p-6">
+      <h3 class="font-bold">Delivered</h3>
+      <p class="text-sm text-gray-300 mt-2">Package is on the way to your location.</p>
+      <span class="text-xs text-gray-400">Expected: May 10, 2025</span>
+    </div>
+  </li>
+</ol>
+    </div>
+
+    <!-- Summary / Support -->
+    <div class="bg-[#022e55] p-6 rounded-xl shadow-lg">
+      <h2 class="text-xl font-semibold border-b border-gray-600 pb-4 mb-4">Order Summary</h2>
+      <div class="flex justify-between text-sm mb-2">
+        <span class="text-gray-300">Total Amount</span>
+        <span class="text-yellow-400 font-semibold">$189.98</span>
+      </div>
+      <div class="flex justify-between text-sm mb-6">
+        <span class="text-gray-300">Shipping Method</span>
+        <span class="text-white">Standard Delivery</span>
+      </div>
+      <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-3 rounded hover:bg-yellow-500 transition">
+        Contact Support
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+
+    <div>
+      <img src="assets/images/logo.png" alt="Stravon FC Logo" class="w-24  h-24 mb-4" />
+      <p class="text-sm text-gray-400">
+        Stravon FC – Passion. Power. Pride. <br>
+        United by football. Driven by legacy.
+      </p>
+    </div>
+
+
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#squad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
+        <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
+        <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
+        <li><a href="home/contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>📍  Abuja, Nigeria</li>
+        <li>📞 +234 800 000 0000</li>
+        <li>✉️ contact@stravonfc.com</li>
+        <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
+      <div class="flex space-x-4 text-white">
+        <!-- Facebook -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <!-- Twitter -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    &copy; <span id="year"></span> Stravon FC. All rights reserved.
+  </div>
+
+</footer>
+
+
+</body>
+</html>

@@ -8,6 +8,9 @@
     
     <link rel="stylesheet" href="./input.css">
     <link rel="icon" href="assets/images/logo.png" type="image/png">
+    <!-- AOS Library CSS -->
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
     <title>Geezers FC</title>
 
  
@@ -112,7 +115,7 @@
     <a href="home/players.html">players</a>
     <a href="./post/blog-posts.html">fixtures</a>
     <a href="#">fans</a>
-    <a href="#">shop</a>
+    <a href="./store/products.html">shop</a>
     <input type="text" placeholder="Search..."/>
   </div>
 
@@ -126,7 +129,7 @@
 </div>
 
 <!-- Hero Section -->
-<section id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
+<section data-aos="zoom-out" id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
   <!-- Yellow flash overlay -->
   <div id="flashOverlay" class="absolute inset-0 bg-[#002B5C] bg-opacity-30 backdrop-blur-md opacity-0 transition-opacity duration-500 z-10"></div>
 
@@ -226,7 +229,7 @@
 <!-- Latest News Section -->
 
 
-<section class="latest-news bg-[#011e3c] text-white py-16 px-6">
+<section data-aos="fade-up" class="latest-news bg-[#011e3c] text-white py-16 px-6">
   <div class="max-w-7xl mx-auto">
 
     <!-- Section Title -->
@@ -288,7 +291,7 @@
 </section>
 
  <!-- Fixtures & Results Section -->
-    <section class="bg-white py-16 px-6 text-[#002B5C]">
+    <section data-aos="fade-up" class="bg-white py-16 px-6 text-[#002B5C]">
   <div class="max-w-7xl mx-auto">
     <!-- Section Title -->
     <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Fixtures & Results</h2>
@@ -402,7 +405,7 @@
 
 <!-- Players Section -->
 
-<section class="bg-[#011e3c] text-white py-16 px-6">
+<section data-aos="fade-up" class="bg-[#011e3c] text-white py-16 px-6">
   <div class="max-w-7xl mx-auto">
     <!-- Section Title -->
     <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Meet the Squad</h2>
@@ -611,7 +614,7 @@
 
   
 <!-- Club Store Section -->
-<section class="bg-[#0a2640] text-white py-16 px-6">
+<section data-aos="zoom-in" class="bg-[#0a2640] text-white py-16 px-6">
   <div class="max-w-7xl mx-auto">
     
     <!-- Section Title -->
@@ -683,7 +686,7 @@
 </section>
 
 <!-- Gallery Section -->
-<section class="bg-[#011e3c] text-white py-16 px-6">
+<section data-aos="fade-right" class="bg-[#011e3c] text-white py-16 px-6">
   <div class="max-w-7xl mx-auto">
 
     <!-- Section Title -->
@@ -843,7 +846,7 @@
 
 
 <!-- Newsletter Section -->
-<section class="bg-primary text-white py-16 px-6">
+<section data-aos="fade-down" class="bg-primary text-white py-16 px-6">
   <div class="max-w-4xl mx-auto text-center">
 
     <!-- Heading -->
@@ -934,6 +937,18 @@
   </div>
 
 </footer>
+
+
+
+<!--scripts-->
+<!-- AOS Library JS -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 800, 
+    once: true     
+  });
+</script>
 
 
   <script src="assets/js/hero.js"></script>
