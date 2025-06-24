@@ -2,181 +2,346 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/main.css">
-  <link rel="stylesheet" href="../input.css">
-  <link rel="icon" href=".assets/images/logo.png" type="image/png">
-  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../input.css" />
+    <link rel="icon" href=".assets/images/logo.png" type="image/png" />
+
     <title>Document</title>
-</head>
-<body>
-
-      <!-- Navbar -->
-  <nav class="navbar transition-medium">
-    <div class="navbar-container capitalize">
-      <!-- Left Nav -->
-      <div class="nav-left nav-links capitalize">
-        <a href="../index.html" class="transition-fast hover:text-yellow-400">latest</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">tickets & hospitality</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">fixtures</a>
-        <a href="../home/players.html" class="transition-fast hover:text-yellow-400">players</a>
-      </div>
-
-      <!-- Logo -->
-      <div class="nav-logo hover-scale">
-        <a href="../index.html">
-          <img src="../assets/images/logo.png" alt="Logo" class="transition-medium" />
-        </a>
-      </div>
-
-      <!-- Right Nav -->
-      <div class="nav-right nav-links capitalize">
-        <a href="#" class="now transition-fast hover:text-yellow-400">blog</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">fans</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">shop</a>
-        <a href="../home/contact-us.html" class="transition-fast hover:text-yellow-400">contact us</a>
-      </div>
-
-      <!-- Hamburger Menu Icon -->
-      <div class="hamburger" id="hamburger">&#9776;</div>
-      <div class="close-icon" id="closeBtn">&times;</div>
-    </div>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#">latest</a>
-      <a href="#">tickets & hospitality</a>
-      <a href="#">fixtures</a>
-      <a href="home/players.html">players</a>
-      <a href="#">fans</a>
-      <a href="#">shop</a>
-      <input type="text" placeholder="Search..."/>
-    </div>
-  </nav>
-   <!-- Club Store Section -->
-  <section class="bg-white text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto flex flex-row gap-10 space-x-4">
-
-    <!-- Main Product Grid Area -->
-    <div class="w-full lg:w-[70%]">
-     <div class="flex flex-row justify-between items-center flex-wrap gap-6 mb-10">
-  <!-- Section Title -->
-  <h2 class="text-4xl font-bold border-l-4 border-yellow-400 text-black pl-4">
-    Official Club Store
-  </h2>
-
-  <!-- Store Navigation -->
-  <div class="w-fit lg:w-[30%] bg-[#022e55] p-4 rounded-xl shadow-md h-fit">
-    <ul class="flex flex-wrap justify-center gap-6">
-      <!-- Cart -->
-      <li>
-        <a href="cart.html" class="flex items-center gap-2 text-white hover:text-yellow-300 transition">
-          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z" />
-          </svg>
-          <span>Cart</span>
-        </a>
-      </li>
-
-      <!-- Tracking -->
-      <li>
-        <a href="tracking.html" class="flex items-center gap-2 text-white hover:text-yellow-300 transition">
-          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8zm0 0V4m0 14v-4m0 0H4m8 0h8" />
-          </svg>
-          <span>Track Order</span>
-        </a>
-      </li>
-
-      <!-- Order History -->
-      <li>
-        <a href="history.html" class="flex items-center gap-2 text-white hover:text-yellow-300 transition">
-          <svg class="w-5 h-5 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2"
-            viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round"
-              d="M3 3v6h6M21 21v-6h-6M3 21l6-6M21 3l-6 6" />
-          </svg>
-          <span>Order History</span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</div>
-
-      <!-- Product Grid -->
-      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
-        <!-- Product Card 1 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/products/product1.png" alt="Home Jersey"
-            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-4">
-            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Home Jersey</h3>
-            <p class="text-sm text-gray-300 mt-1 mb-3">Official Matchday Kit</p>
-            <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$89.99</span>
-              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-            </div>
-          </div>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar transition-medium">
+      <div class="navbar-container capitalize">
+        <!-- Left Nav -->
+        <div class="nav-left nav-links capitalize">
+          <a href="../index.html" class="transition-fast hover:text-yellow-400"
+            >latest</a
+          >
+          <a href="#" class="transition-fast hover:text-yellow-400"
+            >tickets & hospitality</a
+          >
+          <a href="#" class="transition-fast hover:text-yellow-400">fixtures</a>
+          <a
+            href="../home/players.html"
+            class="transition-fast hover:text-yellow-400"
+            >players</a
+          >
         </div>
 
-        <!-- Product Card 2 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/products/product2.png" alt="Away Jersey"
-            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-4">
-            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Away Jersey</h3>
-            <p class="text-sm text-gray-300 mt-1 mb-3">White & Gold Edition</p>
-            <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$89.99</span>
-              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-            </div>
-          </div>
+        <!-- Logo -->
+        <div class="nav-logo hover-scale">
+          <a href="../index.html">
+            <img
+              src="../assets/images/logo.png"
+              alt="Logo"
+              class="transition-medium"
+            />
+          </a>
         </div>
 
-        <!-- Product Card 3 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/products/product3.png" alt="Club Cap"
-            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-4">
-            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Club Baseball Cap</h3>
-            <p class="text-sm text-gray-300 mt-1 mb-3">Embroidered logo, adjustable fit</p>
-            <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$24.99</span>
-              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-            </div>
-          </div>
+        <!-- Right Nav -->
+        <div class="nav-right nav-links capitalize">
+          <a href="#" class="now transition-fast hover:text-yellow-400">blog</a>
+          <a href="#" class="transition-fast hover:text-yellow-400">fans</a>
+          <a href="#" class="transition-fast hover:text-yellow-400">shop</a>
+          <a
+            href="../home/contact-us.html"
+            class="transition-fast hover:text-yellow-400"
+            >contact us</a
+          >
         </div>
 
-        <!-- Product Card 4 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/products/product4.png" alt="Club Scarf"
-            class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-          <div class="p-4">
-            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Supporter Scarf</h3>
-            <p class="text-sm text-gray-300 mt-1 mb-3">Warm & spirited style</p>
-            <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$19.99</span>
-              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" id="hamburger">&#9776;</div>
+        <div class="close-icon" id="closeBtn">&times;</div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="#">latest</a>
+        <a href="#">tickets & hospitality</a>
+        <a href="#">fixtures</a>
+        <a href="home/players.html">players</a>
+        <a href="#">fans</a>
+        <a href="#">shop</a>
+        <input type="text" placeholder="Search..." />
+      </div>
+    </nav>
+    <!-- Club Store Section -->
+    <section class="bg-white text-white py-16 px-6">
+      <div class="max-w-7xl mx-auto flex flex-row gap-10 space-x-4">
+        <!-- Main Product Grid Area -->
+        <div class="w-full lg:w-[70%]">
+          <div
+            class="flex flex-row justify-between items-center flex-wrap gap-6 mb-10"
+          >
+            <!-- Section Title -->
+            <h2
+              class="text-4xl font-bold border-l-4 border-yellow-400 text-black pl-4"
+            >
+              Official Club Store
+            </h2>
+
+            <!-- Store Navigation -->
+            <div
+              class="w-fit lg:w-[30%] bg-[#022e55] p-4 rounded-xl shadow-md h-fit"
+            >
+              <ul class="flex flex-wrap justify-center gap-6">
+                <!-- Cart -->
+                <li>
+                  <a
+                    href="cart.html"
+                    class="flex items-center gap-2 text-white hover:text-yellow-300 transition"
+                  >
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"
+                      />
+                    </svg>
+                    <span>Cart</span>
+                  </a>
+                </li>
+
+                <!-- Tracking -->
+                <li>
+                  <a
+                    href="tracking.html"
+                    class="flex items-center gap-2 text-white hover:text-yellow-300 transition"
+                  >
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M12 8c-1.657 0-3 1.567-3 3.5S10.343 15 12 15s3-1.567 3-3.5S13.657 8 12 8zm0 0V4m0 14v-4m0 0H4m8 0h8"
+                      />
+                    </svg>
+                    <span>Track Order</span>
+                  </a>
+                </li>
+
+                <!-- Order History -->
+                <li>
+                  <a
+                    href="history.html"
+                    class="flex items-center gap-2 text-white hover:text-yellow-300 transition"
+                  >
+                    <svg
+                      class="w-5 h-5 text-yellow-400"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M3 3v6h6M21 21v-6h-6M3 21l6-6M21 3l-6 6"
+                      />
+                    </svg>
+                    <span>Order History</span>
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
+
+          <!-- Product Grid -->
+          <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Product Card 1 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product1.png"
+                alt="Home Jersey"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  2025 Home Jersey
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  Official Matchday Kit
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$89.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 2 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product2.png"
+                alt="Away Jersey"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  2025 Away Jersey
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  White & Gold Edition
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$89.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 3 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product3.png"
+                alt="Club Cap"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  Club Baseball Cap
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  Embroidered logo, adjustable fit
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$24.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 4 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product4.png"
+                alt="Club Scarf"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  Supporter Scarf
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  Warm & spirited style
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$19.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 5 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product4.png"
+                alt="Club Scarf"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  Supporter Scarf
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  Warm & spirited style
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$19.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Product Card 6 -->
+            <div
+              class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group"
+            >
+              <img
+                src="assets/images/products/product4.png"
+                alt="Club Scarf"
+                class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div class="p-4">
+                <h3
+                  class="text-xl font-bold group-hover:text-yellow-400 transition"
+                >
+                  Supporter Scarf
+                </h3>
+                <p class="text-sm text-gray-300 mt-1 mb-3">
+                  Warm & spirited style
+                </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-yellow-400 font-semibold">$19.99</span>
+                  <a
+                    href="#"
+                    class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition"
+                    >View</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pagination goes here -->
         </div>
       </div>
-    </div>
-
-  
-  </div>
-</section>
-
-
-
-
-
-    
-</body>
+    </section>
+  </body>
 </html>

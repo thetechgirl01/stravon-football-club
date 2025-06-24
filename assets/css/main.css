@@ -1690,3 +1690,9 @@ video {
   filter: brightness(0) saturate(100%) invert(12%) sepia(78%) saturate(548%) hue-rotate(175deg) brightness(94%) contrast(105%);
 }
 
+#mainImage:hover {
+  transform: scale(1.2);
+}
+#mainImage {
+  transform-origin: center;
+}
