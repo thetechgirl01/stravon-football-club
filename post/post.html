@@ -17,7 +17,7 @@
 
 <body class="bg-[#011e3c] text-white font-sans">
     <!-- Navbar -->
-<nav class="navbar">
+<nav class="navbar mb-8">
   <div class="navbar-container capitalize">
     <!-- Left Nav -->
     <div class="nav-left nav-links capitalize ">
@@ -67,76 +67,82 @@
 
 </nav>
 
-  <!-- Hero Banner -->
-  <section class="relative bg-cover bg-center h-[50vh] flex items-center justify-center text-center px-6" style="background-image: url('../assets/images/hero2.png');">
-    <div class="absolute inset-0 bg-black/60"></div>
-    <div class="relative z-10">
-      <h1 class="text-4xl md:text-5xl font-extrabold text-yellow-400">Captain Reflects on Derby Day Glory</h1>
-      <p class="mt-4 text-sm md:text-lg text-gray-200">Posted on June 10, 2025 | <span class="text-yellow-300 font-medium">Match Report</span></p>
-    </div>
-  </section>
+  <!-- Article Layout -->
+<section class="max-w-6xl mx-auto px-6 lg:px-0 py-16 grid grid-cols-1 lg:grid-cols-12 gap-12 text-black bg-white ">
 
-  <!-- Blog Content -->
-  <section class="max-w-4xl mx-auto py-16 px-6 space-y-8">
+  <!-- Main Article -->
+  <article class="lg:col-span-8 space-y-8 text-gray-800 text-[17px] leading-[1.75]">
     <!-- Featured Image -->
-    <img src="../assets/images/players/player1.png" alt="Blog Post" class="rounded-xl w-full object-cover shadow-lg">
-
-    <!-- Blog Body -->
-    <article class="space-y-6 text-gray-200 leading-relaxed">
-      <p>The derby was a thrilling encounter that kept fans on the edge of their seats. Stravon FC’s captain led from the front with resilience and determination, rallying the team after going down 1-0 in the first half.</p>
-
-      <p>“It was all about sticking to the plan and believing in each other,” the captain said. “The fans gave us the extra push, and we knew we couldn't let them down.”</p>
-
-      <p>With a brilliant assist and a match-winning header in the 85th minute, the skipper sealed a dramatic 2-1 win. The atmosphere in the stadium was electric, and celebrations continued long after the final whistle.</p>
-
-      <p>The win boosts Stravon FC’s position on the league table and sets the tone for the coming fixtures. The coaching staff credited the team’s unity and tactical execution for the result.</p>
-    </article>
-
-    <!-- Tags & Reactions -->
-    <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mt-8">
-      <div class="flex gap-2 flex-wrap">
-        <span class="bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full">#MatchDay</span>
-        <span class="bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full">#Captain</span>
-        <span class="bg-yellow-400 text-black text-xs font-semibold px-3 py-1 rounded-full">#GeezersFC</span>
-      </div>
-      <div class="flex items-center gap-4">
-
-        <!--like and share buttons-->
-    <button class="flex items-center gap-1 text-white transition transform hover:scale-110 hover:text-yellow-400">
-  👍 <span>Like</span>
-</button>
-
-<button class="flex items-center gap-1 text-white transition transform hover:scale-110 hover:text-yellow-400">
-  🔗 <span>Share</span>
-</button>
+   <img src="../assets/images/players/player1.png" alt="Captain Celebration"
+  class="rounded-xl shadow-md w-full h-64 object-cover object-center" />
 
 
-      </div>
-    </div>
-  </section>
+    <!-- Body -->
+    <p>The derby was a thrilling encounter that kept fans on the edge of their seats. Stravon FC’s captain led from the front with resilience and determination, rallying the team after going down 1-0 in the first half.</p>
 
-  <!-- Comments Section -->
-  <section class="max-w-4xl mx-auto px-6 pb-20">
-    <h3 class="text-2xl font-bold mb-6 text-yellow-400">Comments</h3>
+    <p>“It was all about sticking to the plan and believing in each other,” the captain said. “The fans gave us the extra push, and we knew we couldn't let them down.”</p>
 
-    <!-- Example Comment -->
-    <div class="space-y-6">
-      <div class="bg-[#0f2a44] p-4 rounded-lg">
-        <p class="text-sm text-gray-300 mb-1"><span class="font-semibold text-white">John Doe</span> • June 11, 2025</p>
-        <p>Brilliant performance from the entire team. Loved the spirit shown!</p>
-      </div>
+    <blockquote class="border-l-4 border-yellow-400 pl-4 italic text-gray-600 bg-gray-100 rounded-md py-2 px-3">"The fans gave us the extra push — we couldn't let them down."</blockquote>
 
-      <!-- More static comments can be added here -->
+    <p>With a brilliant assist and a match-winning header in the 85th minute, the skipper sealed a dramatic 2-1 win. The atmosphere in the stadium was electric, and celebrations continued long after the final whistle.</p>
+
+    <p>The win boosts Stravon FC’s position on the league table and sets the tone for the coming fixtures. The coaching staff credited the team’s unity and tactical execution for the result.</p>
+  </article>
+
+  <!-- Sidebar -->
+  <aside class="lg:col-span-4 space-y-6">
+    
+    <!-- Tags -->
+    <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm">
+      <h4 class="text-yellow-600 font-semibold mb-3 text-lg">Tags</h4>
+      <div class="flex flex-wrap gap-2">
+  <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300 shadow-sm hover:bg-yellow-200 transition">#MatchDay</span>
+  <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300 shadow-sm hover:bg-yellow-200 transition">#Captain</span>
+  <span class="bg-yellow-100 text-yellow-700 text-xs font-semibold px-3 py-1 rounded-full border border-yellow-300 shadow-sm hover:bg-yellow-200 transition">#GeezersFC</span>
+</div>
+
     </div>
 
-    <!-- Comment Form -->
-    <form class="mt-8 space-y-4 mb-16">
-      <h4 class="text-lg font-semibold text-white">Leave a comment</h4>
-      <input type="text" placeholder="Your Name" class="w-80 h-12 mb-4 mt-4 p-4 rounded bg-white text-black placeholder:text-gray-500" required>
-      <textarea placeholder="Your Comment" class="w-full p-4 rounded bg-white text-black placeholder:text-gray-500" rows="5" required></textarea>
-      <button type="submit" class="bg-yellow-400 text-black font-bold px-6 py-3 rounded hover:bg-yellow-500 transition">Submit</button>
-    </form>
-  </section>
+    <!-- Reactions -->
+    <div class="bg-gray-50 border border-gray-200 p-6 rounded-xl shadow-sm">
+      <h4 class="text-yellow-600 font-semibold mb-3 text-lg">React</h4>
+      <div class="flex gap-4">
+        <button class="flex items-center gap-1 text-gray-700 hover:text-yellow-600 transition">
+          👍 <span>Like</span>
+        </button>
+        <button class="flex items-center gap-1 text-gray-700 hover:text-yellow-600 transition">
+          🔗 <span>Share</span>
+        </button>
+      </div>
+    </div>
+
+  </aside>
+</section>
+
+<!-- Comments -->
+<section class="max-w-6xl mx-auto px-6 lg:px-0 pb-24 bg-gray-100 py-32 space-y-8">
+  <h3 class="text-2xl font-bold mb-6 text-gray-500">Comments</h3>
+
+  <!-- Example Comment -->
+  <div class="space-y-6">
+    <div class="bg-gray-100 p-4 rounded-lg shadow">
+      <p class="text-sm text-gray-600 mb-1"><span class="font-semibold text-black">John Doe</span> • June 11, 2025</p>
+      <p class="text-gray-800">Brilliant performance from the entire team. Loved the spirit shown!</p>
+    </div>
+  </div>
+
+  <!-- Comment Form -->
+  <form class="mt-10 space-y-4">
+    <h4 class="text-lg font-semibold text-black">Leave a comment</h4>
+    <input type="text" placeholder="Your Name" class="w-full h-12 p-4 rounded border border-gray-300 bg-white text-black placeholder:text-gray-500" required>
+    <textarea placeholder="Your Comment" class="w-full p-4 rounded border border-gray-300 bg-white text-black placeholder:text-gray-500" rows="5" required></textarea>
+   <button type="submit" id="comment" class="bg-yellow-600 text-white font-bold px-6 py-3 rounded hover:bg-yellow-500 transition">
+  Submit
+</button>
+
+  </form>
+</section>
+
 
 
   <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
@@ -145,7 +151,7 @@
     <div>
       <img src="../assets/images/logo.png" alt="Stravon FC Logo" class="w-24  h-24 mb-4" />
       <p class="text-sm text-gray-400">
-        Stravon FC – Passion. Power. Pride. <br>
+        Geezers FC – Passion. Power. Pride. <br>
         United by football. Driven by legacy.
       </p>
     </div>

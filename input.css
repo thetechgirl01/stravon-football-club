@@ -9,7 +9,11 @@
 }
 
 
-
+ #comment{
+ background-color: #ffcc00; 
+ color: #000;
+ margin-bottom: 2rem;
+}
 /* Base styles */
 .navbar {
   background-color: #002b5c;

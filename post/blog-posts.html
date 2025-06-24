@@ -130,52 +130,18 @@
   </nav>
 
   <!-- SECTION 1: Match Reports Feature -->
-  <section class="bg-white px-6 py-16 md:py-24">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-6">
-      <!-- BIG Left Card -->
-      <div class="lg:col-span-2 relative rounded-xl overflow-hidden shadow-lg hover-glow transition-slow fade-in-up">
-        <img src="../assets/images/players/player1.png" 
-             class="w-full h-80 md:h-96 object-cover transition-transform duration-500 hover:scale-105" 
-             alt="Match report image" />
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 text-white">
-          <span class="bg-yellow-400 text-black font-semibold text-xs px-2 py-1 rounded-full uppercase inline-block mb-2">
-            Match Report
-          </span>
-          <h2 class="text-2xl md:text-3xl font-bold mt-2">Captain Reflects on Derby Day Glory</h2>
-          <p class="text-sm text-gray-300 mt-1">Insights on what drove the comeback win. - June 10, 2025</p>
-        </div>
-      </div>
+<section class="latest-news bg-white text-white py-16 px-6">
+  <div class="max-w-7xl mx-auto">
+    <!-- Section Title -->
+    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10 text-gray-500">Latest News</h2>
 
-      <!-- Two Right Cards -->
-      <div class="flex flex-col gap-6">
-        <div class="bg-white rounded-xl overflow-hidden shadow hover-glow transition-slow fade-in-up delay-100">
-          <img src="../assets/images/players/player1.png" 
-               class="w-full h-40 md:h-48 object-cover transition-transform duration-500 hover:scale-105" 
-               alt="Player focus image" />
-          <div class="p-4">
-            <span class="bg-blue-500 text-white text-xs font-bold uppercase px-2 py-1 rounded inline-block mb-2">
-              Player Focus
-            </span>
-            <h3 class="font-semibold text-md md:text-lg mt-2">Midfielder's Magic Moment</h3>
-            <p class="text-sm text-gray-500">Goal and 2 assists in a stunning display. - June 8, 2025</p>
-          </div>
-        </div>
-        
-        <div class="bg-white rounded-xl overflow-hidden shadow hover-glow transition-slow fade-in-up delay-200">
-          <img src="../assets/images/players/player1.png" 
-               class="w-full h-40 md:h-48 object-cover transition-transform duration-500 hover:scale-105" 
-               alt="Club news image" />
-          <div class="p-4">
-            <span class="bg-green-500 text-white text-xs font-bold uppercase px-2 py-1 rounded inline-block mb-2">
-              Club News
-            </span>
-            <h3 class="font-semibold text-md md:text-lg mt-2">Coach's Tactical Brilliance</h3>
-            <p class="text-sm text-gray-500">Smart substitutions and shifts. - June 6, 2025</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div id="newsGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8"></div>
+
+   
+  </div>
+</section>
+
+
 
   <!-- SECTION 2: Injury Updates -->
   <section class="bg-gray-50 px-6 py-16 md:py-24">
@@ -191,25 +157,25 @@
             <span class="bg-red-500 text-white text-xs font-bold uppercase px-2 py-1 rounded inline-block mb-2">
               Injury Update
             </span>
-            <h3 class="text-xl md:text-2xl font-bold mt-2">Injury Woes for Key Striker</h3>
+            <h3 class="text-xl md:text-2xl font-bold mt-2 text-gray-500">Injury Woes for Key Striker</h3>
             <p class="text-gray-500 text-sm md:text-base">Hamstring injury confirmed. - June 3, 2025</p>
           </div>
         </div>
       </div>
 
       <!-- Sidebar Cards -->
-      <aside class="fade-in-up delay-100">
+      <aside class="fade-in-up delay-100 ">
         <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-[#022e55]">More Updates</h3>
-        <div class="space-y-">
+        <div class="space-y-8">
           <div class=" gap-4 bg-white p-3 rounded-lg shadow hover-glow transition-medium">
             <img src="../assets/images/players/player1.png" 
                  class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
                  alt="Update thumbnail" />
-            <div>
+            <div class="p-6">
               <span class="bg-red-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
                 Injury Update
               </span>
-              <p class="text-sm md:text-base font-semibold">Injury Woes for Key Striker</p>
+              <p class="text-sm md:text-base font-semibold text-gray-500">Injury Woes for Key Striker</p>
               <p class="text-xs text-gray-500">June 3, 2025</p>
             </div>
           </div>
@@ -218,11 +184,11 @@
             <img src="../assets/images/players/player1.png" 
                  class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
                  alt="Update thumbnail" />
-            <div>
+            <div class="p-6">
               <span class="bg-blue-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
                 Player Focus
               </span>
-              <p class="text-sm md:text-base font-semibold">Midfielder's Magic Moment</p>
+              <p class="text-sm md:text-base font-semibold text-gray-500">Midfielder's Magic Moment</p>
               <p class="text-xs text-gray-500">June 8, 2025</p>
             </div>
           </div>
@@ -231,11 +197,11 @@
             <img src="../assets/images/players/player1.png" 
                  class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
                  alt="Update thumbnail" />
-            <div>
+            <div class="p-6">
               <span class="bg-green-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
                 Club News
               </span>
-              <p class="text-sm md:text-base font-semibold">Coach's Tactical Brilliance</p>
+              <p class="text-sm md:text-base font-semibold text-gray-500">Coach's Tactical Brilliance</p>
               <p class="text-xs text-gray-500">June 6, 2025</p>
             </div>
           </div>
@@ -244,22 +210,37 @@
     </div>
   </section>
 
-  <!-- Newsletter Section -->
-  <section class="bg-[#022e55] px-6 py-16 md:py-24 text-center">
-    <div class="max-w-3xl mx-auto fade-in-up">
-      <h2 class="text-2xl md:text-3xl font-bold mb-4 text-white">Stay Updated</h2>
-      <p class="text-gray-300 mb-8">Subscribe to our newsletter for the latest news and updates</p>
-      
-      <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-        <input type="email" placeholder="Your email address" 
-               class="flex-grow px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-gray-800" />
-        <button type="submit" 
-                class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-lg hover:bg-yellow-500 transition-medium transform hover:scale-105">
-          Subscribe
-        </button>
-      </form>
-    </div>
-  </section>
+<!-- Newsletter Section -->
+<section class="bg-primary text-white py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+
+    <!-- Heading -->
+    <h2 class="text-4xl font-bold mb-4 border-l-4 border-yellow-400 pl-4 inline-block">Join the Squad</h2>
+    <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+      Get exclusive updates, match highlights, merch drops, and behind-the-scenes content straight to your inbox.
+    </p>
+
+    <!-- Form -->
+    <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
+      <input 
+        type="email" 
+        placeholder="Enter your email"
+        class="w-full px-5 py-3 rounded-full bg-[#022e55] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+        required
+      />
+      <button 
+        type="submit" 
+        class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition"
+      >
+        Subscribe
+      </button>
+    </form>
+
+    <!-- Disclaimer -->
+    <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe anytime.</p>
+
+  </div>
+</section>
 
   <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -312,53 +293,6 @@
     </div>
   </footer>
 
-  <script>
-    // Set current year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-    
-    // Mobile menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const closeBtn = document.getElementById('closeBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.add('animate__animated', 'animate__fadeInRight');
-      mobileMenu.style.display = 'block';
-    });
-    
-    closeBtn.addEventListener('click', () => {
-      mobileMenu.classList.remove('animate__fadeInRight');
-      mobileMenu.classList.add('animate__fadeOutRight');
-      setTimeout(() => {
-        mobileMenu.style.display = 'none';
-        mobileMenu.classList.remove('animate__fadeOutRight');
-      }, 500);
-    });
-    
-    // Scroll reveal animation
-    const fadeElements = document.querySelectorAll('.fade-in-up');
-    
-    const fadeInOnScroll = () => {
-      fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementTop < windowHeight - 100) {
-          element.style.opacity = '1';
-          element.style.transform = 'translateY(0)';
-        }
-      });
-    };
-    
-    // Initialize elements as invisible
-    fadeElements.forEach(element => {
-      element.style.opacity = '0';
-      element.style.transform = 'translateY(20px)';
-      element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-    });
-    
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('load', fadeInOnScroll);
-  </script>
+<script src="post.js"></script>
 </body>
 </html>
