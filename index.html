@@ -1,957 +1,1014 @@
-
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="assets/css/main.css">
-    
-    <link rel="stylesheet" href="./input.css">
-    <link rel="icon" href="assets/images/logo.png" type="image/png">
-    <!-- AOS Library CSS -->
-<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="./input.css">
+  <link rel="icon" href="assets/images/logo.png" type="image/png">
+  <!-- AOS Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-CN,fr,es',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+      
+      // Completely hide the Google Translate widget
+      var googleTranslateElement = document.getElementById('google_translate_element');
+      if (googleTranslateElement) {
+        googleTranslateElement.style.display = 'none';
+      }
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <title>Geezers FC</title>
-
- 
+  <title>Geezers FC</title>
 </head>
 <body class="bg-gray-100">
 
   <!-- sponsor / lang / register and sign in -->
-   <div>
-  <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
+  <div>
+    <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
 
-    <!-- LEFT: Sign in / Register / Language Dro]pdown -->
-    <div class="left-nav-contents flex items-center gap-4 relative ">
-     
-
-      <!-- Language Dropdown -->
-      <div class="relative">
-        <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
-          <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
-          ENG
-          <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
-            <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-          </svg>
-        </button>
-        <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
-          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
-          </li>
-          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
-          </li>
-          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
-            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
-          </li>
-        </ul>
-      </div>
-
-       <button class="text-[#002B5C] font-medium hover:underline">Sign In</button>
-      <button class="bg-[#002B5C] text-white px-4 py-1.5 rounded-md hover:bg-[#001d3f] transition">Register</button>
-    </div>
-
-    <!-- RIGHT: Logo Carousel -->
-    <div class="w-[360px]  overflow-hidden">
-      <div class="flex gap-4 logo-scroll ">
-        <!-- Logos -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
-        <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
-
-        <!-- Duplicate set for infinite loop -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
-        <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
-      </div>
-    </div>
-  </div>
-
-<!-- Navbar -->
-<nav class="navbar">
-  <div class="navbar-container capitalize">
-    <!-- Left Nav -->
-    <div class="nav-left nav-links capitalize ">
-      <a href="./post/blog-posts.html">blog</a>
-      <a href="#">tickets & hospitality</a>
-      <a href="#">fixtures</a>
-      <a href="./home/players.html">players</a>
-    </div>
-
-    <!-- Logo -->
-    <div class="nav-logo">
-      <a href="../index.html">
-        <img src="./assets/images/logo.png" alt="Logo" />
-      </a>
-    </div>
-
-    <!-- Right Nav -->
-    <div class="nav-right nav-links capitalize">
-      
-      <a href="#">fans</a>
-      <a href="./store/products.html">shop</a>
-      <a href="./home/contact-us.html">contact us</a>
-      <input type="text" placeholder="Search..."/>
-    </div>
-
-    <!-- Hamburger Menu Icon -->
-    <div class="hamburger" id="hamburger">&#9776;</div>
-
-    <!-- Close Button -->
-    <div class="close-icon" id="closeBtn">&times;</div>
-  </div>
-
-  <!-- Mobile Menu -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="./post/blog-posts.html">blog</a>
-    <a href="#">tickets & hospitality</a>
-    <a href="#">fixtures</a>
-    <a href="home/players.html">players</a>
-    <a href="./post/blog-posts.html">fixtures</a>
-    <a href="#">fans</a>
-    <a href="./store/products.html">shop</a>
-    <input type="text" placeholder="Search..."/>
-  </div>
-
-<script>
-
-</script>
-
-</nav>
-
-
-</div>
-
-<!-- Hero Section -->
-<section data-aos="zoom-out" id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
-  <!-- Yellow flash overlay -->
-  <div id="flashOverlay" class="absolute inset-0 bg-[#002B5C] bg-opacity-30 backdrop-blur-md opacity-0 transition-opacity duration-500 z-10"></div>
-
-   <div class="sub-btn spacing-smaller w-[136px] mt-4 flex items-center justify-center gap-2 p-2 rounded-full backdrop-blur-md bg-[#FFD100]/20 border border-yellow-400 shadow-md">
-  <!-- Bell Icon -->
-  <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD100" viewBox="0 0 24 24" class="w-5 h-5">
-    <path d="M12 2a2 2 0 00-2 2v.34C7.67 5.165 6 7.388 6 10v3.16c0 .54-.22 1.06-.59 1.44L4 16.999h16l-1.41-1.4a2.03 2.03 0 01-.59-1.44V10a6.002 6.002 0 00-4-5.66V4a2 2 0 00-2-2zm0 20c1.1 0 2-.89 2-2h-4c0 1.11.9 2 2 2z"/>
-  </svg>
-
-  <!-- Text -->
-  <span class="sub-btn-text text-sm font-semibold text-yellow-300 ">Subscribe</span>
-</div>
-
-
-
-
-<!-- Content Wrapper -->
-<div class="hero-content spacing-small relative z-20 w-full max-w-6xl flex flex-col items-right gap-12">
-
-<!-- Hero Section -->
-<section class="relative w-full h-screen bg-cover bg-center bg-no-repeat">
-
-  <!-- Hero Content -->
-  <div class="hero-text relative z-10 max-w-6xl mx-auto px-6 pt-24 md:pt-32 flex flex-col items-start h-full text-white text-left md:items-center md:text-center">
-    <h1 class="text-5xl font-old leading-tight mb-6">
-       Club World Cup diary: Reece
-       James
-    </h1>
-    <button class="hero-btn px-6 py-3 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500 transition">
-      BUY TICKETS
-    </button>
-
-    <!-- Match Info Card -->
-    <div class="match-info mt-16 w-full h-38 max-w-3xl bg-[#002b5c] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between text-white shadow-xl gap-6 backdrop-blur-md">
-
-      <!-- Match Info Left -->
-      <div class="flex flex-col text-left">
-        <p class="text-2xl font-bold uppercase mb-2">Next Match</p>
-        <div class="flex flex-col gap-1">
-          <div class="flex items-center gap-4">
-            <p class="text-sm text-gray-300">As</p>
-            <h3 class="text-lg font-semibold capitalize">Manchester United</h3>
-          </div>
-          <div class="flex items-center gap-4">
-            <p class="text-sm text-gray-300">ER</p>
-            <h3 class="text-lg font-semibold capitalize">Premier League</h3>
-          </div>
-        </div>
-      </div>
-
-      <!-- Logos & VS -->
-      <div class="flex flex-col items-center gap-2 text-center">
-        <p class="text-sm text-gray-300 font-medium uppercase">ALS</p>
-        <div class="flex items-center gap-4">
-          <img src="assets/images/logo.png" alt="Chelsea Logo" class="h-14 w-14 object-contain" />
-          <p class="text-xl font-bold text-yellow-300">VS</p>
-          <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Man Utd Logo" class="h-12 w-12 object-contain" />
-        </div>
-        <p class="text-sm text-gray-300">Stadium ABC</p>
-      </div>
-
-      <!-- Countdown Timer -->
-      <div class="text-center">
-        <p class="text-sm text-gray-300 font-semibold mb-2 uppercase">TIMER</p>
-        <div class="flex space-x-4 text-white font-bold text-lg">
-          <div>
-            <span id="days" class="text-2xl">--</span>
-            <p class="text-xs text-gray-300 uppercase">Days</p>
-          </div>
-          <div>
-            <span id="hours" class="text-2xl">--</span>
-            <p class="text-xs text-gray-300 uppercase">Hrs</p>
-          </div>
-          <div>
-            <span id="minutes" class="text-2xl">--</span>
-            <p class="text-xs text-gray-300 uppercase">Min</p>
-          </div>
-          <div>
-            <span id="seconds" class="text-2xl">--</span>
-            <p class="text-xs text-gray-300 uppercase">Sec</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-</div>
-</section>
-
-
-<!-- Latest News Section -->
-
-
-<section data-aos="fade-up" class="latest-news bg-[#011e3c] text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Latest News</h2>
-
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-      
-    
-      <div class="lg:col-span-2 relative group overflow-hidden rounded-xl shadow-xl">
-        <img src="assets/images/players/player1.png"
-             class="w-full h-[400px] object-cover object-center transition-transform duration-500 group-hover:scale-105" />
-        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
-          <div class="flex items-center gap-3 mb-3">
-            <span class="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full">Match Report</span>
-            <span class="text-gray-300 text-sm">April 19, 2024</span>
-          </div>
-          <h3 class="text-3xl font-extrabold mb-2 group-hover:text-yellow-400 transition">Captain Reflects on Derby Day Glory</h3>
-          <p class="text-gray-200 text-sm max-w-2xl">After a tense battle, the team captain shares insights on what drove the comeback win.</p>
-        </div>
-      </div>
-
-      <div class="flex flex-col gap-8">
-        <!-- Sub article 1 -->
-        <div class="relative group rounded-xl overflow-hidden shadow-lg">
-          <img src="https://images.unsplash.com/photo-1605032653232-2e0b7a0be0cd?auto=format&fit=crop&w=800&q=80"
-               class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
-          <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="bg-blue-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Player Focus</span>
-              <span class="text-sm text-gray-300">April 19, 2024</span>
-            </div>
-            <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Midfielder’s Magic Moment</h4>
-            <p class="text-sm text-gray-300">Player of the match dazzled with a goal and 2 assists.</p>
-          </div>
-        </div>
-
-        <!-- Sub article 2 -->
-        <div class="relative group rounded-xl overflow-hidden shadow-lg">
-          <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=800&q=80"
-               class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
-          <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
-            <div class="flex items-center gap-2 mb-2">
-              <span class="bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Club News</span>
-              <span class="text-sm text-gray-300">April 19, 2024</span>
-            </div>
-            <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Coach’s Tactical Brilliance</h4>
-            <p class="text-sm text-gray-300">Breaking down smart substitutions and formation shifts.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- View All Button -->
-    <div class="mt-12 text-center">
-      <a href="./post/blog-posts.html" class="inline-block bg-yellow-400 text-black font-bold py-3 px-6 rounded hover:bg-yellow-500 transition">View All News</a>
-    </div>
-  </div>
-</section>
-
- <!-- Fixtures & Results Section -->
-    <section data-aos="fade-up" class="bg-white py-16 px-6 text-[#002B5C]">
-  <div class="max-w-7xl mx-auto">
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Fixtures & Results</h2>
-
-    <!-- Fixtures List -->
-    <div class="space-y-8">
-
-      <!-- 1. Upcoming Match -->
-      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-        <div>
-          <p class="text-xl font-bold">July 3, 2025</p>
-          <p class="text-sm text-gray-500">🏟 Stamford Bridge</p>
-        </div>
-
-        <div class="flex items-center gap-6 text-center">
-          <div class="flex flex-col items-center">
-            <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Geezers FC</p>
-          </div>
-          <p class="text-lg font-bold text-gray-600">VS</p>
-          <div class="flex flex-col items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Man United</p>
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
-          <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Upcoming</span>
-          <a href="#" class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition">Buy Tickets</a>
-        </div>
-      </div>
-
-      <!-- 2. Upcoming Match vs PSG -->
-      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-        <div>
-          <p class="text-xl font-bold">July 15, 2025</p>
-          <p class="text-sm text-gray-500">🏟 Parc des Princes</p>
-        </div>
-
-        <div class="flex items-center gap-6 text-center">
-          <div class="flex flex-col items-center">
-            <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Geezers FC</p>
-          </div>
-          <p class="text-lg font-bold text-gray-600">VS</p>
-          <div class="flex flex-col items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" class="h-12" />
-            <p class="text-sm font-semibold mt-2">PSG</p>
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
-          <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Upcoming</span>
-          <a href="#" class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition">Buy Tickets</a>
-        </div>
-      </div>
-
-      <!-- 3. Past Match vs Real Madrid -->
-      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-        <div>
-          <p class="text-xl font-bold">June 8, 2025</p>
-          <p class="text-sm text-gray-500">🏟 Santiago Bernabéu</p>
-        </div>
-
-        <div class="flex items-center gap-6 text-center">
-          <div class="flex flex-col items-center">
-            <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Geezers FC</p>
-          </div>
-          <p class="text-lg font-bold text-gray-800">1 - 3</p>
-          <div class="flex flex-col items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Real Madrid</p>
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
-          <span class="text-xs font-bold bg-red-500 text-white px-3 py-1 rounded-full">FT</span>
-          <a href="#" class="text-sm font-medium text-[#002B5C] hover:underline">Match Report</a>
-        </div>
-      </div>
-
-      <!-- 4. Past Match vs Barcelona -->
-      <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
-        <div>
-          <p class="text-xl font-bold">May 28, 2025</p>
-          <p class="text-sm text-gray-500">🏟 Camp Nou</p>
-        </div>
-
-        <div class="flex items-center gap-6 text-center">
-          <div class="flex flex-col items-center">
-            <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Geezers FC</p>
-          </div>
-          <p class="text-lg font-bold text-gray-800">0 - 0</p>
-          <div class="flex flex-col items-center">
-            <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" class="h-12" />
-            <p class="text-sm font-semibold mt-2">Barcelona</p>
-          </div>
-        </div>
-
-        <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
-          <span class="text-xs font-bold bg-gray-600 text-white px-3 py-1 rounded-full">FT</span>
-          <a href="#" class="text-sm font-medium text-[#002B5C] hover:underline">Match Report</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- Players Section -->
-
-<section data-aos="fade-up" class="bg-[#011e3c] text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Meet the Squad</h2>
-
-    <!-- Scrollable Grid Container -->
-    <div class="max-h-[700px] overflow-y-auto pr-2">
-      <div class="
-      grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- LEFT: Sign in / Register / Language Dropdown -->
+      <div class="left-nav-contents flex items-center gap-4 relative">
         
-        <!-- Player 1 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player1.png" alt="Reece James" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Reece James</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#24</span>
+        <!-- Hidden Google Translate Element -->
+        <div id="google_translate_element"></div>
+
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+            <span>ENG</span>
+            <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+            </li>
+          </ul>
+        </div>
+
+        <button class="text-[#002B5C] font-medium hover:underline">Sign In</button>
+        <button class="bg-[#002B5C] text-white px-4 py-1.5 rounded-md hover:bg-[#001d3f] transition">Register</button>
+      </div>
+
+      <!-- RIGHT: Logo Carousel -->
+      <div class="w-[360px] overflow-hidden">
+        <div class="flex gap-4 logo-scroll">
+          <!-- Logos -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+
+          <!-- Duplicate set for infinite loop -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container capitalize">
+        <!-- Left Nav -->
+        <div class="nav-left nav-links capitalize">
+          <a href="./post/blog-posts.html">blog</a>
+          <a href="#">tickets & hospitality</a>
+          <a href="#">fixtures</a>
+          <a href="./home/players.html">players</a>
+        </div>
+
+        <!-- Logo -->
+        <div class="nav-logo">
+          <a href="../index.html">
+            <img src="./assets/images/logo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <!-- Right Nav -->
+        <div class="nav-right nav-links capitalize">
+          <a href="#">fans</a>
+          <a href="./store/products.html">shop</a>
+          <a href="./home/contact-us.html">contact us</a>
+          <input type="text" placeholder="Search..."/>
+        </div>
+
+        <!-- Hamburger Menu Icon -->
+        <div class="hamburger" id="hamburger">&#9776;</div>
+
+        <!-- Close Button -->
+        <div class="close-icon" id="closeBtn">&times;</div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="./post/blog-posts.html">blog</a>
+        <a href="#">tickets & hospitality</a>
+        <a href="#">fixtures</a>
+        <a href="home/players.html">players</a>
+        <a href="./post/blog-posts.html">fixtures</a>
+        <a href="#">fans</a>
+        <a href="./store/products.html">shop</a>
+        <input type="text" placeholder="Search..."/>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero Section -->
+  <section data-aos="zoom-out" id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
+    <!-- Yellow flash overlay -->
+    <div id="flashOverlay" class="absolute inset-0 bg-[#002B5C] bg-opacity-30 backdrop-blur-md opacity-0 transition-opacity duration-500 z-10"></div>
+
+    <div class="sub-btn spacing-smaller w-[136px] mt-4 flex items-center justify-center gap-2 p-2 rounded-full backdrop-blur-md bg-[#FFD100]/20 border border-yellow-400 shadow-md">
+      <!-- Bell Icon -->
+      <svg xmlns="http://www.w3.org/2000/svg" fill="#FFD100" viewBox="0 0 24 24" class="w-5 h-5">
+        <path d="M12 2a2 2 0 00-2 2v.34C7.67 5.165 6 7.388 6 10v3.16c0 .54-.22 1.06-.59 1.44L4 16.999h16l-1.41-1.4a2.03 2.03 0 01-.59-1.44V10a6.002 6.002 0 00-4-5.66V4a2 2 0 00-2-2zm0 20c1.1 0 2-.89 2-2h-4c0 1.11.9 2 2 2z"/>
+      </svg>
+
+      <!-- Text -->
+      <span class="sub-btn-text text-sm font-semibold text-yellow-300">Subscribe</span>
+    </div>
+
+    <!-- Content Wrapper -->
+    <div class="hero-content spacing-small relative z-20 w-full max-w-6xl flex flex-col items-right gap-12">
+
+      <!-- Hero Section -->
+      <section class="relative w-full h-screen bg-cover bg-center bg-no-repeat">
+        <!-- Hero Content -->
+        <div class="hero-text relative z-10 max-w-6xl mx-auto px-6 pt-24 md:pt-32 flex flex-col items-start h-full text-white text-left md:items-center md:text-center">
+          <h1 class="text-5xl font-old leading-tight mb-6">
+            Club World Cup diary: Reece James
+          </h1>
+          <button class="hero-btn px-6 py-3 bg-yellow-400 text-black font-bold rounded hover:bg-yellow-500 transition">
+            BUY TICKETS
+          </button>
+
+          <!-- Match Info Card -->
+          <div class="match-info mt-16 w-full h-38 max-w-3xl bg-[#002b5c] rounded-xl p-6 flex flex-col md:flex-row items-center justify-between text-white shadow-xl gap-6 backdrop-blur-md">
+            <!-- Match Info Left -->
+            <div class="flex flex-col text-left">
+              <p class="text-2xl font-bold uppercase mb-2">Next Match</p>
+              <div class="flex flex-col gap-1">
+                <div class="flex items-center gap-4">
+                  <p class="text-sm text-gray-300">As</p>
+                  <h3 class="text-lg font-semibold capitalize">Manchester United</h3>
+                </div>
+                <div class="flex items-center gap-4">
+                  <p class="text-sm text-gray-300">ER</p>
+                  <h3 class="text-lg font-semibold capitalize">Premier League</h3>
+                </div>
+              </div>
             </div>
-            <p class="text-sm text-gray-300">Position: Right Back</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto inline mr-1" alt="UK" />
-              <span class="text-sm text-gray-400">England</span>
+
+            <!-- Logos & VS -->
+            <div class="flex flex-col items-center gap-2 text-center">
+              <p class="text-sm text-gray-300 font-medium uppercase">ALS</p>
+              <div class="flex items-center gap-4">
+                <img src="assets/images/logo.png" alt="Chelsea Logo" class="h-14 w-14 object-contain" />
+                <p class="text-xl font-bold text-yellow-300">VS</p>
+                <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Man Utd Logo" class="h-12 w-12 object-contain" />
+              </div>
+              <p class="text-sm text-gray-300">Stadium ABC</p>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="text-center">
+              <p class="text-sm text-gray-300 font-semibold mb-2 uppercase">TIMER</p>
+              <div class="flex space-x-4 text-white font-bold text-lg">
+                <div>
+                  <span id="days" class="text-2xl">--</span>
+                  <p class="text-xs text-gray-300 uppercase">Days</p>
+                </div>
+                <div>
+                  <span id="hours" class="text-2xl">--</span>
+                  <p class="text-xs text-gray-300 uppercase">Hrs</p>
+                </div>
+                <div>
+                  <span id="minutes" class="text-2xl">--</span>
+                  <p class="text-xs text-gray-300 uppercase">Min</p>
+                </div>
+                <div>
+                  <span id="seconds" class="text-2xl">--</span>
+                  <p class="text-xs text-gray-300 uppercase">Sec</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </section>
+
+  <!-- Latest News Section -->
+  <section data-aos="fade-up" class="latest-news bg-[#011e3c] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Latest News</h2>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div class="lg:col-span-2 relative group overflow-hidden rounded-xl shadow-xl">
+          <img src="assets/images/players/player1.png"
+              class="w-full h-[400px] object-cover object-center transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-transparent p-6 flex flex-col justify-end">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full">Match Report</span>
+              <span class="text-gray-300 text-sm">April 19, 2024</span>
+            </div>
+            <h3 class="text-3xl font-extrabold mb-2 group-hover:text-yellow-400 transition">Captain Reflects on Derby Day Glory</h3>
+            <p class="text-gray-200 text-sm max-w-2xl">After a tense battle, the team captain shares insights on what drove the comeback win.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-8">
+          <!-- Sub article 1 -->
+          <div class="relative group rounded-xl overflow-hidden shadow-lg">
+            <img src="https://images.unsplash.com/photo-1605032653232-2e0b7a0be0cd?auto=format&fit=crop&w=800&q=80"
+                class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="bg-blue-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Player Focus</span>
+                <span class="text-sm text-gray-300">April 19, 2024</span>
+              </div>
+              <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Midfielder's Magic Moment</h4>
+              <p class="text-sm text-gray-300">Player of the match dazzled with a goal and 2 assists.</p>
+            </div>
+          </div>
+
+          <!-- Sub article 2 -->
+          <div class="relative group rounded-xl overflow-hidden shadow-lg">
+            <img src="https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=800&q=80"
+                class="w-full h-44 object-cover object-center transition-transform duration-500 group-hover:scale-110" />
+            <div class="absolute inset-0 bg-black bg-opacity-50 p-4 flex flex-col justify-end">
+              <div class="flex items-center gap-2 mb-2">
+                <span class="bg-green-500 text-white text-xs font-semibold px-2 py-0.5 rounded">Club News</span>
+                <span class="text-sm text-gray-300">April 19, 2024</span>
+              </div>
+              <h4 class="text-lg font-semibold group-hover:text-yellow-400 transition">Coach's Tactical Brilliance</h4>
+              <p class="text-sm text-gray-300">Breaking down smart substitutions and formation shifts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All Button -->
+      <div class="mt-12 text-center">
+        <a href="./post/blog-posts.html" class="inline-block bg-yellow-400 text-black font-bold py-3 px-6 rounded hover:bg-yellow-500 transition">View All News</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Fixtures & Results Section -->
+  <section data-aos="fade-up" class="bg-white py-16 px-6 text-[#002B5C]">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Fixtures & Results</h2>
+
+      <!-- Fixtures List -->
+      <div class="space-y-8">
+        <!-- 1. Upcoming Match -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div>
+            <p class="text-xl font-bold">July 3, 2025</p>
+            <p class="text-sm text-gray-500">🏟 Stamford Bridge</p>
+          </div>
+
+          <div class="flex items-center gap-6 text-center">
+            <div class="flex flex-col items-center">
+              <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Geezers FC</p>
+            </div>
+            <p class="text-lg font-bold text-gray-600">VS</p>
+            <div class="flex flex-col items-center">
+              <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Man United</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+            <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Upcoming</span>
+            <a href="#" class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition">Buy Tickets</a>
+          </div>
+        </div>
+
+        <!-- 2. Upcoming Match vs PSG -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div>
+            <p class="text-xl font-bold">July 15, 2025</p>
+            <p class="text-sm text-gray-500">🏟 Parc des Princes</p>
+          </div>
+
+          <div class="flex items-center gap-6 text-center">
+            <div class="flex flex-col items-center">
+              <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Geezers FC</p>
+            </div>
+            <p class="text-lg font-bold text-gray-600">VS</p>
+            <div class="flex flex-col items-center">
+              <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" class="h-12" />
+              <p class="text-sm font-semibold mt-2">PSG</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+            <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Upcoming</span>
+            <a href="#" class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition">Buy Tickets</a>
+          </div>
+        </div>
+
+        <!-- 3. Past Match vs Real Madrid -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div>
+            <p class="text-xl font-bold">June 8, 2025</p>
+            <p class="text-sm text-gray-500">🏟 Santiago Bernabéu</p>
+          </div>
+
+          <div class="flex items-center gap-6 text-center">
+            <div class="flex flex-col items-center">
+              <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Geezers FC</p>
+            </div>
+            <p class="text-lg font-bold text-gray-800">1 - 3</p>
+            <div class="flex flex-col items-center">
+              <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Real Madrid</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+            <span class="text-xs font-bold bg-red-500 text-white px-3 py-1 rounded-full">FT</span>
+            <a href="#" class="text-sm font-medium text-[#002B5C] hover:underline">Match Report</a>
+          </div>
+        </div>
+
+        <!-- 4. Past Match vs Barcelona -->
+        <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F5F5] border border-gray-200 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+          <div>
+            <p class="text-xl font-bold">May 28, 2025</p>
+            <p class="text-sm text-gray-500">🏟 Camp Nou</p>
+          </div>
+
+          <div class="flex items-center gap-6 text-center">
+            <div class="flex flex-col items-center">
+              <img src="assets/images/logo.png" alt="Geezers FC" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Geezers FC</p>
+            </div>
+            <p class="text-lg font-bold text-gray-800">0 - 0</p>
+            <div class="flex flex-col items-center">
+              <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" class="h-12" />
+              <p class="text-sm font-semibold mt-2">Barcelona</p>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+            <span class="text-xs font-bold bg-gray-600 text-white px-3 py-1 rounded-full">FT</span>
+            <a href="#" class="text-sm font-medium text-[#002B5C] hover:underline">Match Report</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Players Section -->
+  <section data-aos="fade-up" class="bg-[#011e3c] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Meet the Squad</h2>
+
+      <!-- Scrollable Grid Container -->
+      <div class="max-h-[700px] overflow-y-auto pr-2">
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <!-- Player 1 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player1.png" alt="Reece James" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Reece James</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#24</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Right Back</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto inline mr-1" alt="UK" />
+                <span class="text-sm text-gray-400">England</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 2 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player2.png" alt="Alex Silva" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Alex Silva</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#9</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Striker</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/br.svg" class="h-4 w-auto inline mr-1" alt="Brazil" />
+                <span class="text-sm text-gray-400">Brazil</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 3 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player3.png" alt="Luka Petrov" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Luka Petrov</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#7</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Midfielder</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/hr.svg" class="h-4 w-auto inline mr-1" alt="Croatia" />
+                <span class="text-sm text-gray-400">Croatia</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 4 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player4.png" alt="Tariq Bello" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Tariq Bello</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#6</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Centre Back</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/ng.svg" class="h-4 w-auto inline mr-1" alt="Nigeria" />
+                <span class="text-sm text-gray-400">Nigeria</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 5 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player5.png" alt="Jin Woo" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Jin Woo</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#10</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Winger</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/kr.svg" class="h-4 w-auto inline mr-1" alt="Korea" />
+                <span class="text-sm text-gray-400">South Korea</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 6 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player6.png" alt="Carlos Mendes" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Carlos Mendes</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#8</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Midfielder</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/pt.svg" class="h-4 w-auto inline mr-1" alt="Portugal" />
+                <span class="text-sm text-gray-400">Portugal</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 7 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player7.png" alt="Samuel Osei" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Samuel Osei</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#11</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Forward</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gh.svg" class="h-4 w-auto inline mr-1" alt="Ghana" />
+                <span class="text-sm text-gray-400">Ghana</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 8 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player8.png" alt="Marco Rossi" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Marco Rossi</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#4</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Goalkeeper</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/it.svg" class="h-4 w-auto inline mr-1" alt="Italy" />
+                <span class="text-sm text-gray-400">Italy</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 9 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player9.png" alt="David Kim" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">David Kim</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#5</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Centre Mid</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/us.svg" class="h-4 w-auto inline mr-1" alt="USA" />
+                <span class="text-sm text-gray-400">USA</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 10 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player10.png" alt="Oscar Lopez" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Oscar Lopez</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#3</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Left Back</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/mx.svg" class="h-4 w-auto inline mr-1" alt="Mexico" />
+                <span class="text-sm text-gray-400">Mexico</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 11 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player11.png" alt="Niko Hansen" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Niko Hansen</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#13</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Defensive Mid</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/dk.svg" class="h-4 w-auto inline mr-1" alt="Denmark" />
+                <span class="text-sm text-gray-400">Denmark</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Player 12 -->
+          <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+            <img src="assets/images/players/player12.png" alt="Ivan Novak" class="w-full h-64 object-cover object-center" />
+            <div class="p-4">
+              <div class="flex items-center justify-between mb-2">
+                <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Ivan Novak</h3>
+                <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#17</span>
+              </div>
+              <p class="text-sm text-gray-300">Position: Right Wing</p>
+              <div class="mt-2">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/rs.svg" class="h-4 w-auto inline mr-1" alt="Serbia" />
+                <span class="text-sm text-gray-400">Serbia</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Club Store Section -->
+  <section data-aos="zoom-in" class="bg-[#0a2640] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Official Club Store</h2>
+
+      <!-- Product Grid -->
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <!-- Product Card -->
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+          <img src="assets/images/products/product1.png" alt="Home Jersey" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4">
+            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Home Jersey</h3>
+            <p class="text-sm text-gray-300 mt-1 mb-3">Official Matchday Kit</p>
+            <div class="flex justify-between items-center">
+              <span class="text-yellow-400 font-semibold">$89.99</span>
+              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+          <img src="assets/images/products/product1.png" alt="Away Jersey" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4">
+            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Away Jersey</h3>
+            <p class="text-sm text-gray-300 mt-1 mb-3">White & Gold Edition</p>
+            <div class="flex justify-between items-center">
+              <span class="text-yellow-400 font-semibold">$89.99</span>
+              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+          <img src="mages/products/product1.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4">
+            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Club Baseball Cap</h3>
+            <p class="text-sm text-gray-300 mt-1 mb-3">Embroidered logo, adjustable fit</p>
+            <div class="flex justify-between items-center">
+              <span class="text-yellow-400 font-semibold">$24.99</span>
+              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
+          <img src="assets/images/products/product1.png" alt="Club Scarf" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
+          <div class="p-4">
+            <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Supporter Scarf</h3>
+            <p class="text-sm text-gray-300 mt-1 mb-3">Warm & spirited style</p>
+            <div class="flex justify-between items-center">
+              <span class="text-yellow-400 font-semibold">$19.99</span>
+              <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- View All Button -->
+      <div class="mt-10 text-center">
+        <a href="./store/products.html" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded hover:bg-yellow-300 transition">Visit Full Store</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section data-aos="fade-right" class="bg-[#011e3c] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-6">Gallery: Matchday Moments</h2>
+
+      <!-- Horizontal Scroll Container -->
+      <div class="relative">
+        <div class="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory scrollbar-thin scrollbar-thumb-yellow-400">
+          <!-- Repeat for Each Image -->
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1603133872878-684f208fb82c?auto=format&fit=crop&w=800&q=80" alt="goal-celebration" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80" alt="fan-with-flag" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1601379324285-df8d6eea7d36?auto=format&fit=crop&w=800&q=80" alt="players-warming-up" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1603415526960-f9eabfe1f9cf?auto=format&fit=crop&w=800&q=80" alt="stadium-view" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80" alt="team-huddle" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+
+          <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1595526114035-3e3f9c3029f7?auto=format&fit=crop&w=800&q=80" alt="fans-cheering" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lightbox Overlay -->
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
+      <img id="lightbox-img" class="max-w-full max-h-full rounded-lg shadow-lg" />
+      <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl font-bold">&times;</button>
+    </div>
+  </section>
+
+  <!-- Player Stats Section -->
+  <section class="bg-[#011e3c] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- Section Title -->
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Stats & Highlights</h2>
+
+      <!-- Player Stats Grid -->
+      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
+        <!-- Player Stat Card -->
+        <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-1">Alex Silva</h3>
+          <p class="text-sm text-gray-300 mb-4">Position: Striker</p>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Goals – 12</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[80%]"></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Assists – 5</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[50%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm mb-1">Pass Accuracy – 87%</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[87%]"></div>
             </div>
           </div>
         </div>
 
         <!-- Player 2 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player2.png" alt="Alex Silva" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Alex Silva</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#9</span>
+        <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-1">Reece James</h3>
+          <p class="text-sm text-gray-300 mb-4">Position: Right Back</p>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Tackles – 25</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[70%]"></div>
             </div>
-            <p class="text-sm text-gray-300">Position: Striker</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/br.svg" class="h-4 w-auto inline mr-1" alt="Brazil" />
-              <span class="text-sm text-gray-400">Brazil</span>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Interceptions – 10</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[40%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm mb-1">Pass Accuracy – 92%</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[92%]"></div>
             </div>
           </div>
         </div>
 
         <!-- Player 3 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player3.png" alt="Luka Petrov" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Luka Petrov</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#7</span>
+        <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
+          <h3 class="text-2xl font-bold text-yellow-400 mb-1">Luka Petrov</h3>
+          <p class="text-sm text-gray-300 mb-4">Position: Midfielder</p>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Goals – 6</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[40%]"></div>
             </div>
-            <p class="text-sm text-gray-300">Position: Midfielder</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/hr.svg" class="h-4 w-auto inline mr-1" alt="Croatia" />
-              <span class="text-sm text-gray-400">Croatia</span>
+          </div>
+
+          <div class="mb-4">
+            <p class="text-sm mb-1">Assists – 9</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[60%]"></div>
+            </div>
+          </div>
+
+          <div>
+            <p class="text-sm mb-1">Pass Accuracy – 89%</p>
+            <div class="bg-[#033a66] rounded-full h-3">
+              <div class="bg-yellow-400 h-3 rounded-full w-[89%]"></div>
             </div>
           </div>
         </div>
+      </div>
 
-        <!-- Player 4 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player4.png" alt="Tariq Bello" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Tariq Bello</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#6</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Centre Back</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/ng.svg" class="h-4 w-auto inline mr-1" alt="Nigeria" />
-              <span class="text-sm text-gray-400">Nigeria</span>
-            </div>
-          </div>
+      <!-- Highlights Video -->
+      <div class="mt-6">
+        <h3 class="text-2xl font-semibold mb-4">Watch Highlights</h3>
+        <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
+          <iframe 
+            class="w-full h-full"
+            src="https://www.youtube.com/embed/-vBqAZ-2_QM"
+            title="Football Match Highlights"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
         </div>
-
-        <!-- Player 5 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player5.png" alt="Jin Woo" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Jin Woo</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#10</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Winger</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/kr.svg" class="h-4 w-auto inline mr-1" alt="Korea" />
-              <span class="text-sm text-gray-400">South Korea</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 6 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player6.png" alt="Carlos Mendes" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Carlos Mendes</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#8</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Midfielder</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/pt.svg" class="h-4 w-auto inline mr-1" alt="Portugal" />
-              <span class="text-sm text-gray-400">Portugal</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 7 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player7.png" alt="Samuel Osei" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Samuel Osei</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#11</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Forward</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gh.svg" class="h-4 w-auto inline mr-1" alt="Ghana" />
-              <span class="text-sm text-gray-400">Ghana</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 8 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player8.png" alt="Marco Rossi" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Marco Rossi</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#4</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Goalkeeper</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/it.svg" class="h-4 w-auto inline mr-1" alt="Italy" />
-              <span class="text-sm text-gray-400">Italy</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 9 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player9.png" alt="David Kim" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">David Kim</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#5</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Centre Mid</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/us.svg" class="h-4 w-auto inline mr-1" alt="USA" />
-              <span class="text-sm text-gray-400">USA</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 10 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player10.png" alt="Oscar Lopez" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Oscar Lopez</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#3</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Left Back</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/mx.svg" class="h-4 w-auto inline mr-1" alt="Mexico" />
-              <span class="text-sm text-gray-400">Mexico</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 11 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player11.png" alt="Niko Hansen" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Niko Hansen</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#13</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Defensive Mid</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/dk.svg" class="h-4 w-auto inline mr-1" alt="Denmark" />
-              <span class="text-sm text-gray-400">Denmark</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Player 12 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <img src="assets/images/players/player12.png" alt="Ivan Novak" class="w-full h-64 object-cover object-center" />
-          <div class="p-4">
-            <div class="flex items-center justify-between mb-2">
-              <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Ivan Novak</h3>
-              <span class="text-sm bg-yellow-400 text-[#002B5C] font-bold px-2 py-1 rounded">#17</span>
-            </div>
-            <p class="text-sm text-gray-300">Position: Right Wing</p>
-            <div class="mt-2">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/rs.svg" class="h-4 w-auto inline mr-1" alt="Serbia" />
-              <span class="text-sm text-gray-400">Serbia</span>
-            </div>
-          </div>
-        </div>
-
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-  
-<!-- Club Store Section -->
-<section data-aos="zoom-in" class="bg-[#0a2640] text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-    
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Official Club Store</h2>
-
-    <!-- Product Grid -->
-    <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-
-      <!-- Product Card -->
-      <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-        <img src="assets/images/products/product1.png" alt="Home Jersey" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Home Jersey</h3>
-          <p class="text-sm text-gray-300 mt-1 mb-3">Official Matchday Kit</p>
-          <div class="flex justify-between items-center">
-            <span class="text-yellow-400 font-semibold">$89.99</span>
-            <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 2 -->
-      <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-        <img src="assets/images/products/product1.png" alt="Away Jersey" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">2025 Away Jersey</h3>
-          <p class="text-sm text-gray-300 mt-1 mb-3">White & Gold Edition</p>
-          <div class="flex justify-between items-center">
-            <span class="text-yellow-400 font-semibold">$89.99</span>
-            <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-        <img src="mages/products/product1.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Club Baseball Cap</h3>
-          <p class="text-sm text-gray-300 mt-1 mb-3">Embroidered logo, adjustable fit</p>
-          <div class="flex justify-between items-center">
-            <span class="text-yellow-400 font-semibold">$24.99</span>
-            <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Product 4 -->
-      <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-        <img src="assets/images/products/product1.png" alt="Club Scarf" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300" />
-        <div class="p-4">
-          <h3 class="text-xl font-bold group-hover:text-yellow-400 transition">Supporter Scarf</h3>
-          <p class="text-sm text-gray-300 mt-1 mb-3">Warm & spirited style</p>
-          <div class="flex justify-between items-center">
-            <span class="text-yellow-400 font-semibold">$19.99</span>
-            <a href="#" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition">View</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- View All Button -->
-    <div class="mt-10 text-center">
-      <a href="./store/products.html" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded hover:bg-yellow-300 transition">Visit Full Store</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- Gallery Section -->
-<section data-aos="fade-right" class="bg-[#011e3c] text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-6">Gallery: Matchday Moments</h2>
-
-    <!-- Horizontal Scroll Container -->
-    <div class="relative">
-      <div class="flex overflow-x-auto gap-4 scroll-smooth snap-x snap-mandatory scrollbar-thin scrollbar-thumb-yellow-400">
-
-        <!-- Repeat for Each Image -->
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1603133872878-684f208fb82c?auto=format&fit=crop&w=800&q=80" alt="goal-celebration" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1518091043644-c1d4457512c6?auto=format&fit=crop&w=800&q=80" alt="fan-with-flag" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1601379324285-df8d6eea7d36?auto=format&fit=crop&w=800&q=80" alt="players-warming-up" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1603415526960-f9eabfe1f9cf?auto=format&fit=crop&w=800&q=80" alt="stadium-view" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1508609349937-5ec4ae374ebf?auto=format&fit=crop&w=800&q=80" alt="team-huddle" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-        <div class="min-w-[300px] snap-start flex-shrink-0 rounded-xl overflow-hidden shadow-md cursor-pointer">
-          <img src="https://images.unsplash.com/photo-1595526114035-3e3f9c3029f7?auto=format&fit=crop&w=800&q=80" alt="fans-cheering" class="w-full h-64 object-cover" onclick="openLightbox(this.src)" />
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- Lightbox Overlay -->
-  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50 hidden">
-    <img id="lightbox-img" class="max-w-full max-h-full rounded-lg shadow-lg" />
-    <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl font-bold">&times;</button>
-  </div>
-</section>
-
-
-<!-- Player Stats Section -->
-<section class="bg-[#011e3c] text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Stats & Highlights</h2>
-
-    <!-- Player Stats Grid -->
-    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3 mb-16">
-
-      <!-- Player Stat Card -->
-      <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
-        <h3 class="text-2xl font-bold text-yellow-400 mb-1">Alex Silva</h3>
-        <p class="text-sm text-gray-300 mb-4">Position: Striker</p>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Goals – 12</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[80%]"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Assists – 5</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[50%]"></div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-sm mb-1">Pass Accuracy – 87%</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[87%]"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Player 2 -->
-      <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
-        <h3 class="text-2xl font-bold text-yellow-400 mb-1">Reece James</h3>
-        <p class="text-sm text-gray-300 mb-4">Position: Right Back</p>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Tackles – 25</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[70%]"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Interceptions – 10</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[40%]"></div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-sm mb-1">Pass Accuracy – 92%</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[92%]"></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Player 3 -->
-      <div class="bg-[#022e55] p-6 rounded-xl shadow-md">
-        <h3 class="text-2xl font-bold text-yellow-400 mb-1">Luka Petrov</h3>
-        <p class="text-sm text-gray-300 mb-4">Position: Midfielder</p>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Goals – 6</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[40%]"></div>
-          </div>
-        </div>
-
-        <div class="mb-4">
-          <p class="text-sm mb-1">Assists – 9</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[60%]"></div>
-          </div>
-        </div>
-
-        <div>
-          <p class="text-sm mb-1">Pass Accuracy – 89%</p>
-          <div class="bg-[#033a66] rounded-full h-3">
-            <div class="bg-yellow-400 h-3 rounded-full w-[89%]"></div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- Highlights Video -->
-    <div class="mt-6">
-      <h3 class="text-2xl font-semibold mb-4">Watch Highlights</h3>
-      <div class="aspect-video rounded-xl overflow-hidden shadow-lg">
-        <iframe 
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/-vBqAZ-2_QM"
-          title="Football Match Highlights"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen>
-        </iframe>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<!-- Newsletter Section -->
-<section data-aos="fade-down" class="bg-primary text-white py-16 px-6">
-  <div class="max-w-4xl mx-auto text-center">
-
-    <!-- Heading -->
-    <h2 class="text-4xl font-bold mb-4 border-l-4 border-yellow-400 pl-4 inline-block">Join the Squad</h2>
-    <p class="text-gray-300 mb-8 max-w-xl mx-auto">
-      Get exclusive updates, match highlights, merch drops, and behind-the-scenes content straight to your inbox.
-    </p>
-
-    <!-- Form -->
-    <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
-      <input 
-        type="email" 
-        placeholder="Enter your email"
-        class="w-full px-5 py-3 rounded-full bg-[#022e55] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-        required
-      />
-      <button 
-        type="submit" 
-        class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition"
-      >
-        Subscribe
-      </button>
-    </form>
-
-    <!-- Disclaimer -->
-    <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe anytime.</p>
-
-  </div>
-</section>
-<!-- Footer -->
-
-<footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-
-    <div>
-      <img src="assets/images/logo.png" alt="Geezers FC Logo" class="w-24  h-24 mb-4" />
-      <p class="text-sm text-gray-400">
-        Geezers FC – Passion. Power. Pride. <br>
-        United by football. Driven by legacy.
+  <!-- Newsletter Section -->
+  <section data-aos="fade-down" class="bg-primary text-white py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <!-- Heading -->
+      <h2 class="text-4xl font-bold mb-4 border-l-4 border-yellow-400 pl-4 inline-block">Join the Squad</h2>
+      <p class="text-gray-300 mb-8 max-w-xl mx-auto">
+        Get exclusive updates, match highlights, merch drops, and behind-the-scenes content straight to your inbox.
       </p>
+
+      <!-- Form -->
+      <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          class="w-full px-5 py-3 rounded-full bg-[#022e55] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+          required
+        />
+        <button 
+          type="submit" 
+          class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition"
+        >
+          Subscribe
+        </button>
+      </form>
+
+      <!-- Disclaimer -->
+      <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe anytime.</p>
     </div>
+  </section>
 
+  <!-- Footer -->
+  <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <img src="assets/images/logo.png" alt="Geezers FC Logo" class="w-24 h-24 mb-4" />
+        <p class="text-sm text-gray-400">
+          Geezers FC – Passion. Power. Pride. <br>
+          United by football. Driven by legacy.
+        </p>
+      </div>
 
-    <div>
-      <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
-      <ul class="space-y-2 text-sm text-gray-300">
-        <li><a href="#squad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
-        <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
-        <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
-        <li><a href="home/contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
-      </ul>
-    </div>
+      <div>
+        <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li><a href="#squad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
+          <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
+          <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
+          <li><a href="home/contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
+        </ul>
+      </div>
 
+      <div>
+        <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
+        <ul class="space-y-2 text-sm text-gray-300">
+          <li>📍 Abuja, Nigeria</li>
+          <li>📞 +234 800 000 0000</li>
+          <li>✉️ contact@stravonfc.com</li>
+          <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+        </ul>
+      </div>
 
-    <div>
-      <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
-      <ul class="space-y-2 text-sm text-gray-300">
-        <li>📍  Abuja, Nigeria</li>
-        <li>📞 +234 800 000 0000</li>
-        <li>✉️ contact@stravonfc.com</li>
-        <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
-      </ul>
-    </div>
-
-    <!-- Social Media -->
-    <div>
-      <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
-      <div class="flex space-x-4 text-white">
-        <!-- Facebook -->
-        <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
-          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
-        </a>
-        <!-- Twitter -->
-        <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
-          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
-        </a>
-        <!-- Instagram -->
-        <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
-          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
-        </a>
+      <!-- Social Media -->
+      <div>
+        <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
+        <div class="flex space-x-4 text-white">
+          <!-- Facebook -->
+          <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
+          </a>
+          <!-- Twitter -->
+          <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
+          </a>
+          <!-- Instagram -->
+          <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
+            <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
+          </a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Footer bottom -->
-  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
-    &copy; <span id="year"></span> Geezers FC. All rights reserved.
-  </div>
+    <!-- Footer bottom -->
+    <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+      &copy; <span id="year"></span> Geezers FC. All rights reserved.
+    </div>
+  </footer>
 
-</footer>
+  <!--scripts-->
+  <!-- AOS Library JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800, 
+      once: true     
+    });
 
+    // Language dropdown toggle
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('hidden');
+    }
 
+    // Change language function
+    function changeLanguage(langCode, countryCode) {
+      // Change the displayed language in the button
+      const button = document.querySelector('.relative button');
+      const img = button.querySelector('img');
+      const text = button.querySelector('span') || document.createElement('span');
+      
+      // Update flag and text
+      img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${countryCode}.svg`;
+      img.alt = countryCode === 'gb' ? 'UK Flag' : 
+                 countryCode === 'cn' ? 'China Flag' : 
+                 countryCode === 'fr' ? 'France Flag' : 'Spain Flag';
+      
+      if (!button.querySelector('span')) {
+        button.appendChild(text);
+      }
+      text.textContent = langCode === 'en' ? 'ENG' : 
+                         langCode === 'zh-CN' ? 'CHI' : 
+                         langCode === 'fr' ? 'FRE' : 'ESP';
+      
+      // Trigger Google Translate
+      if (typeof google !== 'undefined' && google.translate) {
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = langCode;
+          select.dispatchEvent(new Event('change'));
+        }
+      }
+      
+      // Close dropdown
+      toggleDropdown();
+      
+      // Store preference in localStorage
+      localStorage.setItem('preferredLanguage', langCode);
+      localStorage.setItem('preferredCountryCode', countryCode);
+    }
 
-<!--scripts-->
-<!-- AOS Library JS -->
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({
-    duration: 800, 
-    once: true     
-  });
-</script>
+    // Set initial language from localStorage if available
+    document.addEventListener('DOMContentLoaded', function() {
+      const preferredLanguage = localStorage.getItem('preferredLanguage');
+      const preferredCountryCode = localStorage.getItem('preferredCountryCode');
+      
+      if (preferredLanguage && preferredCountryCode) {
+        const button = document.querySelector('.relative button');
+        const img = button.querySelector('img');
+        const text = button.querySelector('span') || document.createElement('span');
+        
+        img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${preferredCountryCode}.svg`;
+        img.alt = preferredCountryCode === 'gb' ? 'UK Flag' : 
+                   preferredCountryCode === 'cn' ? 'China Flag' : 
+                   preferredCountryCode === 'fr' ? 'France Flag' : 'Spain Flag';
+        
+        if (!button.querySelector('span')) {
+          button.appendChild(text);
+        }
+        text.textContent = preferredLanguage === 'en' ? 'ENG' : 
+                           preferredLanguage === 'zh-CN' ? 'CHI' : 
+                           preferredLanguage === 'fr' ? 'FRE' : 'ESP';
+        
+        // Trigger translation if Google Translate is loaded
+        if (typeof google !== 'undefined' && google.translate) {
+          const select = document.querySelector('.goog-te-combo');
+          if (select) {
+            select.value = preferredLanguage;
+            select.dispatchEvent(new Event('change'));
+          }
+        }
+      }
 
+      // Set current year in footer
+      document.getElementById('year').textContent = new Date().getFullYear();
+    });
+
+    // Lightbox functions
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      lightboxImg.src = src;
+      lightbox.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      const lightbox = document.getElementById('lightbox');
+      lightbox.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  </script>
 
   <script src="assets/js/hero.js"></script>
-
 </body>
 </html>

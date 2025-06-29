@@ -8,6 +8,24 @@
   <link rel="icon" href=".assets/images/logo.png" type="image/png">
   <title>Geezers FC | Latest News</title>
   <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <!-- Google Translate Script -->
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,zh-CN,fr,es',
+      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+      autoDisplay: false
+    }, 'google_translate_element');
+    
+    // Completely hide the Google Translate widget
+    var googleTranslateElement = document.getElementById('google_translate_element');
+    if (googleTranslateElement) {
+      googleTranslateElement.style.display = 'none';
+    }
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   
   <!-- Animate.css for smooth animations -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -87,47 +105,76 @@
 <body class="bg-[#011e3c] text-white font-sans">
 
   <!-- Navbar -->
-  <nav class="navbar transition-medium">
-    <div class="navbar-container capitalize">
-      <!-- Left Nav -->
-      <div class="nav-left nav-links capitalize">
-        <a href="../index.html" class="transition-fast hover:text-yellow-400">home</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">tickets & hospitality</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">fixtures</a>
-        <a href="../home/players.html" class="transition-fast hover:text-yellow-400">players</a>
-      </div>
-
-      <!-- Logo -->
-      <div class="nav-logo hover-scale">
-        <a href="../index.html">
-          <img src="../assets/images/logo.png" alt="Logo" class="transition-medium" />
-        </a>
-      </div>
-
-      <!-- Right Nav -->
-      <div class="nav-right nav-links capitalize">
-        <a href="#" class="now transition-fast hover:text-yellow-400">blog</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">fans</a>
-        <a href="#" class="transition-fast hover:text-yellow-400">shop</a>
-        <a href="../home/contact-us.html" class="transition-fast hover:text-yellow-400">contact us</a>
-      </div>
-
-      <!-- Hamburger Menu Icon -->
-      <div class="hamburger" id="hamburger">&#9776;</div>
-      <div class="close-icon" id="closeBtn">&times;</div>
+ <!-- Navbar -->
+<nav class="navbar transition-medium">
+  <div class="navbar-container capitalize">
+    <!-- Left Nav -->
+    <div class="nav-left nav-links capitalize">
+      <a href="../index.html" class="transition-fast hover:text-yellow-400">home</a>
+      <a href="#" class="transition-fast hover:text-yellow-400">tickets & hospitality</a>
+      <a href="#" class="transition-fast hover:text-yellow-400">fixtures</a>
+      <a href="../home/players.html" class="transition-fast hover:text-yellow-400">players</a>
     </div>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <a href="#">latest</a>
-      <a href="#">tickets & hospitality</a>
-      <a href="#">fixtures</a>
-      <a href="home/players.html">players</a>
-      <a href="#">fans</a>
-      <a href="#">shop</a>
-      <input type="text" placeholder="Search..."/>
+    <!-- Logo -->
+    <div class="nav-logo hover-scale">
+      <a href="../index.html">
+        <img src="../assets/images/logo.png" alt="Logo" class="transition-medium" />
+      </a>
     </div>
-  </nav>
+
+    <!-- Right Nav -->
+    <div class="nav-right nav-links capitalize">
+      <!-- Hidden Google Translate Element -->
+      <div id="google_translate_element"></div>
+
+      <!-- Language Dropdown -->
+      <div class="relative">
+        <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-white hover:underline focus:outline-none">
+          <img id="current-flag" src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+          <span id="current-lang">ENG</span>
+          <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="white" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <ul id="dropdown-menu" class="hidden absolute top-8 right-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+          </li>
+          <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+          </li>
+        </ul>
+      </div>
+
+      <a href="#" class="now transition-fast hover:text-yellow-400">blog</a>
+      <a href="#" class="transition-fast hover:text-yellow-400">fans</a>
+      <a href="#" class="transition-fast hover:text-yellow-400">shop</a>
+      <a href="../home/contact-us.html" class="transition-fast hover:text-yellow-400">contact us</a>
+    </div>
+
+    <!-- Hamburger Menu Icon -->
+    <div class="hamburger" id="hamburger">&#9776;</div>
+    <div class="close-icon" id="closeBtn">&times;</div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#">latest</a>
+    <a href="#">tickets & hospitality</a>
+    <a href="#">fixtures</a>
+    <a href="home/players.html">players</a>
+    <a href="#">fans</a>
+    <a href="#">shop</a>
+    <input type="text" placeholder="Search..."/>
+  </div>
+</nav>
 
   <!-- SECTION 1: Match Reports Feature -->
 <section class="latest-news bg-white text-white py-16 px-6">
@@ -296,5 +343,6 @@
   
 
 <script src="post.js"></script>
+
 </body>
 </html>
