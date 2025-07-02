@@ -8,6 +8,23 @@
     margin: 0;
 }
 
+/* Ensure sticky works with your layout */
+html {
+  scroll-padding-top: 80px; /* Adjust based on navbar height */
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+
+/* Mobile menu z-index fix */
+.mobile-menu {
+  z-index: 40; /* Below navbar's z-50 */
+}
+
 
  #comment{
  background-color: #ffcc00; 
