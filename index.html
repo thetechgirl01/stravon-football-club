@@ -8,6 +8,7 @@
   <link rel="icon" href="assets/images/logo.png" type="image/png">
   <!-- AOS Library CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+   <script src="https://cdn.tailwindcss.com"></script>
   
   <!-- Google Translate Script -->
   <script type="text/javascript">
@@ -27,6 +28,7 @@
     }
   </script>
   <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
 
   <title>Geezerz FC</title>
 </head>
@@ -34,7 +36,7 @@
 
   <!-- sponsor / lang / register and sign in -->
   <div>
-    <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
+    <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-0">
 
       <!-- LEFT: Sign in / Register / Language Dropdown -->
       <div class="left-nav-contents flex items-center gap-4 relative">
@@ -68,7 +70,7 @@
         </div>
 
         <button class="text-[#002B5C] font-medium hover:underline"><a href="./auth/login.html">Sign In</a></button>
-        <button class="bg-[#002B5C] text-white px-4 py-1.5 rounded-md hover:bg-[#001d3f] transition"><a href="./auth/register.html">Register</a></button>
+        <button class="bg-[#002B5C] text-white px-4 py-0 h-8 my-1 rounded-md hover:bg-[#001d3f] transition"><a href="./auth/register.html">Register</a></button>
       </div>
 
       <!-- RIGHT: Logo Carousel -->
@@ -92,53 +94,52 @@
         </div>
       </div>
     </div>
+    </div>
 
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-container capitalize">
-        <!-- Left Nav -->
-        <div class="nav-left nav-links capitalize">
-          <a href="./post/blog-posts.html">blog</a>
-          <a href="#">tickets & hospitality</a>
-          <a href="./home/fixtures.html">fixtures</a>
-          <a href="./home/players.html">players</a>
+<nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Desktop Menu Left -->
+        <div class="hidden md:flex space-x-6">
+            <a href="./post/blog-posts.html"  >Latest News</a>
+            <a href="./store/products.html"  >Store</a>
+            <a href="./home/fixtures.html"  >Fixtures</a>
         </div>
 
         <!-- Logo -->
-        <div class="nav-logo">
-          <a href="../index.html">
-            <img src="./assets/images/logo.png" alt="Logo" />
-          </a>
+        <div class="flex-shrink-0">
+            <img src="https://via.placeholder.com/50" alt="Logo" class="h-10">
         </div>
 
-        <!-- Right Nav -->
-        <div class="nav-right nav-links capitalize">
-          <a href="#">fans</a>
-          <a href="./store/products.html">Store</a>
-          <a href="./home/contact-us.html">contact us</a>
-          <input type="text" placeholder="Search..."/>
+        <!-- Desktop Menu Right -->
+        <div class="hidden md:flex space-x-6">
+            <a href=""  >Tickets & Hospitality</a>
+            <a href="#"  >Fans</a>
+            <a href="./home/players.html"  >Players</a>
+             <input type="text" placeholder="Search..."/>
+            
         </div>
 
-        <!-- Hamburger Menu Icon -->
-        <div class="hamburger" id="hamburger">&#9776;</div>
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+            <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
+        </div>
+    </div>
 
-        <!-- Close Button -->
-        <div class="close-icon" id="closeBtn">&times;</div>
-      </div>
-
-      <!-- Mobile Menu -->
-      <div class="mobile-menu" id="mobileMenu">
-        <a href="./post/blog-posts.html">blog</a>
-        <a href="#">tickets & hospitality</a>
-        <a href="#">fixtures</a>
-        <a href="home/players.html">players</a>
-        <a href="./post/blog-posts.html">fixtures</a>
-        <a href="#">fans</a>
-        <a href="./store/products.html">Store</a>
-        <input type="text" placeholder="Search..."/>
-      </div>
-    </nav>
-  </div>
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 transition-all duration-300 transform translate-x-full">
+        <div class="absolute top-4 right-4">
+            <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
+        </div>
+        <div class="h-full flex flex-col items-center justify-center space-y-8">
+            <a href="./post/blog-posts.html"  >Latest News</a>
+            <a href="./store/products.html"  >Store</a>
+            <a href="./home/fixtures.html"  >Fixtures</a>
+            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Blog</a>
+            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
+            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Contact</a>
+        </div>
+    </div>
+</nav>
 
   <!-- Hero Section -->
   <section data-aos="zoom-out" id="heroSection" class="relative w-full h-[90vh] bg-cover bg-center bg-no-repeat flex flex-col items-start justify-start transition-all duration-500">
@@ -1010,5 +1011,6 @@
   </script>
 
   <script src="assets/js/hero.js"></script>
+
 </body>
 </html>

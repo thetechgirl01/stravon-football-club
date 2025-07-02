@@ -1,18 +1,44 @@
-  const hamburger = document.getElementById('hamburger');
-  const closeBtn = document.getElementById('closeBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const closeBtn = document.getElementById('closeBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const body = document.body;
 
-  hamburger.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-    hamburger.style.display = 'none';
-    closeBtn.style.display = 'block';
-  });
+    // Toggle mobile menu
+    function toggleMenu() {
+        const isOpen = mobileMenu.classList.contains('translate-x-0');
+        
+        if (isOpen) {
+            // Close menu
+            mobileMenu.classList.remove('translate-x-0');
+            mobileMenu.classList.add('translate-x-full');
+            body.classList.remove('overflow-hidden');
+        } else {
+            // Open menu
+            mobileMenu.classList.remove('translate-x-full', 'hidden');
+            mobileMenu.classList.add('translate-x-0');
+            body.classList.add('overflow-hidden');
+        }
+    }
 
-  closeBtn.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-    hamburger.style.display = 'block';
-    closeBtn.style.display = 'none';
-  });
+    // Event listeners
+    hamburger.addEventListener('click', toggleMenu);
+    closeBtn.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking links
+    mobileMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', toggleMenu);
+    });
+
+    // Close menu on resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth >= 768) {
+            mobileMenu.classList.add('translate-x-full');
+            mobileMenu.classList.remove('translate-x-0');
+            body.classList.remove('overflow-hidden');
+        }
+    });
+});
 
 // ========== Countdown Timer ==========
 

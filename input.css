@@ -8,9 +8,12 @@
     margin: 0;
 }
 
-/* Ensure sticky works with your layout */
+a:hover {
+  color: #FFD100;
+}
+
 html {
-  scroll-padding-top: 80px; /* Adjust based on navbar height */
+  scroll-padding-top: 80px; 
 }
 
 .navbar-container {
@@ -20,11 +23,45 @@ html {
   padding: 1rem 2rem;
 }
 
-/* Mobile menu z-index fix */
-.mobile-menu {
-  z-index: 40; /* Below navbar's z-50 */
+.navbar {
+    transition: background-color 0.3s ease;
 }
 
+#mobileMenu {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Hide scrollbar when menu is open */
+.overflow-hidden {
+    overflow: hidden;
+}
+ .navbar-sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        /* Prevent body scroll when mobile menu is open */
+        .overflow-hidden-mobile {
+            overflow: hidden;
+        }
+
+        /* Initial state for mobile menu (hidden) */
+        .mobile-menu-hidden {
+            transform: translateY(-100%); /* Start off-screen above */
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none; /* Disable interactions when hidden */
+        }
+
+        /* Active state for mobile menu (revealed) */
+        .mobile-menu-visible {
+            transform: translateY(0); /* Slide into view */
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto; /* Enable interactions */
+        }
 
  #comment{
  background-color: #ffcc00; 
@@ -238,19 +275,7 @@ html {
   margin-right: 3rem;
 
   }
-  .hamburger, .close-icon{
-    margin-right: 2rem;
-  }
-    .hamburger{
-      z-index: 100;
-      background-color: #002B5C;
-      
-    }
-    .close-icon{
-      z-index: 0;
-
-    }
-
+ 
  
   #heroSection{
     align-items: center;
