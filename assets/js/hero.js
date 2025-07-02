@@ -141,3 +141,19 @@ window.addEventListener('click', function (e) {
     menu.classList.add('hidden');
   }
 });
+
+function toggleMenu() {
+  const isOpen = mobileMenu.classList.contains('translate-x-0');
+  
+  if (isOpen) {
+    // Close menu
+    mobileMenu.classList.remove('translate-x-0');
+    mobileMenu.classList.add('translate-x-full');
+    body.classList.remove('overflow-hidden');
+  } else {
+    // Open menu
+    mobileMenu.classList.remove('translate-x-full', 'hidden');
+    mobileMenu.classList.add('translate-x-0');
+    body.classList.add('overflow-hidden');
+  }
+}
