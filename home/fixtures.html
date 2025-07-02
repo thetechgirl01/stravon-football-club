@@ -1,1 +1,530 @@
-<!-- This page contains list of past and future match fixtures and each click will lead to live-feed page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../input.css">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <!-- AOS Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  
+  <!-- Google Translate Script -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,zh-CN,fr,es',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+      
+      // Completely hide the Google Translate widget
+      var googleTranslateElement = document.getElementById('google_translate_element');
+      if (googleTranslateElement) {
+        googleTranslateElement.style.display = 'none';
+      }
+    }
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+  <title>Geezerz FC | Fixtures</title>
+</head>
+<body class="bg-gray-100">
+
+  <!-- Sponsor / Lang / Register and Sign in -->
+  <div>
+    <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-3">
+
+      <!-- LEFT: Sign in / Register / Language Dropdown -->
+      <div class="left-nav-contents flex items-center gap-4 relative">
+        
+        <!-- Hidden Google Translate Element -->
+        <div id="google_translate_element"></div>
+
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+            <span>ENG</span>
+            <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+            </li>
+          </ul>
+        </div>
+
+        <button class="text-[#002B5C] font-medium hover:underline"><a href="./auth/login.html">Sign In</a></button>
+        <button class="bg-[#002B5C] text-white px-4 py-1.5 rounded-md hover:bg-[#001d3f] transition"><a href="./auth/register.html">Register</a></button>
+      </div>
+
+      <!-- RIGHT: Logo Carousel -->
+      <div class="w-[360px] overflow-hidden">
+        <div class="flex gap-4 logo-scroll">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container capitalize">
+        <div class="nav-left nav-links capitalize">
+          <a href="./post/blog-posts.html">blog</a>
+          <a href="#">tickets & hospitality</a>
+          <a href="./fixtures.html">fixtures</a>
+          <a href="./home/players.html">players</a>
+        </div>
+
+        <div class="nav-logo">
+          <a href="../index.html">
+            <img src="../assets/images/logo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <div class="nav-right nav-links capitalize">
+          <a href="#">fans</a>
+          <a href="./store/products.html">Store</a>
+          <a href="./home/contact-us.html">contact us</a>
+          <input type="text" placeholder="Search..."/>
+        </div>
+
+        <div class="hamburger" id="hamburger">&#9776;</div>
+
+        <div class="close-icon" id="closeBtn">&times;</div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="./post/blog-posts.html">blog</a>
+        <a href="#">tickets & hospitality</a>
+        <a href="./fixtures.html">fixtures</a>
+        <a href="./home/players.html">players</a>
+        <a href="#">fans</a>
+        <a href="./store/products.html">Store</a>
+        <a href="./home/contact-us.html">contact us</a>
+        <input type="text" placeholder="Search..."/>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Hero Section for Fixtures Page -->
+  <section id="fixturesHero" class="relative w-full h-[50vh] bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center text-white text-center" style="background-image: url('../assets/images/stadium-hero.jpg');">
+    <div class="absolute inset-0 bg-[#002B5C] opacity-70"></div>
+    <div class="relative z-10 p-6">
+      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-4">Geezerz FC Fixtures</h1>
+      <p class="text-xl md:text-2xl font-light">See our upcoming matches and past results.</p>
+    </div>
+  </section>
+
+  <main class="py-16 px-6 lg:flex lg:gap-8 lg:max-w-7xl lg:mx-auto">
+    <!-- Main Content Area -->
+    <div class="lg:w-3/4">
+      <!-- Upcoming Matches Section -->
+      <section data-aos="fade-up" class="bg-white py-12 px-6 text-[#002B5C] rounded-lg shadow-lg mb-12">
+        <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Upcoming Matches</h2>
+
+        <div class="space-y-12">
+          <!-- July 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">JULY 2025</h3>
+            <div class="space-y-8">
+              <!-- July Match 1 -->
+              <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div>
+                  <p class="text-xl font-bold">July 3, 2025</p>
+                  <p class="text-sm text-gray-500">🏟 Stamford Bridge</p>
+                </div>
+
+                <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+                  <div class="flex flex-col items-center">
+                    <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+                  </div>
+                  <p class="text-lg font-bold text-gray-600">VS</p>
+                  <div class="flex flex-col items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/7/7a/Manchester_United_FC_crest.svg" alt="Man United Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">Man United</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+                  <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Premier League</span>
+                  <button class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition" onclick="addEventToCalendar('Geezerz FC vs Man United', 'Premier League Match', 'Stamford Bridge', '2025-07-03T19:00:00')">Add to Calendar</button>
+                </div>
+              </div>
+
+              <!-- July Match 2 -->
+              <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div>
+                  <p class="text-xl font-bold">July 15, 2025</p>
+                  <p class="text-sm text-gray-500">🏟 Parc des Princes</p>
+                </div>
+
+                <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+                  <div class="flex flex-col items-center">
+                    <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+                  </div>
+                  <p class="text-lg font-bold text-gray-600">VS</p>
+                  <div class="flex flex-col items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/a/a7/Paris_Saint-Germain_F.C..svg" alt="PSG Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">PSG</p>
+                  </div>
+                </div>
+
+                <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+                  <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Champions League</span>
+                  <button class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition" onclick="addEventToCalendar('Geezerz FC vs PSG', 'Champions League Match', 'Parc des Princes', '2025-07-15T21:00:00')">Add to Calendar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- August 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">AUGUST 2025</h3>
+            <div class="space-y-8">
+              <div class="flex items-center justify-center bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm">
+                <p class="text-lg text-gray-600 font-semibold">Fixtures with dates TBC</p>
+              </div>
+              <!-- Example of a planned August match (uncomment to activate) -->
+              <!--
+              <div class="flex flex-col md:flex-row items-center justify-between bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+                <div>
+                  <p class="text-xl font-bold">August 10, 2025</p>
+                  <p class="text-sm text-gray-500">🏟 Old Trafford</p>
+                </div>
+                <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+                  <div class="flex flex-col items-center">
+                    <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+                  </div>
+                  <p class="text-lg font-bold text-gray-600">VS</p>
+                  <div class="flex flex-col items-center">
+                    <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_logo.svg" alt="Man City Logo" class="h-12" />
+                    <p class="text-sm font-semibold mt-2">Man City</p>
+                  </div>
+                </div>
+                <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+                  <span class="text-xs font-bold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">Premier League</span>
+                  <button class="text-sm font-semibold bg-[#002B5C] text-white px-4 py-2 rounded hover:bg-[#001f4e] transition" onclick="addEventToCalendar('Geezerz FC vs Man City', 'Premier League Match', 'Old Trafford', '2025-08-10T15:00:00')">Add to Calendar</button>
+                </div>
+              </div>
+              -->
+            </div>
+          </div>
+
+          <!-- September 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">SEPTEMBER 2025</h3>
+            <div class="flex items-center justify-center bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm">
+              <p class="text-lg text-gray-600 font-semibold">Fixtures with dates TBC</p>
+            </div>
+          </div>
+
+          <!-- October 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">OCTOBER 2025</h3>
+            <div class="flex items-center justify-center bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm">
+              <p class="text-lg text-gray-600 font-semibold">Fixtures with dates TBC</p>
+            </div>
+          </div>
+
+          <!-- November 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">NOVEMBER 2025</h3>
+            <div class="flex items-center justify-center bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm">
+              <p class="text-lg text-gray-600 font-semibold">Fixtures with dates TBC</p>
+            </div>
+          </div>
+
+          <!-- December 2025 Fixtures -->
+          <div>
+            <h3 class="text-3xl font-bold mb-6 border-b border-gray-200 pb-3">DECEMBER 2025</h3>
+            <div class="flex items-center justify-center bg-[#F5F9FF] border border-blue-100 rounded-xl p-6 shadow-sm">
+              <p class="text-lg text-gray-600 font-semibold">Fixtures with dates TBC</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Results Section -->
+      <section data-aos="fade-up" class="bg-[#011e3c] text-white py-12 px-6 rounded-lg shadow-lg">
+        <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10">Recent Results</h2>
+
+        <div class="space-y-8">
+          <!-- Past Match 1 -->
+          <div class="flex flex-col md:flex-row items-center justify-between bg-[#022e55] border border-blue-800 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div>
+              <p class="text-xl font-bold">June 8, 2025</p>
+              <p class="text-sm text-gray-300">🏟 Santiago Bernabéu</p>
+            </div>
+
+            <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+              <div class="flex flex-col items-center">
+                <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+              </div>
+              <p class="text-lg font-bold text-yellow-300">1 - 3</p>
+              <div class="flex flex-col items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Real Madrid</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+              <span class="text-xs font-bold bg-red-500 text-white px-3 py-1 rounded-full">FT - La Liga</span>
+              <a href="#" class="text-sm font-medium text-yellow-400 hover:underline">Match Report</a>
+            </div>
+          </div>
+
+          <!-- Past Match 2 -->
+          <div class="flex flex-col md:flex-row items-center justify-between bg-[#022e55] border border-blue-800 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div>
+              <p class="text-xl font-bold">May 28, 2025</p>
+              <p class="text-sm text-gray-300">🏟 Camp Nou</p>
+            </div>
+
+            <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+              <div class="flex flex-col items-center">
+                <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+              </div>
+              <p class="text-lg font-bold text-yellow-300">0 - 0</p>
+              <div class="flex flex-col items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/4/47/FC_Barcelona_%28crest%29.svg" alt="Barcelona Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Barcelona</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+              <span class="text-xs font-bold bg-gray-600 text-white px-3 py-1 rounded-full">FT - Champions League</span>
+              <a href="#" class="text-sm font-medium text-yellow-400 hover:underline">Match Report</a>
+            </div>
+          </div>
+
+          <!-- Past Match 3 -->
+          <div class="flex flex-col md:flex-row items-center justify-between bg-[#022e55] border border-blue-800 rounded-xl p-6 shadow-sm hover:shadow-md transition">
+            <div>
+              <p class="text-xl font-bold">May 20, 2025</p>
+              <p class="text-sm text-gray-300">🏟 Etihad Stadium</p>
+            </div>
+
+            <div class="flex items-center gap-6 text-center mt-4 md:mt-0">
+              <div class="flex flex-col items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/en/e/eb/Manchester_City_FC_logo.svg" alt="Man City Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Man City</p>
+              </div>
+              <p class="text-lg font-bold text-yellow-300">2 - 1</p>
+              <div class="flex flex-col items-center">
+                <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="h-12" />
+                <p class="text-sm font-semibold mt-2">Geezerz FC</p>
+              </div>
+            </div>
+
+            <div class="flex flex-col items-center gap-2 mt-4 md:mt-0">
+              <span class="text-xs font-bold bg-red-500 text-white px-3 py-1 rounded-full">FT - Premier League</span>
+              <a href="#" class="text-sm font-medium text-yellow-400 hover:underline">Match Report</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar: Add Match to Calendar -->
+    <aside class="lg:w-1/4 mt-12 lg:mt-0">
+      <div class="bg-white rounded-lg shadow-lg p-6 text-[#002B5C] sticky top-4">
+        <h3 class="text-2xl font-bold mb-6 border-b border-gray-200 pb-3">Add Match to Calendar</h3>
+        <p class="text-gray-700 text-sm mb-4">Click the "Add to Calendar" button next to any upcoming fixture to quickly add it to your personal calendar (Google Calendar, Outlook, etc.).</p>
+        <div class="text-sm text-gray-600">
+          <p class="mb-2">This feature helps you:</p>
+          <ul class="list-disc list-inside space-y-1">
+            <li>Never miss a match</li>
+            <li>Sync with your personal schedule</li>
+            <li>Get reminders before kick-off</li>
+          </ul>
+        </div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="bg-[#002B5C] text-white py-12 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-8">
+      <!-- About Us -->
+      <div class="footer-column">
+        <h3 class="text-xl font-bold mb-4">About Geezerz FC</h3>
+        <p class="text-gray-300 text-sm">
+          Geezerz FC is a fictional football club with a rich history and a bright future.
+          We strive for excellence on and off the pitch, connecting with our fans worldwide.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-column">
+        <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="../index.html" class="text-gray-300 hover:text-yellow-400 transition">Home</a></li>
+          <li><a href="./post/blog-posts.html" class="text-gray-300 hover:text-yellow-400 transition">News</a></li>
+          <li><a href="#" class="text-gray-300 hover:text-yellow-400 transition">Tickets</a></li>
+          <li><a href="./fixtures.html" class="text-gray-300 hover:text-yellow-400 transition">Fixtures</a></li>
+          <li><a href="./home/players.html" class="text-gray-300 hover:text-yellow-400 transition">Players</a></li>
+          <li><a href="./store/products.html" class="text-gray-300 hover:text-yellow-400 transition">Store</a></li>
+          <li><a href="./home/contact-us.html" class="text-gray-300 hover:text-yellow-400 transition">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Social Media -->
+      <div class="footer-column">
+        <h3 class="text-xl font-bold mb-4">Follow Us</h3>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-300 hover:text-yellow-400 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Logo_of_Twitter.svg" alt="Twitter" class="h-6 w-6 blue-filter"></a>
+          <a href="#" class="text-gray-300 hover:text-yellow-400 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram" class="h-6 w-6 blue-filter"></a>
+          <a href="#" class="text-gray-300 hover:text-yellow-400 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook" class="h-6 w-6 blue-filter"></a>
+          <a href="#" class="text-gray-300 hover:text-yellow-400 transition"><img src="https://upload.wikimedia.org/wikipedia/commons/8/81/LinkedIn_icon.svg" alt="LinkedIn" class="h-6 w-6 blue-filter"></a>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-column">
+        <h3 class="text-xl font-bold mb-4">Contact Info</h3>
+        <p class="text-gray-300 text-sm">123 Geezerz Lane, Football City, FC 12345</p>
+        <p class="text-gray-300 text-sm">Email: info@geezerzfc.com</p>
+        <p class="text-gray-300 text-sm">Phone: +1 (234) 567-8900</p>
+      </div>
+    </div>
+
+    <div class="mt-8 pt-8 border-t border-gray-700 text-center text-gray-400 text-sm">
+      &copy; 2025 Geezerz FC. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- AOS Library JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+  <!-- Custom JavaScript for dropdown, infinite scroll, and add to calendar -->
+  <script>
+    // Function to toggle the language dropdown
+    function toggleDropdown() {
+      document.getElementById("dropdown-menu").classList.toggle("hidden");
+    }
+
+    // Function to change the language using Google Translate
+    function changeLanguage(lang, flag) {
+      var googleTranslateElement = document.getElementById('google_translate_element');
+      if (googleTranslateElement && googleTranslateElement.querySelector('.goog-te-combo')) {
+        googleTranslateElement.querySelector('.goog-te-combo').value = lang;
+        // Dispatch a 'change' event to trigger Google Translate's internal logic
+        googleTranslateElement.querySelector('.goog-te-combo').dispatchEvent(new Event('change'));
+      }
+
+      // Update displayed language and flag in your custom dropdown button
+      var button = document.querySelector('.left-nav-contents .relative button');
+      if (button) {
+        button.querySelector('img').src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${flag}.svg`;
+        button.querySelector('span').textContent = lang.toUpperCase().substring(0, 3); // Get first 3 letters
+      }
+
+      toggleDropdown(); // Hide dropdown after selection
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+      if (!event.target.matches('.left-nav-contents .relative button') && !event.target.closest('.left-nav-contents .relative button')) {
+        var dropdown = document.getElementById('dropdown-menu');
+        if (dropdown && !dropdown.classList.contains('hidden')) {
+          dropdown.classList.add('hidden');
+        }
+      }
+    }
+
+    // Infinite scroll for sponsor logos
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoScroll = document.querySelector('.logo-scroll');
+      if (logoScroll) {
+        let scrollAmount = 0;
+        const scrollSpeed = 0.5; // Adjust scroll speed here
+
+        function scrollLogos() {
+          scrollAmount += scrollSpeed;
+          // Reset scroll position when half of the total width is scrolled to create an infinite loop
+          if (scrollAmount >= logoScroll.scrollWidth / 2) {
+            scrollAmount = 0;
+          }
+          logoScroll.style.transform = `translateX(-${scrollAmount}px)`;
+          requestAnimationFrame(scrollLogos);
+        }
+        scrollLogos();
+      }
+
+      // Hamburger menu functionality for mobile responsiveness
+      const hamburger = document.getElementById('hamburger');
+      const closeBtn = document.getElementById('closeBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      if (hamburger) {
+        hamburger.addEventListener('click', () => {
+          mobileMenu.classList.add('open');
+          hamburger.classList.add('hidden');
+          closeBtn.classList.remove('hidden');
+        });
+      }
+
+      if (closeBtn) {
+        closeBtn.addEventListener('click', () => {
+          mobileMenu.classList.remove('open');
+          hamburger.classList.remove('hidden');
+          closeBtn.classList.add('hidden');
+        });
+      }
+    });
+
+    // Function to add event to Google Calendar
+    function addEventToCalendar(title, description, location, dateTime) {
+      // Format date for Google Calendar URL (YYYYMMDDTHHMMSSZ)
+      // Example: '2025-07-03T19:00:00' needs to be '20250703T190000'
+      const startDateTime = new Date(dateTime);
+      const endDateTime = new Date(startDateTime.getTime() + 2 * 60 * 60 * 1000); // Assuming 2-hour match duration
+      
+      const formatDateTime = (date) => {
+        return date.toISOString().replace(/[-:]|\.\d{3}/g, ''); // Remove hyphens, colons, and milliseconds
+      };
+
+      const formattedStart = formatDateTime(startDateTime);
+      const formattedEnd = formatDateTime(endDateTime);
+
+      const googleCalendarUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}&dates=${formattedStart}/${formattedEnd}`;
+      
+      window.open(googleCalendarUrl, '_blank');
+    }
+  </script>
+</body>
+</html>
