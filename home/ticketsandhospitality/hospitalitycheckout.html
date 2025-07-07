@@ -27,7 +27,7 @@
         <!-- Desktop Menu Right -->
         <div class="hidden md:flex space-x-6">
             <a href=""  >Tickets & Hospitality</a>
-            <a href="#"  >Fans</a>
+            
             <a href="../home/players.html"  >Players</a>
              <button class="">
            
@@ -56,8 +56,14 @@
             <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
             <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
             <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
-            <a href="" class="text-2xl text-white hover:text-FFD100 transition-colors">Fans</a>
-            <a href="../home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>
+            
+            <a href="./home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>  <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+            
 
         </div>
     </div>
@@ -100,7 +106,7 @@
                                     </div>
                                     <div class="md:w-2/3">
                                         <div class="mb-4">
-                                            <span class="text-2xl font-bold" id="package-price">£750</span>
+                                            <span class="text-2xl font-bold" id="package-price">₦750</span>
                                             <span class="text-gray-500">/person</span>
                                         </div>
                                         <ul class="space-y-2 mb-4" id="package-features">
@@ -238,16 +244,16 @@
                                 <div class="mb-6">
                                     <div class="flex justify-between mb-2">
                                         <span class="text-gray-600">VIP Experience x <span id="guest-count-summary">1</span></span>
-                                        <span id="package-total" class="font-medium">£750</span>
+                                        <span id="package-total" class="font-medium">₦750</span>
                                     </div>
                                     <div class="border-t border-gray-200 pt-4">
                                         <div class="flex justify-between font-semibold">
                                             <span>Subtotal</span>
-                                            <span id="subtotal">£750</span>
+                                            <span id="subtotal">₦750</span>
                                         </div>
                                         <div class="flex justify-between text-gray-600 text-sm mt-1">
                                             <span>Service Fee</span>
-                                            <span>£25.00</span>
+                                            <span>₦25.00</span>
                                         </div>
                                     </div>
                                 </div>
@@ -255,7 +261,7 @@
                                 <div class="border-t border-gray-200 pt-4 mb-6">
                                     <div class="flex justify-between text-lg font-bold">
                                         <span>Total</span>
-                                        <span id="total">£775.00</span>
+                                        <span id="total">₦775.00</span>
                                     </div>
                                 </div>
                                 
@@ -359,9 +365,9 @@
             const subtotal = guests * packagePrice;
             const total = subtotal + 25; // Service fee
             
-            document.getElementById('subtotal').textContent = `£${subtotal}`;
-            document.getElementById('package-total').textContent = `£${subtotal}`;
-            document.getElementById('total').textContent = `£${total.toFixed(2)}`;
+            document.getElementById('subtotal').textContent = `₦${subtotal}`;
+            document.getElementById('package-total').textContent = `₦${subtotal}`;
+            document.getElementById('total').textContent = `₦${total.toFixed(2)}`;
         }
         
        

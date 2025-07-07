@@ -24,8 +24,8 @@
 
         <!-- Desktop Menu Right -->
         <div class="hidden md:flex space-x-6">
-            <a href=""  >Tickets & Hospitality</a>
-            <a href="#"  >Fans</a>
+            <a href="#"  >Tickets & Hospitality</a>
+            
             <a href="../home/players.html"  >Players</a>
              <button class="">
            
@@ -54,8 +54,14 @@
             <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
             <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
             <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
-            <a href="" class="text-2xl text-white hover:text-FFD100 transition-colors">Fans</a>
-            <a href="../home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>
+            
+            <a href="./home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>  <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+           
 
         </div>
     </div>
@@ -123,7 +129,7 @@
                                         <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('west-upper', 1)">
                                             <i class="fas fa-plus text-xs"></i>
                                         </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£75</span>
+                                        <span class="ml-6 font-medium w-16 text-right">₦75</span>
                                     </div>
                                 </div>
                                 
@@ -141,7 +147,7 @@
                                         <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('east-lower', 1)">
                                             <i class="fas fa-plus text-xs"></i>
                                         </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£95</span>
+                                        <span class="ml-6 font-medium w-16 text-right">₦95</span>
                                     </div>
                                 </div>
                                 
@@ -159,7 +165,7 @@
                                         <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('family', 1)">
                                             <i class="fas fa-plus text-xs"></i>
                                         </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£120</span>
+                                        <span class="ml-6 font-medium w-16 text-right">₦120</span>
                                     </div>
                                 </div>
                             </div>
@@ -217,24 +223,24 @@
                                 <div class="mb-6">
                                     <div class="flex justify-between mb-2">
                                         <span class="text-gray-600">West Stand Upper x <span id="west-upper-summary">0</span></span>
-                                        <span id="west-upper-total" class="font-medium">£0</span>
+                                        <span id="west-upper-total" class="font-medium">₦0</span>
                                     </div>
                                     <div class="flex justify-between mb-2">
                                         <span class="text-gray-600">East Stand Lower x <span id="east-lower-summary">0</span></span>
-                                        <span id="east-lower-total" class="font-medium">£0</span>
+                                        <span id="east-lower-total" class="font-medium">₦0</span>
                                     </div>
                                     <div class="flex justify-between mb-4">
                                         <span class="text-gray-600">Family Stand x <span id="family-summary">0</span></span>
-                                        <span id="family-total" class="font-medium">£0</span>
+                                        <span id="family-total" class="font-medium">₦0</span>
                                     </div>
                                     <div class="border-t border-gray-200 pt-4">
                                         <div class="flex justify-between font-semibold">
                                             <span>Subtotal</span>
-                                            <span id="subtotal">£0</span>
+                                            <span id="subtotal">₦0</span>
                                         </div>
                                         <div class="flex justify-between text-gray-600 text-sm mt-1">
                                             <span>Booking Fee</span>
-                                            <span>£2.50</span>
+                                            <span>₦2.50</span>
                                         </div>
                                     </div>
                                 </div>
@@ -242,7 +248,7 @@
                                 <div class="border-t border-gray-200 pt-4 mb-6">
                                     <div class="flex justify-between text-lg font-bold">
                                         <span>Total</span>
-                                        <span id="total">£2.50</span>
+                                        <span id="total">₦2.50</span>
                                     </div>
                                 </div>
                                 
@@ -342,15 +348,15 @@
                 'family': 120
             };
             
-            document.getElementById(`${type}-total`).textContent = `£${qty * prices[type]}`;
+            document.getElementById(`${type}-total`).textContent = `₦${qty * prices[type]}`;
             
             // Update subtotal and total
             const subtotal = (parseInt(document.getElementById('west-upper-summary').textContent) * 75 +
                              (parseInt(document.getElementById('east-lower-summary').textContent) * 95) +
                              (parseInt(document.getElementById('family-summary').textContent) * 120);
             
-            document.getElementById('subtotal').textContent = `£${subtotal}`;
-            document.getElementById('total').textContent = `£${subtotal + 2.50}`;
+            document.getElementById('subtotal').textContent = `₦${subtotal}`;
+            document.getElementById('total').textContent = `₦${subtotal + 2.50}`;
         };
 
     </script>
