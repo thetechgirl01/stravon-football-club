@@ -3,19 +3,124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Product - Jersey</title>
+  <title>Product - Jersey | Geezerz FC</title>
   <link rel="stylesheet" href="../assets/css/main.css" />
   <link rel="stylesheet" href="../input.css" />
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <!-- AOS Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Google Translate Widget (Hidden) -->
+  <div id="google_translate_element" style="display: none;"></div>
+
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,pt,es,ru',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+    }
+  </script>
+
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  
   <style>
     .size-btn.active {
       background-color: #facc15;
       color: #002B5C;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+    }
+    
+    .product-image-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .product-image-hover:hover {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+    
+    .thumbnail-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .thumbnail-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 43, 92, 0.2);
+    }
+    
+    .button-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .button-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(250, 204, 21, 0.3);
+    }
+    
+    .button-hover:active {
+      transform: translateY(0);
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 43, 92, 0.15);
+    }
+    
+    .icon-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .icon-hover:hover {
+      transform: rotate(12deg) scale(1.1);
+    }
+    
+    .logo-scroll {
+      animation: scroll 30s linear infinite;
+    }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .blue-filter {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7251%) hue-rotate(212deg) brightness(97%) contrast(108%);
+    }
+    
+    .quantity-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .quantity-btn:hover {
+      background-color: #f3f4f6;
+      transform: scale(1.1);
+    }
+    
+    .quantity-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .back-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      transform: translateX(-5px);
+      color: #facc15;
     }
   </style>
 </head>
-<body class="bg-white text-black">
-         <!-- sponsor / lang / register and sign in -->
+<body class="bg-gray-100 text-black">
+  <!-- sponsor / lang / register and sign in -->
   <div>
     <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-0">
 
@@ -27,29 +132,31 @@
 
         <!-- Language Dropdown -->
         <div class="relative">
-          <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
-            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+          <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none transition-all duration-300 hover:text-yellow-500">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto transition-transform duration-300 hover:scale-110" alt="UK Flag"/>
             <span>ENG</span>
-            <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+            <svg class="w-3 h-3 ml-1 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
               <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             </svg>
           </button>
-          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
+          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-lg w-40 z-50 backdrop-blur-sm">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200" onclick="changeLanguage('en', 'gb')">
               <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200" onclick="changeLanguage('zh-CN', 'cn')">
               <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200" onclick="changeLanguage('fr', 'fr')">
               <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer transition-colors duration-200" onclick="changeLanguage('es', 'es')">
               <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
             </li>
           </ul>
         </div>
 
+        <button class="text-[#002B5C] font-medium hover:underline transition-all duration-300 hover:text-yellow-500"><a href="../auth/login.html">Sign In</a></button>
+        <button class="bg-[#002B5C] text-white px-4 py-0 h-8 my-1 rounded-md hover:bg-[#001d3f] transition-all duration-300 hover:shadow-lg"><a href="../auth/register.html">Register</a></button>
      </div>
 
       <!-- RIGHT: Logo Carousel -->
@@ -79,29 +186,26 @@
     <div class="container mx-auto flex justify-between items-center">
         <!-- Desktop Menu Left -->
         <div class="hidden md:flex space-x-6">
-            <a href="../post/blog-posts.html"  >Latest News</a>
-            <a href="../store/products.html"  >Store</a>
-            <a href="../home/fixtures.html"  >Fixtures</a>
+            <a href="../post/blog-posts.html" class="hover:text-yellow-400 transition-colors duration-300">Latest News</a>
+            <a href="../store/products.html" class="hover:text-yellow-400 transition-colors duration-300">Store</a>
+            <a href="../home/fixtures.html" class="hover:text-yellow-400 transition-colors duration-300">Fixtures</a>
         </div>
 
         <!-- Logo -->
         <div class="flex-shrink-0">
-            <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+            <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12 transition-transform duration-300 hover:scale-110">
         </div>
 
         <!-- Desktop Menu Right -->
-        <div class="hidden md:flex space-x-6">
-            <a href=""  >Tickets & Hospitality</a>
-            <a href="#"  >Fans</a>
-            <a href="../home/players.html"  >Players</a>
-             <button class="">
-           
-  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
-  </svg>
-</button>
-
-            
+        <div class="hidden md:flex space-x-6 items-center">
+            <a href="" class="hover:text-yellow-400 transition-colors duration-300">Tickets & Hospitality</a>
+            <a href="#" class="hover:text-yellow-400 transition-colors duration-300">Fans</a>
+            <a href="../home/players.html" class="hover:text-yellow-400 transition-colors duration-300">Players</a>
+            <button class="icon-hover">
+              <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+              </svg>
+            </button>
         </div>
 
         <!-- Mobile Menu Button -->
@@ -116,165 +220,627 @@
             <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
         </div>
         <div class="h-full flex flex-col items-center justify-center space-y-8">
-            <a href="./post/blog-posts.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Latest News</a>
-           
-            <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
-            <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
-            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
-            <a href="" class="text-2xl text-white hover:text-FFD100 transition-colors">Fans</a>
-            <a href="../home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>
-
+            <a href="../post/blog-posts.html" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Latest News</a>
+            <a href="../store/products.html" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Store</a>
+            <a href="../home/fixtures.html" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Fixtures</a>
+            <a href="#" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Tickets & Hospitality</a>
+            <a href="" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Fans</a>
+            <a href="../home/players.html" class="text-2xl text-white hover:text-yellow-400 transition-colors duration-300">Players</a>
         </div>
     </div>
 </nav>
 
   <!-- Product Detail Section -->
-  <section class="bg-white text-black py-8 sm:py-12 px-4 sm:px-6">
+  <section class="bg-gradient-to-b from-gray-50 to-white text-black py-12 px-4 sm:px-6" data-aos="fade-up">
     <!-- Back Button -->
-    <a href="products.html" class="flex items-center mb-6 sm:mb-10">
-      <span class="text-3xl sm:text-4xl text-yellow-400"> &lt; </span>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold pl-2 sm:pl-4">Back To Store</h2>
-    </a>
+    <div class="max-w-7xl mx-auto">
+      <a href="products.html" class="flex items-center mb-8 back-btn group">
+        <span class="text-3xl sm:text-4xl text-yellow-400 group-hover:text-yellow-500 transition-colors duration-300"> &lt; </span>
+        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold pl-2 sm:pl-4 group-hover:text-gray-600 transition-colors duration-300">Back To Store</h2>
+      </a>
 
-    <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 sm:gap-8 md:gap-12">
-      <!-- Left Side (Images) -->
-      <div class="flex flex-col md:flex-row gap-4 sm:gap-6 md:gap-8 w-full lg:w-1/2">
-        <!-- Thumbnails - Stacked vertically on mobile, side on tablet+ -->
-        <div class="flex flex-row md:flex-col gap-2 sm:gap-3 md:gap-4">
-          <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
-            <img
-              onclick="changeMainImage(this.src)"
-              src="../assets/images/players/player1.png"
-              alt="Thumbnail 1"
-              class="w-full h-full object-cover rounded cursor-pointer border border-gray-300 hover:border-yellow-400 transition"
-            />
+      <div class="flex flex-col lg:flex-row gap-8 md:gap-12">
+        <!-- Left Side (Images) -->
+        <div class="flex flex-col md:flex-row gap-6 md:gap-8 w-full lg:w-1/2" data-aos="fade-right">
+          <!-- Thumbnails -->
+          <div class="flex flex-row md:flex-col gap-3 md:gap-4 overflow-x-auto md:overflow-x-visible">
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/players/player1.png"
+                alt="Front View"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-yellow-400 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/players/player3.png"
+                alt="Back View"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/players/player2.png"
+                alt="Side View"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/hero.png"
+                alt="Detail View"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/hero2.png"
+                alt="Lifestyle View"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
+            <div class="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 thumbnail-hover flex-shrink-0">
+              <img
+                onclick="changeMainImage(this.src)"
+                src="../assets/images/logo.png"
+                alt="Logo Detail"
+                class="w-full h-full object-cover rounded-lg cursor-pointer border-2 border-gray-200 hover:border-yellow-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-yellow-400"
+                tabindex="0"
+              />
+            </div>
           </div>
-          <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
+
+          <!-- Main Image/Video Container -->
+          <div class="flex-1 relative overflow-hidden rounded-xl shadow-lg">
+            <!-- Main Product Image -->
             <img
-              onclick="changeMainImage(this.src)"
-              src="../assets/images/players/player3.png"
-              alt="Thumbnail 2"
-              class="w-full h-full object-cover rounded cursor-pointer border border-gray-300 hover:border-yellow-400 transition"
-            />
-          </div>
-          <div class="w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24">
-            <img
-              onclick="changeMainImage(this.src)"
+              id="mainImage"
               src="../assets/images/players/player1.png"
-              alt="Thumbnail 3"
-              class="w-full h-full object-cover rounded cursor-pointer border border-gray-300 hover:border-yellow-400 transition"
+              alt="Main product view"
+              class="w-full h-auto max-h-[500px] md:max-h-[600px] object-contain product-image-hover"
             />
+            
+            <!-- Video Container (Hidden by default) -->
+            <div id="videoContainer" class="hidden w-full h-auto max-h-[500px] md:max-h-[600px] relative">
+              <video
+                id="productVideo"
+                class="w-full h-full object-contain rounded-lg"
+                controls
+                poster="../assets/images/players/player1.png"
+              >
+                <source src="../assets/videos/jersey-showcase.mp4" type="video/mp4">
+                <source src="../assets/videos/jersey-showcase.webm" type="video/webm">
+                Your browser does not support the video tag.
+              </video>
+              <button 
+                onclick="hideVideo()" 
+                class="absolute top-4 right-4 bg-black bg-opacity-50 text-white p-2 rounded-full hover:bg-opacity-70 transition-all duration-300"
+                aria-label="Close video"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
+            
+            <!-- Product Badge -->
+            <div class="absolute top-4 right-4 bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full text-sm font-bold">
+              New
+            </div>
+            
+            <!-- Discount Badge -->
+            <div class="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
+              25% OFF
+            </div>
           </div>
         </div>
 
-        <!-- Main Image -->
-        <div class="flex-1 relative overflow-hidden">
-          <img
-            id="mainImage"
-            src="../assets/images/players/player1.png"
-            alt="Main product view"
-            class="w-full h-auto max-h-[400px] md:max-h-[500px] object-contain rounded-lg shadow-md transition-transform duration-300"
-          />
+        <!-- Right Side (Product Details) -->
+        <div class="w-full lg:w-1/2 space-y-6" data-aos="fade-left">
+          <div class="flex justify-between items-start">
+            <div>
+              <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold text-[#002B5C] mb-2">2025 Official Home Jersey</h1>
+              <div class="flex items-center gap-2 mb-4">
+                <div class="flex text-yellow-400">
+                  ★★★★★
+                </div>
+                <span class="text-sm text-gray-600">(4.8/5 • 124 reviews)</span>
+              </div>
+            </div>
+            <div class="flex gap-3">
+              <!-- Share Icon -->
+              <button class="text-gray-600 hover:text-yellow-400 transition-all duration-300 p-2 rounded-full hover:bg-gray-100 icon-hover" aria-label="Share">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 8a3 3 0 100-6 3 3 0 000 6zM4 12a3 3 0 106 0 3 3 0 00-6 0zm11 4a3 3 0 100 6 3 3 0 000-6zM6.59 13.51l10.83 4.98M6.59 10.49l10.83-4.98"/>
+                </svg>
+              </button>
+              <!-- Favorite Icon -->
+              <button class="text-yellow-400 hover:text-yellow-500 transition-all duration-300 p-2 rounded-full hover:bg-yellow-50 icon-hover" aria-label="Add to favorites">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 18.657l-6.828-6.829a4 4 0 010-5.656z"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-gray-50 p-4 rounded-lg border-l-4 border-yellow-400">
+            <p class="text-sm sm:text-base text-gray-700 leading-relaxed">
+              Experience matchday like never before with the 2025 Geezerz FC Home Jersey – performance-fit, breathable fabric with moisture-wicking technology, and iconic club design.
+            </p>
+          </div>
+
+          <!-- Features -->
+          <div class="grid grid-cols-2 gap-4">
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span class="text-sm">Moisture-wicking</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span class="text-sm">Official licensed</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span class="text-sm">Breathable fabric</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-green-500">✓</span>
+              <span class="text-sm">Free shipping</span>
+            </div>
+          </div>
+
+          <!-- Price -->
+          <div class="bg-[#002B5C] text-white p-4 rounded-lg">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="text-gray-300 text-sm line-through">$119.99</span>
+                <div id="price" class="text-2xl sm:text-3xl font-bold text-yellow-400">
+                  $89.99
+                </div>
+                <span class="text-green-300 text-sm">Save 25%</span>
+              </div>
+              <div class="text-right">
+                <div class="text-yellow-400 text-sm font-semibold">In Stock</div>
+                <div class="text-gray-300 text-xs">Fast delivery</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="space-y-3">
+            <h3 class="font-semibold text-lg text-[#002B5C]">Select Size</h3>
+            <div class="flex flex-wrap gap-3">
+              <button class="size-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-[#002B5C] hover:border-yellow-400 transition-all duration-300 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                S
+              </button>
+              <button class="size-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-[#002B5C] hover:border-yellow-400 transition-all duration-300 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                M
+              </button>
+              <button class="size-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-[#002B5C] hover:border-yellow-400 transition-all duration-300 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                L
+              </button>
+              <button class="size-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-[#002B5C] hover:border-yellow-400 transition-all duration-300 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                XL
+              </button>
+              <button class="size-btn border-2 border-gray-300 px-4 py-2 rounded-lg hover:bg-yellow-400 hover:text-[#002B5C] hover:border-yellow-400 transition-all duration-300 text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-yellow-400">
+                XXL
+              </button>
+            </div>
+            <p class="text-xs text-gray-500">
+              <a href="#" class="text-yellow-600 hover:underline">Size guide</a>
+            </p>
+          </div>
+
+          <!-- Quantity Selector -->
+          <div class="space-y-3">
+            <h3 class="font-semibold text-lg text-[#002B5C]">Quantity</h3>
+            <div class="flex items-center gap-4">
+              <button onclick="updateQty(-1)" class="quantity-btn w-10 h-10 border-2 border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 font-bold text-lg" aria-label="Decrease quantity">
+                -
+              </button>
+              <span id="qty" class="text-xl font-bold min-w-[3rem] text-center">1</span>
+              <button onclick="updateQty(1)" class="quantity-btn w-10 h-10 border-2 border-gray-300 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-400 font-bold text-lg" aria-label="Increase quantity">
+                +
+              </button>
+            </div>
+          </div>
+
+          <!-- Add to Cart Button -->
+          <div class="space-y-3">
+            <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-4 rounded-lg hover:bg-yellow-500 button-hover flex items-center justify-center gap-3 w-full text-lg focus:outline-none focus:ring-4 focus:ring-yellow-200">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+              </svg>
+              Add to Cart
+            </button>
+            <button class="border-2 border-[#002B5C] text-[#002B5C] font-bold px-6 py-4 rounded-lg hover:bg-[#002B5C] hover:text-white button-hover flex items-center justify-center gap-3 w-full text-lg focus:outline-none focus:ring-4 focus:ring-blue-200">
+              ♡ Add to Wishlist
+            </button>
+          </div>
+
+          <!-- Additional Info -->
+          <div class="border-t pt-4 space-y-2 text-sm text-gray-600">
+            <div class="flex items-center gap-2">
+              <span>🚚</span>
+              <span>Free shipping on orders over $75</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span>↩️</span>
+              <span>30-day return policy</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span>🔒</span>
+              <span>Secure payment guaranteed</span>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </section>
 
-      <!-- Right Side (Product Details) -->
-      <div class="w-full lg:w-1/2 space-y-4 sm:space-y-6">
-        <div class="flex justify-between items-start">
-          <h1 class="text-xl sm:text-2xl md:text-3xl font-bold">2025 Official Home Jersey</h1>
-          <div class="flex gap-2 sm:gap-3 md:gap-4">
-            <!-- Share Icon -->
-            <button class="text-gray-600 hover:text-yellow-400 transition" aria-label="Share">
-              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15 8a3 3 0 100-6 3 3 0 000 6zM4 12a3 3 0 106 0 3 3 0 00-6 0zm11 4a3 3 0 100 6 3 3 0 000-6zM6.59 13.51l10.83 4.98M6.59 10.49l10.83-4.98"/>
-              </svg>
-            </button>
-            <!-- Favorite Icon -->
-            <button class="text-yellow-400 hover:text-yellow-500 transition" aria-label="Add to favorites">
-              <svg class="w-5 h-5 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 20 20">
-                <path d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 18.657l-6.828-6.829a4 4 0 010-5.656z"/>
-              </svg>
-            </button>
+  <!-- Product Details & Description Section -->
+  <section class="bg-white py-12 px-4 sm:px-6" data-aos="fade-up">
+    <div class="max-w-7xl mx-auto">
+      <!-- Tabs -->
+      <div class="border-b border-gray-200 mb-8">
+        <nav class="flex space-x-8" aria-label="Tabs">
+          <button onclick="showTab('description')" id="tab-description" class="product-tab py-2 px-1 border-b-2 border-yellow-400 font-medium text-sm text-yellow-600">
+            Description
+          </button>
+          <button onclick="showTab('details')" id="tab-details" class="product-tab py-2 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Product Details
+          </button>
+          <button onclick="showTab('reviews')" id="tab-reviews" class="product-tab py-2 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Reviews (124)
+          </button>
+          <button onclick="showTab('shipping')" id="tab-shipping" class="product-tab py-2 px-1 border-b-2 border-transparent font-medium text-sm text-gray-500 hover:text-gray-700 hover:border-gray-300">
+            Shipping & Returns
+          </button>
+        </nav>
+      </div>
+
+      <!-- Tab Content -->
+      <div class="tab-content">
+        <!-- Description Tab -->
+        <div id="content-description" class="tab-panel">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold text-[#002B5C] mb-4">About This Jersey</h3>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Step onto the pitch in style with the 2025 Geezerz FC Official Home Jersey. Crafted with cutting-edge technology and designed for peak performance, this jersey represents the heart and soul of our club.
+              </p>
+              <p class="text-gray-700 mb-4 leading-relaxed">
+                Whether you're supporting from the stands or playing on the field, this jersey delivers unmatched comfort and durability. The iconic blue design with yellow accents embodies our club's legacy and fighting spirit.
+              </p>
+              <ul class="list-disc list-inside text-gray-700 space-y-2">
+                <li>Official licensed product</li>
+                <li>Premium moisture-wicking fabric</li>
+                <li>Lightweight and breathable design</li>
+                <li>Classic fit suitable for all body types</li>
+                <li>Machine washable and fade-resistant</li>
+              </ul>
+            </div>
+            <div class="bg-gray-50 p-6 rounded-lg">
+              <h4 class="text-lg font-semibold text-[#002B5C] mb-4">Key Features</h4>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-[#002B5C] font-bold text-sm">1</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-gray-900">Advanced Fabric Technology</h5>
+                    <p class="text-sm text-gray-600">Moisture-wicking polyester blend keeps you dry and comfortable</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-[#002B5C] font-bold text-sm">2</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-gray-900">Authentic Design</h5>
+                    <p class="text-sm text-gray-600">Official club colors and logo with premium embroidered details</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span class="text-[#002B5C] font-bold text-sm">3</span>
+                  </div>
+                  <div>
+                    <h5 class="font-medium text-gray-900">Perfect Fit</h5>
+                    <p class="text-sm text-gray-600">Tailored cut that moves with your body during any activity</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <p class="text-sm sm:text-base text-gray-600">
-          Experience matchday like never before with the 2025 geezerz FC Home
-          Jersey – performance-fit, breathable, and iconic.
-        </p>
-
-        <!-- Sizes -->
-        <div class="space-y-2">
-          <h3 class="font-semibold text-sm sm:text-base">Select Size</h3>
-          <div class="flex flex-wrap gap-2 sm:gap-3">
-            <button class="size-btn border border-gray-400 px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-yellow-400 hover:text-black transition text-sm sm:text-base">
-              S
-            </button>
-            <button class="size-btn border border-gray-400 px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-yellow-400 hover:text-black transition text-sm sm:text-base">
-              M
-            </button>
-            <button class="size-btn border border-gray-400 px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-yellow-400 hover:text-black transition text-sm sm:text-base">
-              L
-            </button>
-            <button class="size-btn border border-gray-400 px-3 py-1 sm:px-4 sm:py-2 rounded hover:bg-yellow-400 hover:text-black transition text-sm sm:text-base">
-              XL
-            </button>
+        <!-- Details Tab -->
+        <div id="content-details" class="tab-panel hidden">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold text-[#002B5C] mb-6">Product Specifications</h3>
+              <div class="space-y-4">
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Material</span>
+                  <span class="text-gray-900">100% Polyester</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Weight</span>
+                  <span class="text-gray-900">180g/m²</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Fit</span>
+                  <span class="text-gray-900">Regular/Classic</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Collar Type</span>
+                  <span class="text-gray-900">Crew Neck</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Sleeve Length</span>
+                  <span class="text-gray-900">Short Sleeve</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Season</span>
+                  <span class="text-gray-900">2025/26</span>
+                </div>
+                <div class="flex justify-between py-2 border-b border-gray-200">
+                  <span class="font-medium text-gray-600">Care Instructions</span>
+                  <span class="text-gray-900">Machine Wash Cold</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-[#002B5C] mb-6">Size Chart</h3>
+              <div class="overflow-x-auto">
+                <table class="min-w-full border border-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Size</th>
+                      <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Chest (inches)</th>
+                      <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Length (inches)</th>
+                    </tr>
+                  </thead>
+                  <tbody class="divide-y divide-gray-200">
+                    <tr>
+                      <td class="px-4 py-2 text-sm text-gray-900 font-medium">S</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">36-38</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">27-28</td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 text-sm text-gray-900 font-medium">M</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">38-40</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">28-29</td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 text-sm text-gray-900 font-medium">L</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">40-42</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">29-30</td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 text-sm text-gray-900 font-medium">XL</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">42-44</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">30-31</td>
+                    </tr>
+                    <tr>
+                      <td class="px-4 py-2 text-sm text-gray-900 font-medium">XXL</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">44-46</td>
+                      <td class="px-4 py-2 text-sm text-gray-600">31-32</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Quantity Selector -->
-        <div class="space-y-2">
-          <h3 class="font-semibold text-sm sm:text-base">Quantity</h3>
-          <div class="flex items-center gap-3 sm:gap-4">
-            <button onclick="updateQty(-1)" class="w-7 h-7 sm:w-9 sm:h-9 border border-gray-400 rounded hover:bg-gray-200" aria-label="Decrease quantity">
-              -
-            </button>
-            <span id="qty" class="text-lg sm:text-xl font-bold">1</span>
-            <button onclick="updateQty(1)" class="w-7 h-7 sm:w-9 sm:h-9 border border-gray-400 rounded hover:bg-gray-200" aria-label="Increase quantity">
-              +
-            </button>
+        <!-- Reviews Tab -->
+        <div id="content-reviews" class="tab-panel hidden">
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="md:col-span-1">
+              <div class="bg-gray-50 p-6 rounded-lg text-center">
+                <div class="text-4xl font-bold text-[#002B5C] mb-2">4.8</div>
+                <div class="flex justify-center text-yellow-400 mb-2">
+                  ★★★★★
+                </div>
+                <div class="text-gray-600">Based on 124 reviews</div>
+              </div>
+              <div class="mt-6 space-y-2">
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">5★</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 85%"></div>
+                  </div>
+                  <span class="text-sm text-gray-600">85%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">4★</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 12%"></div>
+                  </div>
+                  <span class="text-sm text-gray-600">12%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">3★</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 2%"></div>
+                  </div>
+                  <span class="text-sm text-gray-600">2%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">2★</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 1%"></div>
+                  </div>
+                  <span class="text-sm text-gray-600">1%</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">1★</span>
+                  <div class="flex-1 bg-gray-200 rounded-full h-2">
+                    <div class="bg-yellow-400 h-2 rounded-full" style="width: 0%"></div>
+                  </div>
+                  <span class="text-sm text-gray-600">0%</span>
+                </div>
+              </div>
+            </div>
+            <div class="md:col-span-2 space-y-6">
+              <!-- Review 1 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <div class="flex text-yellow-400">★★★★★</div>
+                    <div class="font-medium text-gray-900">Amazing quality!</div>
+                  </div>
+                  <div class="text-sm text-gray-500">2 weeks ago</div>
+                </div>
+                <p class="text-gray-700 mb-2">
+                  "Absolutely love this jersey! The fabric is incredibly comfortable and breathable. Perfect for match days and casual wear. The fit is spot on and the colors are vibrant."
+                </p>
+                <div class="text-sm text-gray-600">by James M. - Verified Purchase</div>
+              </div>
+              
+              <!-- Review 2 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <div class="flex text-yellow-400">★★★★★</div>
+                    <div class="font-medium text-gray-900">Great value for money</div>
+                  </div>
+                  <div class="text-sm text-gray-500">1 month ago</div>
+                </div>
+                <p class="text-gray-700 mb-2">
+                  "Fast delivery and excellent packaging. The jersey exceeded my expectations. Material feels premium and the official licensing is a nice touch."
+                </p>
+                <div class="text-sm text-gray-600">by Sarah L. - Verified Purchase</div>
+              </div>
+              
+              <!-- Review 3 -->
+              <div class="border-b border-gray-200 pb-6">
+                <div class="flex items-start justify-between mb-2">
+                  <div>
+                    <div class="flex text-yellow-400">★★★★☆</div>
+                    <div class="font-medium text-gray-900">Good but runs slightly large</div>
+                  </div>
+                  <div class="text-sm text-gray-500">3 weeks ago</div>
+                </div>
+                <p class="text-gray-700 mb-2">
+                  "Quality is good overall. Just note that it runs a bit large, so consider sizing down. Otherwise, very happy with the purchase!"
+                </p>
+                <div class="text-sm text-gray-600">by Mike R. - Verified Purchase</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Price -->
-        <div id="price" class="text-xl sm:text-2xl font-bold text-yellow-500">
-          $89.99
+        <!-- Shipping Tab -->
+        <div id="content-shipping" class="tab-panel hidden">
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <h3 class="text-2xl font-bold text-[#002B5C] mb-6">Shipping Information</h3>
+              <div class="space-y-4">
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">🚚 Standard Shipping (Free)</h4>
+                  <p class="text-gray-600 text-sm">5-7 business days</p>
+                  <p class="text-gray-600 text-sm">Orders over $75</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">⚡ Express Shipping</h4>
+                  <p class="text-gray-600 text-sm">2-3 business days - $9.99</p>
+                  <p class="text-gray-600 text-sm">Next day available for $19.99</p>
+                </div>
+                <div class="border border-gray-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-gray-900 mb-2">🌍 International Shipping</h4>
+                  <p class="text-gray-600 text-sm">7-14 business days</p>
+                  <p class="text-gray-600 text-sm">Rates calculated at checkout</p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 class="text-2xl font-bold text-[#002B5C] mb-6">Returns & Exchanges</h3>
+              <div class="space-y-4">
+                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                  <h4 class="font-semibold text-green-800 mb-2">30-Day Return Policy</h4>
+                  <p class="text-green-700 text-sm">Free returns on all orders</p>
+                </div>
+                <ul class="space-y-2 text-gray-700">
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500 mt-1">✓</span>
+                    <span class="text-sm">Items must be in original condition with tags</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500 mt-1">✓</span>
+                    <span class="text-sm">Free return shipping label included</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500 mt-1">✓</span>
+                    <span class="text-sm">Refunds processed within 5-7 business days</span>
+                  </li>
+                  <li class="flex items-start gap-2">
+                    <span class="text-green-500 mt-1">✓</span>
+                    <span class="text-sm">Size exchanges available anytime</span>
+                  </li>
+                </ul>
+                <div class="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <h5 class="font-medium text-yellow-800 mb-1">Need help with sizing?</h5>
+                  <p class="text-yellow-700 text-sm">Contact our customer service team for personalized size recommendations.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <!-- Add to Cart Button -->
-        <button class="bg-yellow-400 text-[#002B5C] font-bold px-4 py-2 sm:px-6 sm:py-3 rounded hover:bg-yellow-500 transition flex items-center justify-center gap-2 w-full sm:w-auto text-sm sm:text-base">
-          <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
-          </svg>
-          Add to Cart
-        </button>
       </div>
     </div>
   </section>
 
   <!-- Related Products Section -->
-  <section class="bg-[#0a2640] text-white py-12 px-4 sm:px-6">
+  <section class="bg-[#0a2640] text-white py-16 px-4 sm:px-6" data-aos="fade-up">
     <div class="max-w-7xl mx-auto">
-      <h2 class="text-3xl sm:text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-8 sm:mb-10">
+      <h2 class="text-3xl sm:text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10 sm:mb-12">
         Related Products
       </h2>
 
-      <div class="grid gap-6 sm:gap-8 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div class="grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         <!-- Product 1 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <a href="product.html">
-            <img src="../assets/images/players/player1.png" alt="Away Jersey" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl card-hover group">
+          <a href="product.html" class="block">
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player1.png" alt="Away Jersey" class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+              <div class="absolute top-3 right-3 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                Sale
+              </div>
+            </div>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition">
+          <div class="p-4 sm:p-5">
+            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition-colors duration-300 mb-2">
               Away Jersey
             </h3>
             <p class="text-sm text-gray-300 mt-1 mb-3">
               White & Gold Edition
             </p>
+            <div class="flex items-center mb-3">
+              <div class="flex text-yellow-400 text-sm">
+                ★★★★☆
+              </div>
+              <span class="text-xs text-gray-400 ml-2">(4.2)</span>
+            </div>
             <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$89.99</span>
-              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition text-sm">
+              <div class="flex items-center gap-2">
+                <span class="text-gray-400 text-sm line-through">$119.99</span>
+                <span class="text-yellow-400 font-bold text-lg">$89.99</span>
+              </div>
+              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-4 py-2 rounded-lg hover:bg-yellow-300 button-hover transition text-sm">
                 View
               </a>
             </div>
@@ -282,20 +848,29 @@
         </div>
 
         <!-- Product 2 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <a href="product.html">
-            <img src="../assets/images/players/player3.png" alt="Baseball Cap" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl card-hover group">
+          <a href="product.html" class="block">
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player3.png" alt="Baseball Cap" class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition">
+          <div class="p-4 sm:p-5">
+            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition-colors duration-300 mb-2">
               Baseball Cap
             </h3>
             <p class="text-sm text-gray-300 mt-1 mb-3">
               Embroidered logo
             </p>
+            <div class="flex items-center mb-3">
+              <div class="flex text-yellow-400 text-sm">
+                ★★★★★
+              </div>
+              <span class="text-xs text-gray-400 ml-2">(4.9)</span>
+            </div>
             <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$24.99</span>
-              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition text-sm">
+              <span class="text-yellow-400 font-bold text-lg">$24.99</span>
+              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-4 py-2 rounded-lg hover:bg-yellow-300 button-hover transition text-sm">
                 View
               </a>
             </div>
@@ -303,20 +878,32 @@
         </div>
 
         <!-- Product 3 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <a href="product.html">
-            <img src="../assets/images/players/player1.png" alt="Scarf" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl card-hover group">
+          <a href="product.html" class="block">
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player2.png" alt="Scarf" class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+              <div class="absolute top-3 right-3 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-bold">
+                New
+              </div>
+            </div>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition">
+          <div class="p-4 sm:p-5">
+            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition-colors duration-300 mb-2">
               Supporter Scarf
             </h3>
             <p class="text-sm text-gray-300 mt-1 mb-3">
               Warm & spirited
             </p>
+            <div class="flex items-center mb-3">
+              <div class="flex text-yellow-400 text-sm">
+                ★★★★☆
+              </div>
+              <span class="text-xs text-gray-400 ml-2">(4.1)</span>
+            </div>
             <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$19.99</span>
-              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition text-sm">
+              <span class="text-yellow-400 font-bold text-lg">$19.99</span>
+              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-4 py-2 rounded-lg hover:bg-yellow-300 button-hover transition text-sm">
                 View
               </a>
             </div>
@@ -324,20 +911,29 @@
         </div>
 
         <!-- Product 4 -->
-        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-md hover:shadow-lg transition group">
-          <a href="product.html">
-            <img src="../assets/images/players/player3.png" alt="Training Kit" class="w-full h-48 sm:h-56 object-cover group-hover:scale-105 transition-transform duration-300" />
+        <div class="bg-[#022e55] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl card-hover group">
+          <a href="product.html" class="block">
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/hero.png" alt="Training Kit" class="w-full h-48 sm:h-56 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
           </a>
-          <div class="p-4">
-            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition">
+          <div class="p-4 sm:p-5">
+            <h3 class="text-lg sm:text-xl font-bold group-hover:text-yellow-400 transition-colors duration-300 mb-2">
               Training Kit
             </h3>
             <p class="text-sm text-gray-300 mt-1 mb-3">
               Performance fabric
             </p>
+            <div class="flex items-center mb-3">
+              <div class="flex text-yellow-400 text-sm">
+                ★★★★★
+              </div>
+              <span class="text-xs text-gray-400 ml-2">(4.7)</span>
+            </div>
             <div class="flex justify-between items-center">
-              <span class="text-yellow-400 font-semibold">$59.99</span>
-              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-3 py-1 rounded hover:bg-yellow-300 transition text-sm">
+              <span class="text-yellow-400 font-bold text-lg">$59.99</span>
+              <a href="product.html" class="bg-yellow-400 text-[#002B5C] font-bold px-4 py-2 rounded-lg hover:bg-yellow-300 button-hover transition text-sm">
                 View
               </a>
             </div>
@@ -345,8 +941,8 @@
         </div>
       </div>
 
-      <div class="mt-10 text-center">
-        <a href="./store/products.html" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded hover:bg-yellow-300 transition">
+      <div class="mt-12 text-center">
+        <a href="products.html" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded-lg hover:bg-yellow-300 button-hover transition text-lg">
           Visit Full Store
         </a>
       </div>
@@ -357,8 +953,8 @@
   <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
-        <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4" />
-        <p class="text-sm text-gray-400">
+        <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4 transition-transform duration-300 hover:scale-110" />
+        <p class="text-sm text-gray-400 leading-relaxed">
           geezerz FC – Passion. Power. Pride. <br />
           United by football. Driven by legacy.
         </p>
@@ -367,37 +963,46 @@
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
         <ul class="space-y-2 text-sm text-gray-300">
-          <li><a href="#squad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
-          <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
-          <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
-          <li><a href="home/contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
+          <li><a href="#squad" class="hover:text-yellow-400 transition-colors duration-300">Meet the Squad</a></li>
+          <li><a href="#store" class="hover:text-yellow-400 transition-colors duration-300">Merch Store</a></li>
+          <li><a href="#gallery" class="hover:text-yellow-400 transition-colors duration-300">Fan Gallery</a></li>
+          <li><a href="../home/contact-us.html" class="hover:text-yellow-400 transition-colors duration-300">Contact Us</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
         <ul class="space-y-2 text-sm text-gray-300">
-          <li>📍1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</li>
-          <li>📞 +234 706 583 2821</li>
-          <li>✉️ contact@geezerzfc.com</li>
-          <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+          <li class="flex items-start gap-2">
+            <span>📍</span>
+            <span>1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</span>
+          </li>
+          <li class="flex items-center gap-2">
+            <span>📞</span>
+            <a href="tel:+2347065832821" class="hover:text-yellow-400 transition-colors duration-300">+234 706 583 2821</a>
+          </li>
+          <li class="flex items-center gap-2">
+            <span>✉️</span>
+            <a href="mailto:contact@geezerzfc.com" class="hover:text-yellow-400 transition-colors duration-300">contact@geezerzfc.com</a>
+          </li>
+          <li><a href="#" class="hover:text-yellow-400 transition-colors duration-300">Privacy Policy</a></li>
         </ul>
       </div>
 
       <div>
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
         <div class="flex space-x-4 text-white">
-          <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
+          <a href="#" class="hover:text-yellow-400 transition-all duration-300 p-2 rounded-full hover:bg-yellow-400 hover:bg-opacity-10" aria-label="Facebook">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
               <path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/>
             </svg>
           </a>
-          <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
+          <a href="#" class="hover:text-yellow-400 transition-all duration-300 p-2 rounded-full hover:bg-yellow-400 hover:bg-opacity-10" aria-label="Twitter">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
               <path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/>
             </svg>
           </a>
-          <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
+          <a href="#" class="hover:text-yellow-400 transition-all duration-300 p-2 rounded-full hover:bg-yellow-400 hover:bg-opacity-10" aria-label="Instagram">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24">
               <path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/>
             </svg>
@@ -411,10 +1016,154 @@
     </div>
   </footer>
 
+  <!-- AOS Library JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
+
+    // Toggle dropdown visibility
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      const button = menu.previousElementSibling.querySelector('svg');
+      
+      menu.classList.toggle('hidden');
+      button.style.transform = menu.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    // Change language when a dropdown option is selected
+    function changeLanguage(langCode, countryCode) {
+      const button = document.querySelector('.relative button');
+      const img = button.querySelector('img');
+      const text = button.querySelector('span') || document.createElement('span');
+
+      img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${countryCode}.svg`;
+      img.alt = countryCode;
+
+      const shortCodes = {
+        en: 'ENG',
+        fr: 'FRE',
+        pt: 'POR',
+        es: 'ESP',
+        ru: 'RUS',
+        'zh-CN': 'CHI'
+      };
+      text.textContent = shortCodes[langCode] || 'LANG';
+
+      if (!button.querySelector('span')) button.appendChild(text);
+
+      // Trigger Google Translate
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Close dropdown
+      toggleDropdown();
+    }
+
     // Product Detail Functions
     function changeMainImage(src) {
-      document.getElementById('mainImage').src = src;
+      const mainImage = document.getElementById('mainImage');
+      const videoContainer = document.getElementById('videoContainer');
+      
+      // Hide video and show image
+      videoContainer.classList.add('hidden');
+      mainImage.classList.remove('hidden');
+      
+      mainImage.style.opacity = '0.7';
+      
+      setTimeout(() => {
+        mainImage.src = src;
+        mainImage.style.opacity = '1';
+      }, 150);
+
+      // Update thumbnail borders
+      document.querySelectorAll('.thumbnail-hover img').forEach(img => {
+        img.classList.remove('border-yellow-400', 'ring-2', 'ring-yellow-400');
+        img.classList.add('border-gray-200');
+      });
+      
+      // Also reset video thumbnail
+      document.querySelector('.thumbnail-hover > div').classList.remove('border-yellow-400', 'ring-2', 'ring-yellow-400');
+      document.querySelector('.thumbnail-hover > div').classList.add('border-gray-200');
+      
+      // Highlight selected thumbnail
+      event.target.classList.remove('border-gray-200');
+      event.target.classList.add('border-yellow-400', 'ring-2', 'ring-yellow-400');
+    }
+
+    function showVideo() {
+      const mainImage = document.getElementById('mainImage');
+      const videoContainer = document.getElementById('videoContainer');
+      const video = document.getElementById('productVideo');
+      
+      // Hide image and show video
+      mainImage.classList.add('hidden');
+      videoContainer.classList.remove('hidden');
+      
+      // Auto play video
+      video.play();
+      
+      // Update thumbnail borders
+      document.querySelectorAll('.thumbnail-hover img').forEach(img => {
+        img.classList.remove('border-yellow-400', 'ring-2', 'ring-yellow-400');
+        img.classList.add('border-gray-200');
+      });
+      
+      // Highlight video thumbnail
+      event.target.closest('.thumbnail-hover').querySelector('div').classList.remove('border-gray-200');
+      event.target.closest('.thumbnail-hover').querySelector('div').classList.add('border-yellow-400', 'ring-2', 'ring-yellow-400');
+    }
+
+    function hideVideo() {
+      const mainImage = document.getElementById('mainImage');
+      const videoContainer = document.getElementById('videoContainer');
+      const video = document.getElementById('productVideo');
+      
+      // Show image and hide video
+      videoContainer.classList.add('hidden');
+      mainImage.classList.remove('hidden');
+      
+      // Pause video
+      video.pause();
+      
+      // Reset to first thumbnail
+      document.querySelectorAll('.thumbnail-hover img, .thumbnail-hover > div').forEach(element => {
+        element.classList.remove('border-yellow-400', 'ring-2', 'ring-yellow-400');
+        element.classList.add('border-gray-200');
+      });
+      
+      document.querySelector('.thumbnail-hover img').classList.remove('border-gray-200');
+      document.querySelector('.thumbnail-hover img').classList.add('border-yellow-400', 'ring-2', 'ring-yellow-400');
+    }
+
+    // Tab functionality
+    function showTab(tabName) {
+      // Hide all tab panels
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+      
+      // Remove active state from all tabs
+      document.querySelectorAll('.product-tab').forEach(tab => {
+        tab.classList.remove('border-yellow-400', 'text-yellow-600');
+        tab.classList.add('border-transparent', 'text-gray-500');
+      });
+      
+      // Show selected tab panel
+      document.getElementById(`content-${tabName}`).classList.remove('hidden');
+      
+      // Add active state to selected tab
+      const activeTab = document.getElementById(`tab-${tabName}`);
+      activeTab.classList.remove('border-transparent', 'text-gray-500');
+      activeTab.classList.add('border-yellow-400', 'text-yellow-600');
     }
 
     function updateQty(change) {
@@ -425,20 +1174,72 @@
 
       qty += change;
       if (qty < 1) qty = 1;
+      if (qty > 10) qty = 10; // Max quantity limit
 
       qtyEl.innerText = qty;
-      priceEl.innerText = `$${(basePrice * qty).toFixed(2)}`;
+      priceEl.innerHTML = `$${(basePrice * qty).toFixed(2)}`;
+
+      // Add visual feedback
+      qtyEl.style.transform = 'scale(1.1)';
+      setTimeout(() => {
+        qtyEl.style.transform = 'scale(1)';
+      }, 200);
     }
 
-    // Size Selection
+    // Mobile menu functionality
     document.addEventListener('DOMContentLoaded', function() {
+      const hamburger = document.getElementById('hamburger');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const closeBtn = document.getElementById('closeBtn');
+
+      function toggleMobileMenu() {
+        mobileMenu.classList.toggle('translate-x-full');
+        hamburger.style.transform = mobileMenu.classList.contains('translate-x-full') ? 'rotate(0deg)' : 'rotate(90deg)';
+      }
+
+      hamburger.addEventListener('click', toggleMobileMenu);
+      closeBtn.addEventListener('click', toggleMobileMenu);
+
+      // Close mobile menu when clicking outside
+      mobileMenu.addEventListener('click', (e) => {
+        if (e.target === mobileMenu) {
+          toggleMobileMenu();
+        }
+      });
+
+      // Size Selection with enhanced feedback
       const sizeBtns = document.querySelectorAll('.size-btn');
       sizeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-          sizeBtns.forEach(b => 
-            b.classList.remove('bg-yellow-400', 'text-black')
-          );
-          btn.classList.add('bg-yellow-400', 'text-black');
+          // Remove active class from all buttons
+          sizeBtns.forEach(b => {
+            b.classList.remove('active', 'bg-yellow-400', 'text-[#002B5C]', 'border-yellow-400');
+            b.classList.add('border-gray-300');
+          });
+          
+          // Add active class to clicked button
+          btn.classList.add('active', 'bg-yellow-400', 'text-[#002B5C]', 'border-yellow-400');
+          btn.classList.remove('border-gray-300');
+          
+          // Add ripple effect
+          const ripple = document.createElement('span');
+          ripple.className = 'absolute inset-0 bg-white bg-opacity-30 rounded-lg animate-ping';
+          btn.style.position = 'relative';
+          btn.appendChild(ripple);
+          
+          setTimeout(() => {
+            if (ripple.parentNode) {
+              ripple.parentNode.removeChild(ripple);
+            }
+          }, 600);
+        });
+        
+        // Add keyboard support
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            btn.click();
+          }
         });
       });
 
@@ -447,10 +1248,31 @@
         sizeBtns[0].click();
       }
 
+      // Thumbnail keyboard navigation
+      document.querySelectorAll('.thumbnail-hover img').forEach((img, index) => {
+        img.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            changeMainImage(img.src);
+          }
+        });
+      });
+
       // Set current year in footer
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const dropdown = document.getElementById('dropdown-menu');
+        const button = dropdown.previousElementSibling;
+        
+        if (!button.contains(event.target) && !dropdown.contains(event.target)) {
+          dropdown.classList.add('hidden');
+          button.querySelector('svg').style.transform = 'rotate(0deg)';
+        }
+      });
     });
   </script>
- <script src="../assets/js/hero.js"></script>
+  <script src="../assets/js/hero.js"></script>
 </body>
 </html>
