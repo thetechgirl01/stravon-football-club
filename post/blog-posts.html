@@ -5,115 +5,207 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="../input.css">
-    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png">
    
-  <title>geezerz FC | Blog </title>
+  <title>geezerz FC | Latest News & Stories</title>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Google Translate Script -->
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      includedLanguages: 'en,zh-CN,fr,es',
-      layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
-      autoDisplay: false
-    }, 'google_translate_element');
-    
-    // Completely hide the Google Translate widget
-    var googleTranslateElement = document.getElementById('google_translate_element');
-    if (googleTranslateElement) {
-      googleTranslateElement.style.display = 'none';
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,fr,pt,es,ru',
+        layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
+        autoDisplay: false
+      }, 'google_translate_element');
+      
+      var googleTranslateElement = document.getElementById('google_translate_element');
+      if (googleTranslateElement) {
+        googleTranslateElement.style.display = 'none';
+      }
     }
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  </script>
+  <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
   
-  <!-- Animate.css for smooth animations -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS Library CSS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   
   <style>
-    .filter-btn.active {
-      background-color: #facc15 !important;
-      color: #002B5C !important;
+    /* Hero Slider Styles */
+    .hero-slider {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
     }
     
-    /* Custom animations */
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
     }
     
-    .fade-in-up {
-      animation: fadeInUp 0.6s ease-out forwards;
+    .slide.active {
+      opacity: 1;
     }
     
-    .delay-100 {
-      animation-delay: 0.1s;
+    .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 43, 92, 0.8) 0%, rgba(1, 30, 60, 0.6) 100%);
     }
     
-    .delay-200 {
-      animation-delay: 0.2s;
+    /* Slider Indicators */
+    .slider-indicators {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+      z-index: 20;
     }
     
-    .delay-300 {
-      animation-delay: 0.3s;
-    }
-    
-    /* Smooth transitions */
-    .transition-slow {
-      transition: all 0.5s ease;
-    }
-    
-    .transition-medium {
+    .indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
       transition: all 0.3s ease;
     }
     
-    .transition-fast {
-      transition: all 0.2s ease;
+    .indicator.active,
+    .indicator:hover {
+      background: #FFD100;
+      transform: scale(1.2);
     }
     
-    /* Hover effects */
-    .hover-scale {
-      transition: transform 0.3s ease;
+    /* Category Filter Styles */
+    .category-filter {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
     
-    .hover-scale:hover {
-      transform: scale(1.03);
+    .filter-btn {
+      transition: all 0.3s ease;
+      border-radius: 25px;
+      padding: 0.5rem 1.5rem;
+      border: 2px solid transparent;
     }
     
-    .hover-glow:hover {
-      box-shadow: 0 0 15px rgba(250, 204, 21, 0.5);
+    .filter-btn:hover {
+      background-color: rgba(255, 209, 0, 0.1);
+      border-color: #FFD100;
+      transform: translateY(-2px);
     }
     
-    /* Responsive adjustments */
+    .filter-btn.active {
+      background-color: #FFD100 !important;
+      color: #002B5C !important;
+      border-color: #FFD100;
+    }
+    
+    /* Card Hover Effects */
+    .blog-card {
+      transition: all 0.4s ease;
+      background: linear-gradient(145deg, #022e55, #001d3f);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .blog-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 209, 0, 0.3);
+    }
+    
+    .blog-card:hover .card-image {
+      transform: scale(1.05);
+    }
+    
+    .card-image {
+      transition: transform 0.4s ease;
+    }
+    
+    /* Trending Section */
+    .trending-card {
+      background: linear-gradient(135deg, rgba(255, 209, 0, 0.1), rgba(0, 43, 92, 0.1));
+      border: 1px solid rgba(255, 209, 0, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .trending-card:hover {
+      background: linear-gradient(135deg, rgba(255, 209, 0, 0.2), rgba(0, 43, 92, 0.2));
+      border-color: #FFD100;
+      transform: scale(1.02);
+    }
+    
+    /* Featured Story Animation */
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.8; }
+    }
+    
+    .featured-badge {
+      animation: pulse 2s infinite;
+    }
+    
+    /* Mobile Optimizations */
     @media (max-width: 768px) {
+      .hero-slider {
+        height: 60vh;
+      }
+      
       .hero-title {
-        font-size: 2.5rem;
+        font-size: 1.75rem;
+        line-height: 1.2;
       }
       
       .hero-subtitle {
-        font-size: 1rem;
+        font-size: 0.875rem;
       }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    ::-webkit-scrollbar-track {
+      background: #001d3f;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      background: #FFD100;
+      border-radius: 4px;
+    }
+    
+    ::-webkit-scrollbar-thumb:hover {
+      background: #e6b800;
     }
   </style>
 </head>
-<body class="bg-[#011e3c] text-white font-sans">
+<body class="bg-gray-100"">
 
 
-      <!-- sponsor / lang / register and sign in -->
+  <!-- sponsor / lang / register and sign in -->
   <div>
     <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-0">
-
       <!-- LEFT: Sign in / Register / Language Dropdown -->
       <div class="left-nav-contents flex items-center gap-4 relative">
-        
         <!-- Hidden Google Translate Element -->
         <div id="google_translate_element"></div>
 
@@ -126,23 +218,29 @@
               <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
             </svg>
           </button>
-          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
+
+          <ul id="dropdown-menu" class="hidden absolute top-32 left-0 bg-white border border-gray-200 rounded-md shadow-md w-48 z-50">
+            <li onclick="changeLanguage('en', 'gb')" class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK" /> English (ENG)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+            <li onclick="changeLanguage('fr', 'fr')" class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France" /> French (FRE)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+            <li onclick="changeLanguage('pt', 'br')" class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/br.svg" class="h-4 w-auto" alt="Brazil" /> Portuguese (POR)
             </li>
-            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
-              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+            <li onclick="changeLanguage('es', 'es')" class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain" /> Spanish (ESP)
+            </li>
+            <li onclick="changeLanguage('ru', 'ru')" class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/ru.svg" class="h-4 w-auto" alt="Russia" /> Russian (RUS)
             </li>
           </ul>
         </div>
 
-     </div>
+        <button class="text-[#002B5C] font-medium hover:underline"><a href="../auth/login.html">Sign In</a></button>
+        <button class="bg-[#002B5C] text-white px-4 py-0 h-8 my-1 rounded-md hover:bg-[#001d3f] transition"><a href="../auth/register.html">Register</a></button>
+      </div>
 
       <!-- RIGHT: Logo Carousel -->
       <div class="w-[360px] overflow-hidden">
@@ -165,135 +263,485 @@
         </div>
       </div>
     </div>
-    </div>
+  </div>
 
-<nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+  <nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
-        <!-- Desktop Menu Left -->
-        <div class="hidden md:flex space-x-6">
-            <a href="../post/blog-posts.html"  >Latest News</a>
-            <a href="../store/products.html"  >Store</a>
-            <a href="../home/fixtures.html"  >Fixtures</a>
-        </div>
+      <!-- Desktop Menu Left -->
+      <div class="hidden md:flex space-x-6">
+        <a href="../post/blog-posts.html" class="hover:text-yellow-400 transition">Latest News</a>
+        <a href="../store/products.html" class="hover:text-yellow-400 transition">Store</a>
+        <a href="../home/fixtures.html" class="hover:text-yellow-400 transition">Fixtures</a>
+      </div>
 
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-            <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
-        </div>
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <a href="../index.html">
+          <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+        </a>
+      </div>
 
-        <!-- Desktop Menu Right -->
-        <div class="hidden md:flex space-x-6">
-            <a href=""  >Tickets & Hospitality</a>
-            <a href="#"  >Fans</a>
-            <a href="../home/players.html"  >Players</a>
-             <button class="">
-           
-  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
-  </svg>
-</button>
+      <!-- Desktop Menu Right -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-yellow-400 transition">Tickets & Hospitality</a>
+        <a href="#" class="hover:text-yellow-400 transition">Fans</a>
+        <a href="../home/players.html" class="hover:text-yellow-400 transition">Players</a>
+        <button class="hover:text-yellow-400 transition">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+          </svg>
+        </button>
+      </div>
 
-            
-        </div>
-
-        <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
-            <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
-        </div>
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
+      </div>
     </div>
 
     <!-- Mobile Menu -->
     <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 transition-all duration-300 transform translate-x-full">
-        <div class="absolute top-4 right-4">
-            <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
-        </div>
-        <div class="h-full flex flex-col items-center justify-center space-y-8">
-            <a href="./post/blog-posts.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Latest News</a>
-           
-            <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
-            <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
-            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
-            <a href="" class="text-2xl text-white hover:text-FFD100 transition-colors">Fans</a>
-            <a href="../home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>
-
-        </div>
+      <div class="absolute top-4 right-4">
+        <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
+      </div>
+      <div class="h-full flex flex-col items-center justify-center space-y-8">
+        <a href="../post/blog-posts.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Latest News</a>
+        <a href="../store/products.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Store</a>
+        <a href="../home/fixtures.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Fixtures</a>
+        <a href="#" class="text-2xl text-white hover:text-yellow-400 transition-colors">Tickets & Hospitality</a>
+        <a href="#" class="text-2xl text-white hover:text-yellow-400 transition-colors">Fans</a>
+        <a href="../home/players.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Players</a>
+      </div>
     </div>
-</nav>
+  </nav>
 
-  <!-- SECTION 1: Match Reports Feature -->
-<section class="latest-news bg-white text-white py-16 px-6">
-  <div class="max-w-7xl mx-auto">
-    <!-- Section Title -->
-    <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-10 text-gray-500">Latest News</h2>
+  <!-- Hero Section with Featured Stories Slider -->
+  <section class="hero-slider relative">
+    <!-- Slide 1 -->
+    <div class="slide active" style="background-image: url('../assets/images/hero.png');">
+      <div class="slide-overlay"></div>
+      <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+          <div class="inline-flex items-center bg-yellow-400 text-[#002B5C] px-4 py-2 rounded-full text-sm font-bold mb-6 featured-badge">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/>
+            </svg>
+            FEATURED STORY
+          </div>
+          <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4">Club World Cup Diary: Reece James Returns</h1>
+          <p class="hero-subtitle text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">After months of recovery, our captain is back and ready to lead the team to glory in the biggest tournament of the year.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition transform hover:scale-105">
+              Read Full Story
+            </button>
+            <button class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-[#002B5C] transition">
+              Watch Highlights
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div id="newsGrid" class="grid grid-cols-1 lg:grid-cols-3 gap-8"></div>
+    <!-- Slide 2 -->
+    <div class="slide" style="background-image: url('../assets/images/pitch.png');">
+      <div class="slide-overlay"></div>
+      <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+          <div class="inline-flex items-center bg-red-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+              <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+            </svg>
+            BREAKING NEWS
+          </div>
+          <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4">New Stadium Expansion Approved</h1>
+          <p class="hero-subtitle text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Construction begins next season to expand capacity to 60,000 seats, making it one of the largest stadiums in the league.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition transform hover:scale-105">
+              Read More
+            </button>
+            <button class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-[#002B5C] transition">
+              View Plans
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-   
-  </div>
-</section>
+    <!-- Slide 3 -->
+    <div class="slide" style="background-image: url('../assets/images/players/player1.png');">
+      <div class="slide-overlay"></div>
+      <div class="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
+        <div class="max-w-4xl mx-auto" data-aos="fade-up">
+          <div class="inline-flex items-center bg-green-500 text-white px-4 py-2 rounded-full text-sm font-bold mb-6">
+            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+            </svg>
+            PLAYER UPDATE
+          </div>
+          <h1 class="hero-title text-4xl md:text-6xl font-bold mb-4">Young Star Signs Contract Extension</h1>
+          <p class="hero-subtitle text-lg md:text-xl text-gray-200 mb-8 max-w-2xl mx-auto">Our promising midfielder commits his future to the club with a 5-year deal, marking a new era of talent development.</p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <button class="bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition transform hover:scale-105">
+              Read Interview
+            </button>
+            <button class="border-2 border-white text-white font-bold px-8 py-3 rounded-full hover:bg-white hover:text-[#002B5C] transition">
+              Player Profile
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <!-- Slider Indicators -->
+    <div class="slider-indicators">
+      <div class="indicator active" onclick="currentSlide(1)"></div>
+      <div class="indicator" onclick="currentSlide(2)"></div>
+      <div class="indicator" onclick="currentSlide(3)"></div>
+    </div>
+  </section>
 
+  <!-- Category Filter Section -->
+  <section class="bg-[#011e3c] py-8 px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="category-filter rounded-xl p-6">
+        <div class="flex flex-wrap justify-center gap-4">
+          <button class="filter-btn text-white hover:text-[#002B5C] active" data-category="all">
+            All Stories
+          </button>
+          <button class="filter-btn text-white hover:text-[#002B5C]" data-category="match-reports">
+            Match Reports
+          </button>
+          <button class="filter-btn text-white hover:text-[#002B5C]" data-category="player-news">
+            Player News
+          </button>
+          <button class="filter-btn text-white hover:text-[#002B5C]" data-category="club-news">
+            Club Updates
+          </button>
+          <button class="filter-btn text-white hover:text-[#002B5C]" data-category="transfer">
+            Transfers
+          </button>
+          <button class="filter-btn text-white hover:text-[#002B5C]" data-category="academy">
+            Academy
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- SECTION 2: Injury Updates -->
-  <section class="bg-gray-50 px-6 py-16 md:py-24">
-    <div class="max-w-7xl mx-auto grid lg:grid-cols-3 gap-8 md:gap-10">
-      <!-- Big Left Card -->
-      <div class="lg:col-span-2 fade-in-up">
-        <h2 class="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-[#022e55]">Injury Update</h2>
-        <div class="bg-white rounded-xl shadow overflow-hidden hover-glow transition-slow">
-          <img src="../assets/images/players/player1.png" 
-               class="w-full h-64 md:h-80 object-cover transition-transform duration-500 hover:scale-105" 
-               alt="Injury update image" />
+  <!-- Latest Stories Grid Section -->
+  <section class="bg-[#011e3c] text-white py-16 px-6">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="text-4xl font-bold border-l-4 border-yellow-400 pl-4 mb-12" data-aos="fade-right">Latest Stories</h2>
+      
+      <div id="storiesGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Story Card 1 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100" data-category="match-reports">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/players/player1.png" alt="Match Report" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-blue-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Match Report</span>
+            </div>
+          </div>
           <div class="p-6">
-            <span class="bg-red-500 text-white text-xs font-bold uppercase px-2 py-1 rounded inline-block mb-2">
-              Injury Update
-            </span>
-            <h3 class="text-xl md:text-2xl font-bold mt-2 text-gray-500">Injury Woes for Key Striker</h3>
-            <p class="text-gray-500 text-sm md:text-base">Hamstring injury confirmed. - June 3, 2025</p>
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              July 5, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">Thrilling 3-2 Victory Against City Rivals</h3>
+            <p class="text-gray-300 text-sm mb-4">A dramatic comeback in the final 20 minutes secured three crucial points in the local derby match...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                5 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story Card 2 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="200" data-category="player-news">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/players/player2.png" alt="Player News" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-green-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Player News</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              July 4, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">Midfielder Receives National Team Call-Up</h3>
+            <p class="text-gray-300 text-sm mb-4">Recognition for outstanding performances this season as our star player joins the national squad...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                3 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story Card 3 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="300" data-category="transfer">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/players/player3.png" alt="Transfer News" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-red-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Transfer</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              July 3, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">Summer Transfer Window Opens</h3>
+            <p class="text-gray-300 text-sm mb-4">Latest updates on potential signings and departures as the transfer window officially begins...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                4 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story Card 4 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="400" data-category="club-news">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/hero2.png" alt="Club News" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-purple-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Club News</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              July 2, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">New Training Facility Unveiled</h3>
+            <p class="text-gray-300 text-sm mb-4">State-of-the-art facilities designed to enhance player development and performance...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                6 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story Card 5 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="500" data-category="academy">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/players/herog.png" alt="Academy News" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-orange-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Academy</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              July 1, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">Youth Team Wins Championship</h3>
+            <p class="text-gray-300 text-sm mb-4">Our U-18 team claims the regional championship title in a spectacular final performance...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                4 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Story Card 6 -->
+        <article class="blog-card rounded-xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="600" data-category="match-reports">
+          <div class="relative overflow-hidden">
+            <img src="../assets/images/pitch.png" alt="Match Analysis" class="card-image w-full h-48 object-cover">
+            <div class="absolute top-4 left-4">
+              <span class="bg-blue-500 text-white text-xs font-bold uppercase px-3 py-1 rounded-full">Analysis</span>
+            </div>
+          </div>
+          <div class="p-6">
+            <div class="flex items-center text-gray-400 text-sm mb-3">
+              <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/>
+              </svg>
+              June 30, 2025
+            </div>
+            <h3 class="text-xl font-bold mb-3 hover:text-yellow-400 transition cursor-pointer">Tactical Analysis: Season Review</h3>
+            <p class="text-gray-300 text-sm mb-4">A comprehensive look at the tactical evolution and key strategies that defined our season...</p>
+            <div class="flex items-center justify-between">
+              <div class="flex items-center text-gray-400 text-sm">
+                <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                </svg>
+                8 min read
+              </div>
+              <button class="text-yellow-400 hover:text-yellow-300 transition font-semibold">Read More →</button>
+            </div>
+          </div>
+        </article>
+      </div>
+      
+      <!-- Load More Button -->
+      <div class="text-center mt-12" data-aos="fade-up">
+        <button class="bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded-full hover:bg-yellow-300 transition transform hover:scale-105">
+          Load More Stories
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Trending Stories Sidebar -->
+  <section class="bg-gray-50 py-16 px-6">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-4 gap-8">
+      <!-- Main Content Area -->
+      <div class="lg:col-span-3">
+        <h2 class="text-3xl font-bold text-[#002B5C] border-l-4 border-yellow-400 pl-4 mb-8" data-aos="fade-right">Editor's Picks</h2>
+        
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Pick 1 -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up">
+            <img src="../assets/images/players/player1.png" alt="Editor's Pick" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="bg-yellow-400 text-[#002B5C] text-xs font-bold uppercase px-2 py-1 rounded">Editor's Pick</span>
+                <span class="text-gray-500 text-sm ml-3">June 28, 2025</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#002B5C] transition cursor-pointer">The Making of a Champion</h3>
+              <p class="text-gray-600 text-sm">An in-depth look at the journey from academy prospect to first-team regular...</p>
+            </div>
+          </div>
+
+          <!-- Pick 2 -->
+          <div class="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+            <img src="../assets/images/hero.png" alt="Editor's Pick" class="w-full h-48 object-cover">
+            <div class="p-6">
+              <div class="flex items-center mb-3">
+                <span class="bg-yellow-400 text-[#002B5C] text-xs font-bold uppercase px-2 py-1 rounded">Editor's Pick</span>
+                <span class="text-gray-500 text-sm ml-3">June 27, 2025</span>
+              </div>
+              <h3 class="text-xl font-bold text-gray-800 mb-3 hover:text-[#002B5C] transition cursor-pointer">Stadium Atmosphere: Fan Power</h3>
+              <p class="text-gray-600 text-sm">How our supporters create the incredible atmosphere that drives the team forward...</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Sidebar Cards -->
-      <aside class="fade-in-up delay-100 ">
-        <h3 class="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-[#022e55]">More Updates</h3>
-        <div class="space-y-8">
-          <div class=" gap-4 bg-white p-3 rounded-lg shadow hover-glow transition-medium">
-            <img src="../assets/images/players/player1.png" 
-                 class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
-                 alt="Update thumbnail" />
-            <div class="p-6">
-              <span class="bg-red-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
-                Injury Update
-              </span>
-              <p class="text-sm md:text-base font-semibold text-gray-500">Injury Woes for Key Striker</p>
-              <p class="text-xs text-gray-500">June 3, 2025</p>
+      <!-- Trending Sidebar -->
+      <aside class="lg:col-span-1" data-aos="fade-left">
+        <h3 class="text-2xl font-bold text-[#002B5C] border-l-4 border-yellow-400 pl-4 mb-6">Trending Now</h3>
+        
+        <div class="space-y-4">
+          <!-- Trending Item 1 -->
+          <div class="trending-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl font-bold text-yellow-400">1</div>
+              <div>
+                <h4 class="font-semibold text-[#002B5C] hover:text-yellow-600 transition">Captain's Injury Update</h4>
+                <p class="text-gray-600 text-sm mt-1">Expected return date confirmed...</p>
+                <div class="flex items-center text-gray-500 text-xs mt-2">
+                  <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  </svg>
+                  2 min read
+                </div>
+              </div>
             </div>
           </div>
-          
-          <div class="flex flex-col gap-4 bg-white p-3 rounded-lg shadow hover-glow transition-medium ">
-            <img src="../assets/images/players/player1.png" 
-                 class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
-                 alt="Update thumbnail" />
-            <div class="p-6">
-              <span class="bg-blue-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
-                Player Focus
-              </span>
-              <p class="text-sm md:text-base font-semibold text-gray-500">Midfielder's Magic Moment</p>
-              <p class="text-xs text-gray-500">June 8, 2025</p>
+
+          <!-- Trending Item 2 -->
+          <div class="trending-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl font-bold text-yellow-400">2</div>
+              <div>
+                <h4 class="font-semibold text-[#002B5C] hover:text-yellow-600 transition">New Kit Launch</h4>
+                <p class="text-gray-600 text-sm mt-1">Limited edition design revealed...</p>
+                <div class="flex items-center text-gray-500 text-xs mt-2">
+                  <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  </svg>
+                  1 min read
+                </div>
+              </div>
             </div>
           </div>
-          
-          <div class="flex flex-col gap-4 bg-white p-3 rounded-lg shadow hover-glow transition-medium">
-            <img src="../assets/images/players/player1.png" 
-                 class="w-20 h-16 object-cover rounded transition-transform duration-300 hover:scale-110" 
-                 alt="Update thumbnail" />
-            <div class="p-6">
-              <span class="bg-green-500 text-white text-xs font-bold uppercase px-2 py-0.5 rounded inline-block mb-1">
-                Club News
-              </span>
-              <p class="text-sm md:text-base font-semibold text-gray-500">Coach's Tactical Brilliance</p>
-              <p class="text-xs text-gray-500">June 6, 2025</p>
+
+          <!-- Trending Item 3 -->
+          <div class="trending-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl font-bold text-yellow-400">3</div>
+              <div>
+                <h4 class="font-semibold text-[#002B5C] hover:text-yellow-600 transition">Community Outreach</h4>
+                <p class="text-gray-600 text-sm mt-1">Players visit local schools...</p>
+                <div class="flex items-center text-gray-500 text-xs mt-2">
+                  <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  </svg>
+                  3 min read
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trending Item 4 -->
+          <div class="trending-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl font-bold text-yellow-400">4</div>
+              <div>
+                <h4 class="font-semibold text-[#002B5C] hover:text-yellow-600 transition">Season Ticket Sales</h4>
+                <p class="text-gray-600 text-sm mt-1">Record numbers for next season...</p>
+                <div class="flex items-center text-gray-500 text-xs mt-2">
+                  <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  </svg>
+                  2 min read
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Trending Item 5 -->
+          <div class="trending-card p-4 rounded-lg cursor-pointer">
+            <div class="flex items-start gap-3">
+              <div class="text-2xl font-bold text-yellow-400">5</div>
+              <div>
+                <h4 class="font-semibold text-[#002B5C] hover:text-yellow-600 transition">Pre-Season Schedule</h4>
+                <p class="text-gray-600 text-sm mt-1">Friendly matches announced...</p>
+                <div class="flex items-center text-gray-500 text-xs mt-2">
+                  <svg class="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"/>
+                  </svg>
+                  3 min read
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -301,78 +749,74 @@
     </div>
   </section>
 
-<!-- Newsletter Section -->
-<section class="bg-primary text-white py-16 px-6">
-  <div class="max-w-4xl mx-auto text-center">
+  <!-- Newsletter Section -->
+  <section class="bg-[#002B5C] text-white py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-4 border-l-4 border-yellow-400 pl-4 inline-block" data-aos="fade-up">Join the Squad</h2>
+      <p class="text-gray-300 mb-8 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="100">
+        Get exclusive updates, match highlights, merch drops, and behind-the-scenes content straight to your inbox.
+      </p>
 
-    <!-- Heading -->
-    <h2 class="text-4xl font-bold mb-4 border-l-4 border-yellow-400 pl-4 inline-block">Join the Squad</h2>
-    <p class="text-gray-300 mb-8 max-w-xl mx-auto">
-      Get exclusive updates, match highlights, merch drops, and behind-the-scenes content straight to your inbox.
-    </p>
+      <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+        <input 
+          type="email" 
+          placeholder="Enter your email"
+          class="w-full px-5 py-3 rounded-full bg-[#022e55] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 transition"
+          required
+        />
+        <button 
+          type="submit" 
+          class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition transform hover:scale-105"
+        >
+          Subscribe
+        </button>
+      </form>
 
-    <!-- Form -->
-    <form class="flex flex-col sm:flex-row justify-center items-center gap-4 max-w-xl mx-auto">
-      <input 
-        type="email" 
-        placeholder="Enter your email"
-        class="w-full px-5 py-3 rounded-full bg-[#022e55] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400"
-        required
-      />
-      <button 
-        type="submit" 
-        class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-3 rounded-full hover:bg-yellow-300 transition"
-      >
-        Subscribe
-      </button>
-    </form>
+      <p class="text-xs text-gray-500 mt-4" data-aos="fade-up" data-aos-delay="300">We respect your privacy. Unsubscribe anytime.</p>
+    </div>
+  </section>
 
-    <!-- Disclaimer -->
-    <p class="text-xs text-gray-500 mt-4">We respect your privacy. Unsubscribe anytime.</p>
-
-  </div>
-</section>
-
+  <!-- Footer -->
   <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-      <div class="fade-in-up">
-        <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4 hover-scale transition-medium" />
+      <div data-aos="fade-up">
+        <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4 hover:scale-105 transition-transform duration-300" />
         <p class="text-sm text-gray-400">
           geezerz FC – Passion. Power. Pride. <br>
           United by football. Driven by legacy.
         </p>
       </div>
 
-      <div class="fade-in-up delay-100">
+      <div data-aos="fade-up" data-aos-delay="100">
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
         <ul class="space-y-2 text-sm text-gray-300">
-          <li><a href="#" class="hover:text-yellow-400 transition-medium">Meet the Squad</a></li>
-          <li><a href="#" class="hover:text-yellow-400 transition-medium">Merch Store</a></li>
-          <li><a href="#" class="hover:text-yellow-400 transition-medium">Fan Gallery</a></li>
-          <li><a href="../home/contact-us.html" class="hover:text-yellow-400 transition-medium">Contact Us</a></li>
+          <li><a href="../home/players.html" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
+          <li><a href="../store/products.html" class="hover:text-yellow-400 transition">Merch Store</a></li>
+          <li><a href="#" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
+          <li><a href="../home/contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
         </ul>
       </div>
 
-      <div class="fade-in-up delay-200">
+      <div data-aos="fade-up" data-aos-delay="200">
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
         <ul class="space-y-2 text-sm text-gray-300">
           <li>📍1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</li>
           <li>📞 +234 706 583 2821</li>
-          <li>✉️ contact@geezerzfc.com</li>
-          <li><a href="#" class="hover:text-yellow-400 transition-medium">Privacy Policy</a></li>
+          <li>✉️ info@geezerzsport.com</li>
+          <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
         </ul>
       </div>
 
-      <div class="fade-in-up delay-300">
+      <div data-aos="fade-up" data-aos-delay="300">
         <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
         <div class="flex space-x-4 text-white">
-          <a href="#" class="hover:text-yellow-400 transition-medium" aria-label="Facebook">
+          <a href="#" class="hover:text-yellow-400 transition transform hover:scale-110" aria-label="Facebook">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
           </a>
-          <a href="#" class="hover:text-yellow-400 transition-medium" aria-label="Twitter">
+          <a href="#" class="hover:text-yellow-400 transition transform hover:scale-110" aria-label="Twitter">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
           </a>
-          <a href="#" class="hover:text-yellow-400 transition-medium" aria-label="Instagram">
+          <a href="#" class="hover:text-yellow-400 transition transform hover:scale-110" aria-label="Instagram">
             <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
           </a>
         </div>
@@ -384,10 +828,178 @@
     </div>
   </footer>
 
-  
+  <!-- Scripts -->
+  <!-- AOS Library JS -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="../assets/js/hero.js"></script>
 
-<script src="post.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: true,
+      offset: 100
+    });
 
- <script src="../assets/js/hero.js"></script>
+    // Hero Slider Functionality
+    let currentSlideIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const indicators = document.querySelectorAll('.indicator');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      // Hide all slides
+      slides.forEach(slide => slide.classList.remove('active'));
+      indicators.forEach(indicator => indicator.classList.remove('active'));
+      
+      // Show selected slide
+      slides[index].classList.add('active');
+      indicators[index].classList.add('active');
+      
+      currentSlideIndex = index;
+    }
+
+    function currentSlide(index) {
+      showSlide(index - 1);
+    }
+
+    function nextSlide() {
+      currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
+      showSlide(currentSlideIndex);
+    }
+
+    // Auto-advance slides every 7 seconds
+    setInterval(nextSlide, 7000);
+
+    // Category Filter Functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const storyCards = document.querySelectorAll('.blog-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+        
+        // Update active button
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+        
+        // Filter stories
+        storyCards.forEach(card => {
+          if (category === 'all' || card.getAttribute('data-category') === category) {
+            card.style.display = 'block';
+            card.classList.add('fade-in-up');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Language Dropdown Toggle
+    function toggleDropdown() {
+      const menu = document.getElementById('dropdown-menu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Change Language Function
+    function changeLanguage(langCode, countryCode) {
+      const button = document.querySelector('.relative button');
+      const img = button.querySelector('img');
+      const text = button.querySelector('span');
+
+      img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${countryCode}.svg`;
+      img.alt = countryCode;
+
+      const shortCodes = {
+        en: 'ENG',
+        fr: 'FRE',
+        pt: 'POR',
+        es: 'ESP',
+        ru: 'RUS'
+      };
+      text.textContent = shortCodes[langCode] || 'LANG';
+
+      // Trigger Google Translate
+      const select = document.querySelector('.goog-te-combo');
+      if (select) {
+        select.value = langCode;
+        select.dispatchEvent(new Event('change'));
+      }
+
+      // Close dropdown
+      toggleDropdown();
+    }
+
+    // Mobile Menu Functionality
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeBtn = document.getElementById('closeBtn');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.remove('translate-x-full');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      mobileMenu.classList.add('translate-x-full');
+    });
+
+    // Set current year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !hamburger.contains(e.target)) {
+        mobileMenu.classList.add('translate-x-full');
+      }
+      
+      // Close language dropdown when clicking outside
+      const dropdown = document.getElementById('dropdown-menu');
+      const dropdownButton = dropdown.previousElementSibling;
+      if (!dropdown.contains(e.target) && !dropdownButton.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // Add loading animation for images
+    document.querySelectorAll('img').forEach(img => {
+      img.addEventListener('load', function() {
+        this.classList.add('loaded');
+      });
+    });
+
+    // Intersection Observer for additional animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+        }
+      });
+    }, observerOptions);
+
+    // Observe trending cards
+    document.querySelectorAll('.trending-card').forEach(card => {
+      observer.observe(card);
+    });
+  </script>
+
 </body>
 </html>
