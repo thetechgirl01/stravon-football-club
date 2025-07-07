@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Geezerz FC - Buy Tickets</title>
+    <title>Geezerz FC - Hospitality Booking</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body class="bg-gray-50">
-    <nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+          <!-- sponsor / lang / register and sign in -->
+
+<nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center">
         <!-- Desktop Menu Left -->
         <div class="hidden md:flex space-x-6">
@@ -63,33 +65,76 @@
 
     <!-- Main Content -->
     <main class="container mx-auto px-4 py-12 md:py-16">
-        <!-- Checkout Section -->
-        <section id="checkout">
+        <!-- Hospitality Checkout Section -->
+        <section id="hospitality-checkout">
             <div class="max-w-6xl mx-auto">
-
-                 <!--Back bbutton-->
-                <div class="mb-6">
-                     <a href="../tickets.html" class="flex items-center text-black font-medium">
+                <div class="max-w-6xl mx-auto">
+    <!-- Added Back to flex button -->
+    <div class="flex items-center mb-4">
+        <a href="./tickets.html" class="flex items-center text-black font-medium">
             <span class="bg-yellow-400 px-2 py-1 rounded-l">‹</span>
             <span class="bg-black text-white px-3 py-1 rounded-r">Back </span>
         </a>
-                </div>
+    </div>
+    
+    <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Hospitality Booking</h2>
+        <p class="text-lg text-gray-600 max-w-3xl mx-auto">Complete your premium matchday experience</p>
+    </div>
 
                 <div class="flex flex-col md:flex-row gap-8">
-                    <!-- Order Summary -->
+                    <!-- Package Details -->
                     <div class="md:w-2/3">
                         <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-6">
                             <div class="p-6 border-b border-gray-200">
-                                <h2 class="text-2xl font-bold text-[#002B5C]">Order Summary</h2>
+                                <h2 class="text-2xl font-bold text-[#002B5C]">Package Details</h2>
                             </div>
                             
-                            <!-- Selected Match -->
+                            <!-- Selected Package -->
                             <div class="p-6 border-b border-gray-200">
+                                <div class="flex flex-col md:flex-row gap-6">
+                                    <div class="md:w-1/3">
+                                        <div class="h-48 bg-[#002B5C] rounded-lg flex items-center justify-center">
+                                            <h3 class="text-xl font-bold text-white text-center px-4" id="package-title">VIP Experience</h3>
+                                        </div>
+                                    </div>
+                                    <div class="md:w-2/3">
+                                        <div class="mb-4">
+                                            <span class="text-2xl font-bold" id="package-price">£750</span>
+                                            <span class="text-gray-500">/person</span>
+                                        </div>
+                                        <ul class="space-y-2 mb-4" id="package-features">
+                                            <li class="flex items-start">
+                                                <svg class="w-5 h-5 text-yellow-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span>Pitchside seats</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-5 h-5 text-yellow-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span>Pre-match tunnel access</span>
+                                            </li>
+                                            <li class="flex items-start">
+                                                <svg class="w-5 h-5 text-yellow-400 mr-2 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                                </svg>
+                                                <span>Meet the players</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Match Information -->
+                            <div class="p-6 border-b border-gray-200">
+                                <h3 class="text-lg font-semibold mb-4">Match Information</h3>
                                 <div class="flex items-center justify-between mb-4">
                                     <span class="text-sm font-semibold bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full">PREMIER LEAGUE</span>
                                     <span class="text-sm text-gray-500">July 3, 2025 • 15:00</span>
                                 </div>
-                                <div class="flex items-center justify-center gap-4 my-6">
+                                <div class="flex items-center justify-center gap-4 my-4">
                                     <div class="text-center">
                                         <img src="https://via.placeholder.com/64" alt="Geezerz FC" class="h-16 mx-auto">
                                         <p class="font-semibold mt-2">Geezerz FC</p>
@@ -105,61 +150,37 @@
                                 </div>
                             </div>
                             
-                            <!-- Ticket Selection -->
+                            <!-- Booking Details -->
                             <div class="p-6">
-                                <h3 class="text-lg font-semibold mb-4">Select Tickets</h3>
+                                <h3 class="text-lg font-semibold mb-4">Booking Details</h3>
                                 
-                                <!-- Ticket Type 1 -->
-                                <div class="flex justify-between items-center p-4 border border-gray-200 rounded-lg mb-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                     <div>
-                                        <h4 class="font-medium">West Stand Upper</h4>
-                                        <p class="text-sm text-gray-600">Great view of the pitch</p>
+                                        <label class="block text-gray-700 font-medium mb-2">Number of Guests</label>
+                                        <div class="flex items-center">
+                                            <button class="w-10 h-10 rounded-l-lg bg-gray-200 flex items-center justify-center" onclick="updateGuests(-1)">
+                                                <i class="fas fa-minus"></i>
+                                            </button>
+                                            <span id="guest-count" class="w-16 text-center border-t border-b border-gray-300 h-10 flex items-center justify-center">1</span>
+                                            <button class="w-10 h-10 rounded-r-lg bg-gray-200 flex items-center justify-center" onclick="updateGuests(1)">
+                                                <i class="fas fa-plus"></i>
+                                            </button>
+                                        </div>
                                     </div>
-                                    <div class="flex items-center">
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('west-upper', -1)">
-                                            <i class="fas fa-minus text-xs"></i>
-                                        </button>
-                                        <span id="west-upper-qty" class="mx-3 w-8 text-center">0</span>
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('west-upper', 1)">
-                                            <i class="fas fa-plus text-xs"></i>
-                                        </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£75</span>
+                                    
+                                    <div>
+                                        <label class="block text-gray-700 font-medium mb-2">Special Requests</label>
+                                        <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002B5C] focus:border-transparent h-10" placeholder="Dietary requirements, etc."></textarea>
                                     </div>
                                 </div>
                                 
-                                <!-- Ticket Type 2 -->
-                                <div class="flex justify-between items-center p-4 border border-gray-200 rounded-lg mb-4">
-                                    <div>
-                                        <h4 class="font-medium">East Stand Lower</h4>
-                                        <p class="text-sm text-gray-600">Close to the action</p>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('east-lower', -1)">
-                                            <i class="fas fa-minus text-xs"></i>
-                                        </button>
-                                        <span id="east-lower-qty" class="mx-3 w-8 text-center">0</span>
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('east-lower', 1)">
-                                            <i class="fas fa-plus text-xs"></i>
-                                        </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£95</span>
-                                    </div>
-                                </div>
-                                
-                                <!-- Ticket Type 3 -->
-                                <div class="flex justify-between items-center p-4 border border-gray-200 rounded-lg">
-                                    <div>
-                                        <h4 class="font-medium">Family Stand</h4>
-                                        <p class="text-sm text-gray-600">Adult + Child bundle</p>
-                                    </div>
-                                    <div class="flex items-center">
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('family', -1)">
-                                            <i class="fas fa-minus text-xs"></i>
-                                        </button>
-                                        <span id="family-qty" class="mx-3 w-8 text-center">0</span>
-                                        <button class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center" onclick="updateQuantity('family', 1)">
-                                            <i class="fas fa-plus text-xs"></i>
-                                        </button>
-                                        <span class="ml-6 font-medium w-16 text-right">£120</span>
+                                <div class="mb-6">
+                                    <label class="block text-gray-700 font-medium mb-2">Contact Information</label>
+                                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002B5C] focus:border-transparent" placeholder="First Name">
+                                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002B5C] focus:border-transparent" placeholder="Last Name">
+                                        <input type="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002B5C] focus:border-transparent" placeholder="Email">
+                                        <input type="tel" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#002B5C] focus:border-transparent" placeholder="Phone Number">
                                     </div>
                                 </div>
                             </div>
@@ -206,35 +227,27 @@
                         </div>
                     </div>
                     
-                    <!-- Order Total -->
+                    <!-- Order Summary -->
                     <div class="md:w-1/3">
                         <div class="bg-white rounded-xl shadow-lg overflow-hidden sticky top-6">
                             <div class="p-6 border-b border-gray-200">
-                                <h2 class="text-2xl font-bold text-[#002B5C]">Order Total</h2>
+                                <h2 class="text-2xl font-bold text-[#002B5C]">Order Summary</h2>
                             </div>
                             
                             <div class="p-6">
                                 <div class="mb-6">
                                     <div class="flex justify-between mb-2">
-                                        <span class="text-gray-600">West Stand Upper x <span id="west-upper-summary">0</span></span>
-                                        <span id="west-upper-total" class="font-medium">£0</span>
-                                    </div>
-                                    <div class="flex justify-between mb-2">
-                                        <span class="text-gray-600">East Stand Lower x <span id="east-lower-summary">0</span></span>
-                                        <span id="east-lower-total" class="font-medium">£0</span>
-                                    </div>
-                                    <div class="flex justify-between mb-4">
-                                        <span class="text-gray-600">Family Stand x <span id="family-summary">0</span></span>
-                                        <span id="family-total" class="font-medium">£0</span>
+                                        <span class="text-gray-600">VIP Experience x <span id="guest-count-summary">1</span></span>
+                                        <span id="package-total" class="font-medium">£750</span>
                                     </div>
                                     <div class="border-t border-gray-200 pt-4">
                                         <div class="flex justify-between font-semibold">
                                             <span>Subtotal</span>
-                                            <span id="subtotal">£0</span>
+                                            <span id="subtotal">£750</span>
                                         </div>
                                         <div class="flex justify-between text-gray-600 text-sm mt-1">
-                                            <span>Booking Fee</span>
-                                            <span>£2.50</span>
+                                            <span>Service Fee</span>
+                                            <span>£25.00</span>
                                         </div>
                                     </div>
                                 </div>
@@ -242,17 +255,24 @@
                                 <div class="border-t border-gray-200 pt-4 mb-6">
                                     <div class="flex justify-between text-lg font-bold">
                                         <span>Total</span>
-                                        <span id="total">£2.50</span>
+                                        <span id="total">£775.00</span>
                                     </div>
                                 </div>
                                 
                                 <button class="w-full bg-[#002B5C] text-white font-semibold py-3 rounded-lg hover:bg-[#001f4e] transition flex items-center justify-center">
-                                    <i class="fas fa-lock mr-2"></i> Pay Now
+                                    <i class="fas fa-lock mr-2"></i> Confirm Booking
                                 </button>
                                 
                                 <p class="text-xs text-gray-500 mt-4 text-center">
-                                    By completing your purchase you agree to our <a href="#" class="text-[#002B5C] underline">Terms of Service</a>
+                                    By completing your booking you agree to our <a href="#" class="text-[#002B5C] underline">Terms of Service</a>
                                 </p>
+                                
+                                <div class="mt-6 p-4 bg-gray-50 rounded-lg">
+                                    <h4 class="font-medium mb-2">Need help?</h4>
+                                    <p class="text-sm text-gray-600 mb-2">Our hospitality team is available to assist you:</p>
+                                    <p class="text-sm"><i class="fas fa-phone-alt mr-2 text-[#002B5C]"></i> +44 20 1234 5678</p>
+                                    <p class="text-sm"><i class="fas fa-envelope mr-2 text-[#002B5C]"></i> hospitality@geezerzfc.com</p>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -322,40 +342,31 @@
 
 </footer>
 
- <script src="../assets/js/hero.js"></script>
+ <script src="/client/assets/js/hero.js"></script>
 
     <script>
-        // Simple quantity update functionality
-        function updateQuantity(type, change) {
-            const qtyElement = document.getElementById(`${type}-qty`);
-            let qty = parseInt(qtyElement.textContent) + change;
-            qty = Math.max(0, qty); // Don't allow negative quantities
-            qtyElement.textContent = qty;
+        // i added Simple guest count update functionality, but you can remov ie when you are removing the js that you dont want 
+        function updateGuests(change) {
+            const guestElement = document.getElementById('guest-count');
+            const guestSummary = document.getElementById('guest-count-summary');
+            let guests = parseInt(guestElement.textContent) + change;
+            guests = Math.max(1, guests); // Minimum 1 guest
+            guestElement.textContent = guests;
+            guestSummary.textContent = guests;
             
-            // Update summary
-            document.getElementById(`${type}-summary`).textContent = qty;
-            
-            // Calculate totals
-            const prices = {
-                'west-upper': 75,
-                'east-lower': 95,
-                'family': 120
-            };
-            
-            document.getElementById(`${type}-total`).textContent = `£${qty * prices[type]}`;
-            
-            // Update subtotal and total
-            const subtotal = (parseInt(document.getElementById('west-upper-summary').textContent) * 75 +
-                             (parseInt(document.getElementById('east-lower-summary').textContent) * 95) +
-                             (parseInt(document.getElementById('family-summary').textContent) * 120);
+            // Update totals
+            const packagePrice = 750; // Would normally get this from the selected package
+            const subtotal = guests * packagePrice;
+            const total = subtotal + 25; // Service fee
             
             document.getElementById('subtotal').textContent = `£${subtotal}`;
-            document.getElementById('total').textContent = `£${subtotal + 2.50}`;
-        };
-
+            document.getElementById('package-total').textContent = `£${subtotal}`;
+            document.getElementById('total').textContent = `£${total.toFixed(2)}`;
+        }
+        
+       
     </script>
+     <script src="/client/assets/js/hero.js"></script>
 
-
-    <script src="/client/assets/js/hero.js"></script>
 </body>
 </html>

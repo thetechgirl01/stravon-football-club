@@ -23,11 +23,113 @@
 
 
 
-  <!-- Hero Section -->
+  <!-- Sponsor / Lang / Register and Sign in -->
+  <div>
+    <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-0">
+      <!-- LEFT: Sign in / Register / Language Dropdown -->
+      <div class="left-nav-contents flex items-center gap-4 relative">
+        <!-- Hidden Google Translate Element -->
+        <div id="google_translate_element"></div>
+        <!-- Language Dropdown -->
+        <div class="relative">
+          <button onclick="toggleDropdown()" class="flex items-center gap-1 text-sm text-[#002B5C] hover:underline focus:outline-none">
+            <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK Flag"/>
+            <span>ENG</span>
+            <svg class="w-3 h-3 ml-1" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M5.25 7.75L10 12.5l4.75-4.75" stroke="#002B5C" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            </svg>
+          </button>
+          <ul id="dropdown-menu" class="hidden absolute top-8 left-0 bg-white border border-gray-200 rounded-md shadow-md w-40 z-50">
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('en', 'gb')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" class="h-4 w-auto" alt="UK"/> English (ENG)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('zh-CN', 'cn')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" class="h-4 w-auto" alt="China"/> Chinese (CHI)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('fr', 'fr')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" class="h-4 w-auto" alt="France"/> French (FRE)
+            </li>
+            <li class="flex items-center gap-2 px-3 py-2 hover:bg-gray-100 cursor-pointer" onclick="changeLanguage('es', 'es')">
+              <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" class="h-4 w-auto" alt="Spain"/> Spanish (ESP)
+            </li>
+          </ul>
+        </div>
+      </div>
 
-      <h1 class="text-4xl md:text-6xl font-bold mb-6">Tickets & Hospitality</h1>
+      <!-- RIGHT: Logo Carousel -->
+      <div class="w-[360px] overflow-hidden">
+        <div class="flex gap-4 logo-scroll">
+          <!-- Logos -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+          <!-- Duplicate set for infinite loop -->
+          <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/f1/Prime_Video.png" class="h-6 blue-filter" alt="Prime"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/3/33/F1.svg" class="h-6 blue-filter" alt="F1"/>
+          <img src="https://upload.wikimedia.org/wikipedia/en/6/6e/Red_Bull.svg" class="h-6 blue-filter" alt="Red Bull"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+      <!-- Desktop Menu Left -->
+      <div class="hidden md:flex space-x-6">
+        <a href="../post/blog-posts.html">Latest News</a>
+        <a href="../store/products.html">Store</a>
+        <a href="../home/fixtures.html">Fixtures</a>
+      </div>
+
+      <!-- Logo -->
+      <div class="flex-shrink-0">
+        <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+      </div>
+
+      <!-- Desktop Menu Right -->
+      <div class="hidden md:flex space-x-6">
+        <a href="#">Tickets & Hospitality</a>
+        <a href="#" class="font-bold text-yellow-400">Live Feed</a>
+        <a href="../home/players.html">Players</a>
+        <button class="">
+          <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center">
+        <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 transition-all duration-300 transform translate-x-full">
+      <div class="absolute top-4 right-4">
+        <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
+      </div>
+      <div class="h-full flex flex-col items-center justify-center space-y-8">
+        <a href="../post/blog-posts.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Latest News</a>
+        <a href="../store/products.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Store</a>
+        <a href="../home/fixtures.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Fixtures</a>
+        <a href="#" class="text-2xl text-white hover:text-yellow-400 transition-colors">Tickets & Hospitality</a>
+        <a href="#" class="text-2xl text-white font-bold text-yellow-400 transition-colors">Live Feed</a>
+        <a href="../home/players.html" class="text-2xl text-white hover:text-yellow-400 transition-colors">Players</a>
+      </div>
+    </div>
+  </nav>
+
+   
       
-      <div class="flex flex-wrap justify-center gap-4">
+      <div class="flex flex-wrap justify-center gap-4 mt-12">
         <a href="#match-tickets" class="bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded hover:bg-yellow-300 transition duration-300">
           Match Tickets
         </a>
@@ -72,7 +174,7 @@
               </div>
             </div>
             <div class="text-center mt-6">
-              <a href="#" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
+              <a href="./ticketsandhospitality/ticketcheckout.html" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
                 Buy Tickets
               </a>
             </div>
@@ -96,7 +198,7 @@
               </div>
             </div>
             <div class="text-center mt-6">
-              <a href="#" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
+              <a href="./ticketsandhospitality/ticketcheckout.html" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
                 Buy Tickets
               </a>
             </div>
@@ -120,7 +222,7 @@
               </div>
             </div>
             <div class="text-center mt-6">
-              <a href="#" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
+              <a href="./ticketsandhospitality/ticketcheckout.html" class="inline-block bg-[#002B5C] text-white font-semibold px-6 py-2 rounded hover:bg-[#001f4e] transition">
                 Buy Tickets
               </a>
             </div>
@@ -172,9 +274,7 @@
               <span>Matchday program</span>
             </li>
           </ul>
-          <a href="#" class="block w-full bg-[#002B5C] text-white text-center font-semibold py-3 rounded hover:bg-[#001f4e] transition">
-            Select Tickets
-          </a>
+         
         </div>
 
         <!-- Premium Ticket -->
@@ -211,9 +311,7 @@
               <span>Priority booking</span>
             </li>
           </ul>
-          <a href="#" class="block w-full bg-yellow-400 text-[#002B5C] text-center font-semibold py-3 rounded hover:bg-yellow-300 transition">
-            Select Tickets
-          </a>
+         
         </div>
 
         <!-- Family Ticket -->
@@ -250,9 +348,7 @@
               <span>Meet & greet opportunities</span>
             </li>
           </ul>
-          <a href="#" class="block w-full bg-[#002B5C] text-white text-center font-semibold py-3 rounded hover:bg-[#001f4e] transition">
-            Select Tickets
-          </a>
+          
         </div>
       </div>
     </section>
@@ -290,8 +386,8 @@
                 <span>Season ticket eligibility</span>
               </div>
             </div>
-            <a href="#" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded hover:bg-yellow-300 transition">
-              Join Now From £40
+            <a href="./ticketsandhospitality/hospitalitycheckout.html" class="inline-block bg-yellow-400 text-[#002B5C] font-bold px-8 py-3 rounded hover:bg-yellow-300 transition">
+              Join Now From £75,000
             </a>
           </div>
           <div class="md:w-1/3">
@@ -585,5 +681,73 @@
     </section>
 
   </main>
+
+
+
+  
+
+  
+      <!--footer-->
+<footer class="bg-[#00172b] text-white pt-12 p-10">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 ">
+
+    <div>
+      <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24  h-24 mb-4" />
+      <p class="text-sm text-gray-400">
+        geezerz FC – Passion. Power. Pride. <br>
+        United by football. Driven by legacy.
+      </p>
+    </div>
+
+
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li><a href="#s002B5Cquad" class="hover:text-yellow-400 transition">Meet the Squad</a></li>
+        <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
+        <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
+        <li><a href="contact-us.html" class="hover:text-yellow-400 transition">Contact Us</a></li>
+      </ul>
+    </div>
+
+
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
+      <ul class="space-y-2 text-sm text-gray-300">
+        <li>📍 1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</li>
+        <li>📞 +234 706 583 2821</li>
+        <li>✉️ info@geezerzsport.com</li>
+        <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+      </ul>
+    </div>
+
+    <!-- Social Media -->
+    <div>
+      <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
+      <div class="flex space-x-4 text-white">
+        <!-- Facebook -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
+        </a>
+        <!-- Twitter -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
+        </a>
+        <!-- Instagram -->
+        <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
+          <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer bottom -->
+  <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+    &copy; <span id="year"></span> geezerz FC. All rights reserved.
+  </div>
+
+</footer>
+
+   <script src="../assets/js/hero.js"></script>
 </body>
 </html>
