@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../input.css" />
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>geezerz FC | Club Store</title>
+    
+    <style>
+      .product-card {
+        transition: all 0.3s ease;
+      }
+      
+      .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      }
+      
+      .pagination-btn {
+        transition: all 0.2s ease;
+      }
+      
+      .pagination-btn:hover {
+        transform: scale(1.05);
+      }
+      
+      .filter-btn {
+        transition: all 0.2s ease;
+      }
+      
+      .filter-btn:hover {
+        transform: scale(1.02);
+      }
+      
+      .blue-filter {
+        filter: brightness(0) saturate(100%) invert(16%) sepia(100%) saturate(2000%) hue-rotate(207deg) brightness(95%) contrast(106%);
+      }
+      
+      .logo-scroll {
+        animation: scroll 20s linear infinite;
+      }
+      
+      @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+
+      /* Sticky Cart Section */
+      .sticky-cart {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 43, 92, 0.95);
+        backdrop-filter: blur(10px);
+        z-index: 1000;
+        padding: 12px 16px;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        border-bottom: 2px solid #FFD100;
+      }
+      
+      .sticky-cart.show {
+        transform: translateY(0);
+      }
+      
+      /* Mobile Cart Modal */
+      .cart-modal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2000;
+        display: none;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      
+      .cart-modal.show {
+        display: flex;
+        opacity: 1;
+      }
+      
+      .cart-content {
+        background: white;
+        margin: auto;
+        border-radius: 16px;
+        max-width: 90vw;
+        max-height: 80vh;
+        overflow: hidden;
+        transform: scale(0.9);
+        transition: transform 0.3s ease;
+        position: relative;
+      }
+      
+      .cart-modal.show .cart-content {
+        transform: scale(1);
+      }
+      
+      /* Mobile optimized cart */
+      @media (max-width: 768px) {
+        .cart-content {
+          max-width: 95vw;
+          max-height: 85vh;
+          margin: 8px;
+        }
+        
+        .sticky-cart {
+          padding: 8px 12px;
+        }
+      }
+      
+      .cart-badge {
+        position: absolute;
+        top: -8px;
+        right: -8px;
+        background: #FFD100;
+        color: #002B5C;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+        min-width: 20px;
+      }
+
+      /* Google Translate Customizations */
+      .goog-te-banner-frame,
+      .goog-te-menu-frame {
+        display: none !important;
+      }
+      
+      body {
+        top: 0 !important;
+      }
+      
+      .goog-te-combo {
+        display: none !important;
+      }
+      
+      .skiptranslate {
+        display: none !important;
+      }
+      
+      /* Override Google Translate styles */
+      .goog-text-highlight {
+        background: none !important;
+        box-shadow: none !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Google Translate Widget (Hidden) -->
+    <div id="google_translate_element" style="display: none;"></div>
+    
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement(
+          {
+            pageLanguage: 'en',
+            includedLanguages: 'en,zh-CN,fr,es,ru',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          },
+          'google_translate_element'
+        );
+        
+        // Restore saved language preference
+        setTimeout(() => {
+          const savedLang = localStorage.getItem('selectedLanguage');
+          const savedCountry = localStorage.getItem('selectedCountry');
+          
+          if (savedLang && savedCountry && savedLang !== 'en') {
+            changeLanguage(savedLang, savedCountry);
+          }
+        }, 1000);
+      }
+      
+      // Make googleTranslateElementInit globally available
+      window.googleTranslateElementInit = googleTranslateElementInit;
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- Header -->
+    <header class="bg-[#002B5C] text-white shadow-lg relative ">
+      <!-- Background Pattern -->
+      <div class="absolute inset-0 opacity-10">
+        <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="white" stroke-width="1"/>
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid)" />
+        </svg>
+      </div>
+      
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="flex justify-between items-center py-4">
+          <!-- Logo -->
+          <div class="flex items-center">
+            <a href="../index.html" class="flex items-center group">
+              <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="h-12 w-12 transition-transform duration-200 group-hover:scale-110" />
+              <div class="ml-3">
+                <h1 class="text-xl font-bold text-yellow-400">geezerz FC</h1>
+                <p class="text-xs text-gray-300">Official Store</p>
+              </div>
+            </a>
+          </div>
+
+          <!-- Desktop Navigation -->
+          <nav class="hidden md:flex space-x-6">
+            <a href="../index.html" class="hover:text-yellow-400 transition-colors duration-200 font-medium">Home</a>
+            <a href="../home/players.html" class="hover:text-yellow-400 transition-colors duration-200 font-medium">Players</a>
+            <a href="../home/fixtures.html" class="hover:text-yellow-400 transition-colors duration-200 font-medium">Fixtures</a>
+            <a href="../home/tickets.html" class="hover:text-yellow-400 transition-colors duration-200 font-medium">Tickets</a>
+            <a href="products.html" class="text-yellow-400 font-bold">Store</a>
+            <a href="../home/contact-us.html" class="hover:text-yellow-400 transition-colors duration-200 font-medium">Contact</a>
+          </nav>
+
+          <!-- Right Section -->
+          <div class="flex items-center space-x-4">
+            <!-- Language Dropdown -->
+            <div class="relative" >
+              <button onclick="toggleDropdown()" class="flex items-center space-x-2 bg-white bg-opacity-10 hover:bg-opacity-20 rounded-lg px-3 py-2 transition-all duration-200">
+                <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" alt="gb" class="w-5 h-5 rounded-sm">
+                <span class="text-sm font-medium">ENG</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                </svg>
+              </button>
+              
+              <div id="dropdown-menu" class="hidden absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
+                <button onclick="changeLanguage('en', 'gb')" class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                  <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/gb.svg" alt="gb" class="w-5 h-5 rounded-sm mr-3">
+                  English
+                </button>
+                <button onclick="changeLanguage('zh-CN', 'cn')" class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                  <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/cn.svg" alt="cn" class="w-5 h-5 rounded-sm mr-3">
+                  中文
+                </button>
+                <button onclick="changeLanguage('fr', 'fr')" class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                  <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/fr.svg" alt="fr" class="w-5 h-5 rounded-sm mr-3">
+                  Français
+                </button>
+                <button onclick="changeLanguage('es', 'es')" class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                  <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/es.svg" alt="es" class="w-5 h-5 rounded-sm mr-3">
+                  Español
+                </button>
+                <button onclick="changeLanguage('ru', 'ru')" class="flex items-center w-full px-4 py-2 text-gray-700 hover:bg-gray-100 transition-colors">
+                  <img src="https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/ru.svg" alt="ru" class="w-5 h-5 rounded-sm mr-3">
+                  Русский
+                </button>
+              </div>
+            </div>
+
+            <!-- Cart Button -->
+            <button id="header-cart-btn" class="bg-yellow-400 text-[#002B5C] p-3 rounded-full hover:bg-yellow-300 transition-all duration-200 hover:scale-110 relative" aria-label="Shopping cart">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+              </svg>
+              <span class="cart-badge">2</span>
+            </button>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-white hover:text-yellow-400 transition-colors duration-200">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div id="mobile-menu" class="hidden md:hidden bg-[#001a3d] border-t border-gray-600">
+        <div class="px-4 py-3 space-y-2">
+          <div class="flex justify-between items-center mb-4">
+            <span class="text-yellow-400 font-bold">Menu</span>
+            <button id="close-menu" class="text-gray-400 hover:text-white">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          <a href="../index.html" class="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Home</a>
+          <a href="../home/players.html" class="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Players</a>
+          <a href="../home/fixtures.html" class="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Fixtures</a>
+          <a href="../home/tickets.html" class="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Tickets</a>
+          <a href="products.html" class="block py-3 px-4 rounded-lg bg-yellow-400 text-[#002B5C] font-bold">Store</a>
+          <a href="../home/contact-us.html" class="block py-3 px-4 rounded-lg hover:bg-gray-700 transition-colors duration-200">Contact</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- Sticky Cart Section (appears on scroll) -->
+    <div id="sticky-cart" class="sticky-cart">
+      <div class="container mx-auto px-4 flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <img src="../assets/images/logo.png" alt="geezerz FC" class="w-8 h-8">
+          <span class="text-yellow-400 font-bold text-sm">geezerz FC Store</span>
+        </div>
+        
+        <div class="flex items-center space-x-4">
+          <div class="hidden sm:flex items-center text-white text-sm">
+            <span id="sticky-cart-items">2 items</span>
+            <span class="mx-2">•</span>
+            <span id="sticky-cart-total" class="font-bold text-yellow-400">₦34,500</span>
+          </div>
+          
+          <button id="sticky-cart-btn" class="bg-yellow-400 text-[#002B5C] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition-all duration-200 relative flex items-center space-x-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+            </svg>
+            <span class="hidden sm:inline">View Cart</span>
+            <span class="cart-badge">2</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="cart-modal">
+      <div class="cart-content">
+        <div class="flex flex-col h-full max-h-[80vh]">
+          <!-- Cart Header -->
+          <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-gray-50">
+            <h2 class="text-xl font-bold text-[#002B5C] flex items-center">
+              <svg class="w-6 h-6 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+              </svg>
+              Shopping Cart
+            </h2>
+            <button id="close-cart" class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-200 transition-all">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Cart Items -->
+          <div class="flex-1 overflow-y-auto p-4">
+            <!-- Sample Cart Item 1 -->
+            <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg mb-3 bg-white">
+              <img src="../assets/images/products/product1.png" alt="2025 Home Jersey" class="w-16 h-16 object-cover rounded-lg">
+              <div class="flex-1 min-w-0">
+                <h4 class="font-semibold text-gray-800 text-sm truncate">2025 Home Jersey</h4>
+                <p class="text-xs text-gray-600 mb-1">Size: L</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-bold text-[#002B5C]">₦27,000</span>
+                  <div class="flex items-center gap-2">
+                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">-</button>
+                    <span class="w-8 text-center text-sm">1</span>
+                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Sample Cart Item 2 -->
+            <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg mb-3 bg-white">
+              <img src="../assets/images/players/player3.png" alt="Club Scarf" class="w-16 h-16 object-cover rounded-lg">
+              <div class="flex-1 min-w-0">
+                <h4 class="font-semibold text-gray-800 text-sm truncate">Club Scarf</h4>
+                <p class="text-xs text-gray-600 mb-1">Premium wool blend</p>
+                <div class="flex items-center justify-between">
+                  <span class="text-sm font-bold text-[#002B5C]">₦7,500</span>
+                  <div class="flex items-center gap-2">
+                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">-</button>
+                    <span class="w-8 text-center text-sm">1</span>
+                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">+</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Cart Footer -->
+          <div class="border-t border-gray-200 p-4 bg-gray-50">
+            <div class="flex justify-between items-center mb-2">
+              <span class="text-sm text-gray-600">Items:</span>
+              <span class="text-sm font-semibold">2</span>
+            </div>
+            <div class="flex justify-between items-center mb-4">
+              <span class="text-lg font-bold text-gray-800">Total:</span>
+              <span class="text-xl font-bold text-[#002B5C]">₦34,500</span>
+            </div>
+            <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-3 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-[0.98] shadow-md">
+              Proceed to Checkout
+            </button>
+            <p class="text-xs text-gray-500 text-center mt-2">Free shipping on orders over ₦22,500</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Page Header -->
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-[#002B5C] mb-4">
+          Official <span class="text-yellow-400">Club Store</span>
+        </h1>
+        <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+          Support your team with official geezerz FC merchandise. From jerseys to accessories, show your pride!
+        </p>
+      </div>
+
+      <!-- Filters and Search -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div class="flex flex-col lg:flex-row gap-6 items-center">
+          
+          <!-- Search -->
+          <div class="w-full lg:w-1/3">
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Search products..."
+                class="w-full bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 pl-12 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
+              />
+              <svg class="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Category Filters -->
+          <div class="flex flex-wrap gap-3 justify-center">
+            <button class="filter-btn active bg-yellow-400 text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold hover:bg-yellow-300 shadow-md">
+              All Products
+            </button>
+            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+              Jerseys
+            </button>
+            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+              Accessories
+            </button>
+            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+              Training
+            </button>
+          </div>
+
+          <!-- Sort and Per Page -->
+          <div class="flex gap-4">
+            <select class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[120px]">
+              <option value="default">Default</option>
+              <option value="name">Name A-Z</option>
+              <option value="name-desc">Name Z-A</option>
+              <option value="price">Price Low-High</option>
+              <option value="price-desc">Price High-Low</option>
+              <option value="newest">Newest First</option>
+            </select>
+            
+            <select class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[100px]">
+              <option value="6">6 per page</option>
+              <option value="12" selected>12 per page</option>
+              <option value="24">24 per page</option>
+              <option value="48">48 per page</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+        <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          
+          <!-- Product Card 1 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/products/product1.png" alt="2025 Home Jersey" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★★</div>
+                <span class="text-gray-500 text-sm ml-2">(4.8)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                2025 Home Jersey
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Official Matchday Kit</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦27,000</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 2 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player1.png" alt="2025 Away Jersey" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★☆</div>
+                <span class="text-gray-500 text-sm ml-2">(4.6)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                2025 Away Jersey
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Alternative matchday kit</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦27,000</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 3 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player2.png" alt="Training Jacket" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★★</div>
+                <span class="text-gray-500 text-sm ml-2">(4.7)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Training Jacket
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Premium training wear</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦21,000</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 4 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/players/player3.png" alt="Club Scarf" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★☆</div>
+                <span class="text-gray-500 text-sm ml-2">(4.5)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Club Scarf
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Premium wool blend scarf</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦7,500</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 5 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/logo.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★☆</div>
+                <span class="text-gray-500 text-sm ml-2">(4.3)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Club Cap
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Adjustable snapback cap</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦6,000</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 6 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/hero.png" alt="Training Shorts" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★★</div>
+                <span class="text-gray-500 text-sm ml-2">(4.8)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Training Shorts
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Moisture-wicking fabric</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦10,500</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 7 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/hero2.png" alt="Club Hoodie" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★☆</div>
+                <span class="text-gray-500 text-sm ml-2">(4.6)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Club Hoodie
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">Comfortable cotton blend</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦16,500</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Product Card 8 -->
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+            
+            <div class="relative overflow-hidden">
+              <img src="../assets/images/pitch.png" alt="Football" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
+              <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
+            </div>
+            
+            <div class="p-6">
+              <div class="flex items-center mb-2">
+                <div class="text-yellow-400 text-sm">★★★★★</div>
+                <span class="text-gray-500 text-sm ml-2">(4.9)</span>
+              </div>
+              
+              <h3 class="text-xl font-bold text-gray-800 group-hover:text-[#002B5C] transition-colors duration-200 mb-2">
+                Official Football
+              </h3>
+              
+              <p class="text-sm text-gray-600 mb-4">FIFA approved match ball</p>
+              
+              <div class="flex justify-between items-center">
+                <span class="text-2xl font-bold text-[#002B5C]">₦12,000</span>
+                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                  Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <div class="text-sm text-gray-600">
+            Showing 1-8 of 24 products
+          </div>
+          
+          <div class="flex gap-2">
+            <button class="pagination-btn bg-gray-200 text-gray-600 px-4 py-2 rounded-lg cursor-not-allowed" disabled>
+              Previous
+            </button>
+            <button class="pagination-btn bg-yellow-400 text-[#002B5C] px-4 py-2 rounded-lg font-bold">
+              1
+            </button>
+            <button class="pagination-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200">
+              2
+            </button>
+            <button class="pagination-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200">
+              3
+            </button>
+            <button class="pagination-btn bg-gray-100 text-gray-600 px-4 py-2 rounded-lg hover:bg-gray-200">
+              Next
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+
+        <div>
+          <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4 transition-transform duration-200 hover:scale-105" />
+          <p class="text-sm text-gray-400">
+            geezerz FC – Passion. Power. Pride. <br>
+            United by football. Driven by legacy.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li><a href="#squad" class="hover:text-yellow-400 transition-colors duration-200">Meet the Squad</a></li>
+            <li><a href="#store" class="hover:text-yellow-400 transition-colors duration-200">Merch Store</a></li>
+            <li><a href="#gallery" class="hover:text-yellow-400 transition-colors duration-200">Fan Gallery</a></li>
+            <li><a href="../home/contact-us.html" class="hover:text-yellow-400 transition-colors duration-200">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
+          <ul class="space-y-2 text-sm text-gray-300">
+            <li>📍 1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</li>
+            <li>📞 +234 706 583 2821</li>
+            <li>✉️ info@geezerzsport.com</li>
+            <li><a href="#" class="hover:text-yellow-400 transition-colors duration-200">Privacy Policy</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
+          <div class="flex space-x-4 text-white">
+            <a href="#" class="hover:text-yellow-400 transition-all duration-200 hover:scale-110" aria-label="Facebook">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
+            </a>
+            <a href="#" class="hover:text-yellow-400 transition-all duration-200 hover:scale-110" aria-label="Twitter">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
+            </a>
+            <a href="#" class="hover:text-yellow-400 transition-all duration-200 hover:scale-110" aria-label="Instagram">
+              <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+        &copy; <span id="year"></span> geezerz FC. All rights reserved.
+      </div>
+    </footer>
+
+    <script>
+      // Minimal JavaScript for basic functionality
+      
+      // Update year in footer
+      function updateYearInFooter() {
+        const yearElement = document.getElementById('year');
+        if (yearElement) {
+          yearElement.textContent = new Date().getFullYear();
+        }
+      }
+
+      // Language dropdown functionality
+      function toggleDropdown() {
+        const menu = document.getElementById('dropdown-menu');
+        if (menu) {
+          menu.classList.toggle('hidden');
+        }
+      }
+
+      // Close dropdown when clicking outside
+      document.addEventListener('click', function(event) {
+        const dropdown = document.querySelector('.relative');
+        const menu = document.getElementById('dropdown-menu');
+        
+        if (dropdown && menu && !dropdown.contains(event.target)) {
+          menu.classList.add('hidden');
+        }
+      });
+
+      function changeLanguage(langCode, countryCode) {
+        // Update UI elements first
+        const button = document.querySelector('.relative button');
+        if (button) {
+          const img = button.querySelector('img');
+          const text = button.querySelector('span');
+
+          if (img && text) {
+            img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${countryCode}.svg`;
+            img.alt = countryCode;
+
+            const shortCodes = {
+              en: 'ENG',
+              'zh-CN': 'CHI',
+              fr: 'FRE',
+              es: 'ESP',
+              ru: 'RUS'
+            };
+            text.textContent = shortCodes[langCode] || 'LANG';
+          }
+        }
+
+        // Trigger Google Translate
+        if (window.google && window.google.translate) {
+          const googleTranslateCombo = document.querySelector('.goog-te-combo');
+          if (googleTranslateCombo) {
+            googleTranslateCombo.value = langCode;
+            googleTranslateCombo.dispatchEvent(new Event('change'));
+          }
+        } else {
+          // If Google Translate is not ready, retry after a short delay
+          setTimeout(() => {
+            const googleTranslateCombo = document.querySelector('.goog-te-combo');
+            if (googleTranslateCombo) {
+              googleTranslateCombo.value = langCode;
+              googleTranslateCombo.dispatchEvent(new Event('change'));
+            }
+          }, 500);
+        }
+
+        // Store language preference
+        localStorage.setItem('selectedLanguage', langCode);
+        localStorage.setItem('selectedCountry', countryCode);
+        
+        toggleDropdown();
+      }
+
+      // Debug function to check Google Translate status
+      function checkGoogleTranslateStatus() {
+        console.log('Google Translate Status:');
+        console.log('- window.google exists:', !!window.google);
+        console.log('- window.google.translate exists:', !!(window.google && window.google.translate));
+        console.log('- Google Translate combo element:', document.querySelector('.goog-te-combo'));
+        console.log('- Google Translate element:', document.getElementById('google_translate_element'));
+      }
+
+      // Enhanced change language function with better error handling
+      window.debugTranslation = checkGoogleTranslateStatus;
+
+      // Language initialization function
+      function initializeLanguage() {
+        // Check for saved language preference
+        const savedLang = localStorage.getItem('selectedLanguage');
+        const savedCountry = localStorage.getItem('selectedCountry');
+        
+        if (savedLang && savedCountry && savedLang !== 'en') {
+          // Update UI immediately
+          const button = document.querySelector('.relative button');
+          if (button) {
+            const img = button.querySelector('img');
+            const text = button.querySelector('span');
+
+            if (img && text) {
+              img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${savedCountry}.svg`;
+              img.alt = savedCountry;
+
+              const shortCodes = {
+                en: 'ENG',
+                'zh-CN': 'CHI',
+                fr: 'FRE',
+                es: 'ESP',
+                ru: 'RUS'
+              };
+              text.textContent = shortCodes[savedLang] || 'LANG';
+            }
+          }
+        }
+      }
+
+      // Mobile menu functionality
+      function initMobileMenu() {
+        const hamburger = document.querySelector('#mobile-menu-button');
+        const mobileMenu = document.querySelector('#mobile-menu');
+        const closeBtn = document.querySelector('#close-menu');
+
+        if (hamburger && mobileMenu && closeBtn) {
+          hamburger.addEventListener('click', () => {
+            mobileMenu.classList.remove('hidden');
+          });
+          closeBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('hidden');
+          });
+        }
+      }
+
+      // Product card click functionality
+      function initProductCards() {
+        document.querySelectorAll('.product-card').forEach(card => {
+          card.addEventListener('click', function(e) {
+            // Don't navigate if a button was clicked
+            if (e.target.tagName === 'BUTTON') {
+              return;
+            }
+            // Navigate to product page (you can implement this in your Laravel app)
+            window.location.href = 'product.html';
+          });
+        });
+      }
+
+      // Cart functionality
+      function initCartFunctionality() {
+        const headerCartBtn = document.getElementById('header-cart-btn');
+        const stickyCartBtn = document.getElementById('sticky-cart-btn');
+        const cartModal = document.getElementById('cart-modal');
+        const closeCartBtn = document.getElementById('close-cart');
+        const stickyCart = document.getElementById('sticky-cart');
+
+        // Show cart modal
+        function showCartModal() {
+          cartModal.classList.add('show');
+          document.body.style.overflow = 'hidden';
+        }
+
+        // Hide cart modal
+        function hideCartModal() {
+          cartModal.classList.remove('show');
+          document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners
+        if (headerCartBtn) headerCartBtn.addEventListener('click', showCartModal);
+        if (stickyCartBtn) stickyCartBtn.addEventListener('click', showCartModal);
+        if (closeCartBtn) closeCartBtn.addEventListener('click', hideCartModal);
+
+        // Close modal when clicking outside
+        if (cartModal) {
+          cartModal.addEventListener('click', function(e) {
+            if (e.target === cartModal) {
+              hideCartModal();
+            }
+          });
+        }
+
+        // Show/hide sticky cart on scroll
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+          const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+          
+          if (currentScroll > 200) { // Show after scrolling 200px
+            if (currentScroll < lastScrollTop) { // Scrolling up
+              stickyCart.classList.add('show');
+            } else { // Scrolling down
+              stickyCart.classList.remove('show');
+            }
+          } else {
+            stickyCart.classList.remove('show');
+          }
+          
+          lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        });
+      }
+
+      // Make functions global for inline event handlers
+      window.toggleDropdown = toggleDropdown;
+      window.changeLanguage = changeLanguage;
+
+      // Initialize when DOM is loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        updateYearInFooter();
+        initMobileMenu();
+        initProductCards();
+        initCartFunctionality();
+        initializeLanguage();
+      });
+    </script>
+
+    <script src="../assets/js/hero.js"></script>
+  </body>
+</html>
