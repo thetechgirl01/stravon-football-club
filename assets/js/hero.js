@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ========== Countdown Timer ==========
+// Countdown Timer 
 
 
 
@@ -72,11 +72,11 @@ const countdown = () => {
 countdown();
 
 
-// ========== Footer Year ==========
+// Footer Year 
 document.getElementById('year').textContent = new Date().getFullYear();
 
 
-// ========== Lightbox Logic ==========
+// Lightbox Logic 
 function openLightbox(src) {
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightbox-img');
@@ -93,7 +93,7 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-// ========== Background Image Slider ==========
+// Background Image Slider 
 const section = document.getElementById('heroSection');
 const flash = document.getElementById('flashOverlay');
 
@@ -128,7 +128,7 @@ section.style.backgroundImage = images[current];
 setInterval(changeBackground, 4000);
 
 
-// ========== Dropdown Toggle ==========
+// Dropdown Toggle ==========
 function toggleDropdown() {
   const menu = document.getElementById('dropdown-menu');
   menu.classList.toggle('hidden');
@@ -157,3 +157,33 @@ function toggleMenu() {
     body.classList.add('overflow-hidden');
   }
 }
+
+
+//this is the  function changes the language of the Google Translate widget
+
+function changeLanguage(lang) {
+  const selectField = document.querySelector("select.goog-te-combo");
+
+  if (selectField) {
+    selectField.value = lang;
+    selectField.dispatchEvent(new Event("change"));
+    localStorage.setItem("preferredLang", lang);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const savedLang = localStorage.getItem("preferredLang");
+
+  if (savedLang) {
+    const applyLang = () => {
+      const selectField = document.querySelector("select.goog-te-combo");
+      if (selectField) {
+        selectField.value = savedLang;
+        selectField.dispatchEvent(new Event("change"));
+      } else {
+        setTimeout(applyLang, 500);
+      }
+    };
+    applyLang();
+  }
+});
