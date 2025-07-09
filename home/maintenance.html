@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../input.css">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+  <title>Geezerz FC | Maintenance</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- Top Bar -->
+  <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-2">
+    <div class="left-nav-contents flex items-center gap-4">
+      <button class="text-[#002B5C] font-medium hover:underline"><a href="./auth/login.html">Sign In</a></button>
+      <button class="bg-[#002B5C] text-white px-4 py-0 h-8 rounded-md hover:bg-[#001d3f] transition"><a href="./auth/register.html">Register</a></button>
+    </div>
+    <div class="w-[360px] overflow-hidden">
+      <div class="flex gap-4 logo-scroll">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar bg-[#002B5C] text-white p-4">
+    <div class="container mx-auto flex justify-between items-center">
+      <div class="hidden md:flex space-x-6">
+        <a href="../post/blog-posts.html">Latest News</a>
+        <a href="../store/products.html">Store</a>
+        <a href="../home/fixtures.html">Fixtures</a>
+      </div>
+      <div class="flex-shrink-0">
+        <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+      </div>
+      <div class="hidden md:flex space-x-6">
+        <a href="#">Tickets & Hospitality</a>
+        <a href="#">Fans</a>
+        <a href="../home/players.html">Players</a>
+      </div>
+      <div class="md:hidden">
+        <span class="text-sm text-gray-300">Menu</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Maintenance Message -->
+  <main class="flex-grow flex items-center justify-center px-6 py-20 bg-gray-100">
+    <div class="text-center max-w-lg space-y-6">
+      <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="mx-auto h-24 w-24" />
+      <h1 class="text-4xl font-bold text-[#002B5C]">We're Under Maintenance</h1>
+      <p class="text-gray-700">
+        Our site is currently being updated. Please check back soon for the latest from Geezerz FC.
+      </p>
+      <p class="text-gray-500 text-sm">Estimated time: <strong>2 hours</strong></p>
+      <a href="mailto:contact@geezerzfc.com" class="inline-block mt-4 bg-yellow-400 text-black px-6 py-2 rounded hover:bg-yellow-500 transition">
+        Contact Support
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#00172b] text-white pt-8 pb-4 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="w-24 h-24 mb-4" />
+        <p class="text-sm text-gray-400">Gigantic pride, one community — keep the faith with Geezerz FC.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-yellow-400">Blog</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Store</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Fixtures</a></li>
+          <li><a href="../home/contact-us.html" class="hover:text-yellow-400">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Club Info</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>📍 Abuja, Nigeria</li>
+          <li>📞 +234 706 583 2821</li>
+          <li>✉️ contact@geezerzfc.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-yellow-400">Facebook</a>
+          <a href="#" class="hover:text-yellow-400">Twitter</a>
+          <a href="#" class="hover:text-yellow-400">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">
+      &copy; 2025 Geezerz FC. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>

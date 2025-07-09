@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="../assets/css/main.css">
+  <link rel="stylesheet" href="../input.css">
+  <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+  <title>Email Verification Required - Geezerz FC</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-black font-sans min-h-screen flex flex-col">
+
+  <!-- Top Bar -->
+  <div class="left-nav w-full bg-white shadow-md flex items-center justify-between px-4 py-2">
+    <div class="left-nav-contents flex items-center gap-4">
+      <button class="text-[#002B5C] font-medium hover:underline"><a href="./auth/login.html">Sign In</a></button>
+      <button class="bg-[#002B5C] text-white px-4 py-0 h-8 rounded-md hover:bg-[#001d3f] transition"><a href="./auth/register.html">Register</a></button>
+    </div>
+    <div class="w-[360px] overflow-hidden">
+      <div class="flex gap-4 logo-scroll">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg" class="h-6 blue-filter" alt="Adidas"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" class="h-6 blue-filter" alt="Nike"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/f/ff/Puma_logo.svg" class="h-6 blue-filter" alt="Puma"/>
+      </div>
+    </div>
+  </div>
+
+
+
+    <nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Desktop Menu Left -->
+        <div class="hidden md:flex space-x-6">
+            <a href="../post/blog-posts.html"  >Latest News</a>
+            <a href="../store/products.html"  >Store</a>
+            <a href="../home/fixtures.html"  >Fixtures</a>
+        </div>
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+            <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+        </div>
+
+        <!-- Desktop Menu Right -->
+        <div class="hidden md:flex space-x-6">
+            <a href=""  >Tickets & Hospitality</a>
+            
+            <a href="../home/players.html"  >Players</a>
+             <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+
+            
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+            <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 transition-all duration-300 transform translate-x-full">
+        <div class="absolute top-4 right-4">
+            <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
+        </div>
+        <div class="h-full flex flex-col items-center justify-center space-y-8">
+            <a href="../post/blog-posts.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Latest News</a>
+           
+            <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
+            <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
+            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
+            
+            <a href="./home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>  <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+
+
+        </div>
+    </div>
+</nav>
+
+  <!-- Notification Section -->
+  <main class="flex-grow flex items-center justify-center px-6 py-20 bg-gray-50">
+    <div class="text-center max-w-md space-y-6">
+      <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="mx-auto h-20 w-20" />
+      <h1 class="text-3xl font-bold text-[#002B5C]">Verify Your Email</h1>
+      <p class="text-gray-700">
+        We've sent a confirmation link to your email. Please check your inbox and verify to continue.
+      </p>
+      <p class="text-sm text-gray-500">Didn't receive the email? Click below to resend.</p>
+      <button class="bg-yellow-400 text-black px-5 py-2 rounded hover:bg-yellow-500 transition">
+        Resend Verification Link
+      </button>
+      <div class="text-sm text-gray-500 mt-4">
+        Logged in by mistake? <a href="./auth/logout.html" class="text-blue-600 hover:underline">Logout</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#00172b] text-white pt-8 pb-4 px-6">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <img src="../assets/images/logo.png" alt="Geezerz FC Logo" class="w-24 h-24 mb-4" />
+        <p class="text-sm text-gray-400">Gigantic pride, one community — keep the faith with Geezerz FC.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="#" class="hover:text-yellow-400">Blog</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Store</a></li>
+          <li><a href="#" class="hover:text-yellow-400">Fixtures</a></li>
+          <li><a href="../home/contact-us.html" class="hover:text-yellow-400">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Club Info</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li>📍 Abuja, Nigeria</li>
+          <li>📞 +234 706 583 2821</li>
+          <li>✉️ contact@geezerzfc.com</li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold text-yellow-400 mb-3">Follow Us</h4>
+        <div class="flex space-x-4">
+          <a href="#" class="hover:text-yellow-400">Facebook</a>
+          <a href="#" class="hover:text-yellow-400">Twitter</a>
+          <a href="#" class="hover:text-yellow-400">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-6 border-t border-gray-700 pt-4 text-center text-gray-500 text-sm">
+      &copy; 2025 Geezerz FC. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
