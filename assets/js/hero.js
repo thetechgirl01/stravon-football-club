@@ -192,3 +192,6 @@ document.addEventListener("DOMContentLoaded", function () {
     duration: 800,
     once: true
   });
+
+
+  

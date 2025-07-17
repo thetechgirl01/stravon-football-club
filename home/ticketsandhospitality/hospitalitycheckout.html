@@ -348,31 +348,10 @@
 
 </footer>
 
- <script src="/client/assets/js/hero.js"></script>
 
-    <script>
-        // i added Simple guest count update functionality, but you can remov ie when you are removing the js that you dont want 
-        function updateGuests(change) {
-            const guestElement = document.getElementById('guest-count');
-            const guestSummary = document.getElementById('guest-count-summary');
-            let guests = parseInt(guestElement.textContent) + change;
-            guests = Math.max(1, guests); // Minimum 1 guest
-            guestElement.textContent = guests;
-            guestSummary.textContent = guests;
-            
-            // Update totals
-            const packagePrice = 750; // Would normally get this from the selected package
-            const subtotal = guests * packagePrice;
-            const total = subtotal + 25; // Service fee
-            
-            document.getElementById('subtotal').textContent = `₦${subtotal}`;
-            document.getElementById('package-total').textContent = `₦${subtotal}`;
-            document.getElementById('total').textContent = `₦${total.toFixed(2)}`;
-        }
-        
-       
-    </script>
+  
      <script src="/client/assets/js/hero.js"></script>
+     <script src="/client/assets/js/main.js"></script>
 
 </body>
 </html>

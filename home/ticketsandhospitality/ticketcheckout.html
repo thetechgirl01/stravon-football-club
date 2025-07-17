@@ -328,37 +328,10 @@
 
 </footer>
 
- <script src="../assets/js/hero.js"></script>
+ <script src="/client/assets/js/main.js"></script>
 
     <script>
-        // Simple quantity update functionality
-        function updateQuantity(type, change) {
-            const qtyElement = document.getElementById(`${type}-qty`);
-            let qty = parseInt(qtyElement.textContent) + change;
-            qty = Math.max(0, qty); // Don't allow negative quantities
-            qtyElement.textContent = qty;
-            
-            // Update summary
-            document.getElementById(`${type}-summary`).textContent = qty;
-            
-            // Calculate totals
-            const prices = {
-                'west-upper': 75,
-                'east-lower': 95,
-                'family': 120
-            };
-            
-            document.getElementById(`${type}-total`).textContent = `₦${qty * prices[type]}`;
-            
-            // Update subtotal and total
-            const subtotal = (parseInt(document.getElementById('west-upper-summary').textContent) * 75 +
-                             (parseInt(document.getElementById('east-lower-summary').textContent) * 95) +
-                             (parseInt(document.getElementById('family-summary').textContent) * 120);
-            
-            document.getElementById('subtotal').textContent = `₦${subtotal}`;
-            document.getElementById('total').textContent = `₦${subtotal + 2.50}`;
-        };
-
+      
     </script>
 
 

@@ -461,60 +461,14 @@
 
 </footer>
 
- <script src="../assets/js/hero.js"></script>
 
-    <script>
-        // Membership selection functionality
-        function selectMembership(type) {
-            // Remove selected class from all options
-            document.querySelectorAll('.membership-option').forEach(option => {
-                option.classList.remove('selected');
-            });
-            
-            // Hide all selected indicators
-            document.querySelectorAll('[id$="-selected"]').forEach(indicator => {
-                indicator.classList.add('hidden');
-            });
-            
-            // Add selected class to clicked option
-            const selectedOption = document.querySelector(`[onclick="selectMembership('${type}')"]`);
-            selectedOption.classList.add('selected');
-            
-            // Show selected indicator
-            document.getElementById(`${type}-selected`).classList.remove('hidden');
-            
-            // Update order summary
-            const prices = {
-                'standard': 40,
-                'premium': 75,
-                'family': 120,
-                'season': 25
-            };
-            
-            const names = {
-                'standard': 'Standard Membership',
-                'premium': 'Premium Membership',
-                'family': 'Family Membership',
-                'season': 'Season Ticket Holder'
-            };
-            
-            document.getElementById('membership-type').textContent = names[type];
-            document.getElementById('subtotal').textContent = `₦${prices[type]}`;
-            document.getElementById('total').textContent = `₦${prices[type]}`;
-            
-            // Show/hide additional fields
-            if (type === 'family') {
-                document.getElementById('family-members').classList.remove('hidden');
-                document.getElementById('season-ticket-info').classList.add('hidden');
-            } else if (type === 'season') {
-                document.getElementById('season-ticket-info').classList.remove('hidden');
-                document.getElementById('family-members').classList.add('hidden');
-            } else {
-                document.getElementById('family-members').classList.add('hidden');
-                document.getElementById('season-ticket-info').classList.add('hidden');
-            }
-        }
+
+
+
+
+
     </script>
+     <script src="/client/assets/js/main.js"></script>
      <script src="/client/assets/js/hero.js"></script>
 </body>
 </html>
