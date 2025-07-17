@@ -935,48 +935,10 @@
   <!-- AOS Library JS -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-  // AOS Init
-  AOS.init({
-    duration: 800,
-    once: true
-  });
 
-  // Toggle dropdown visibility
-  function toggleDropdown() {
-    const menu = document.getElementById('dropdown-menu');
-    menu.classList.toggle('hidden');
-  }
 
-  // Change language when a dropdown option is selected
-  function changeLanguage(langCode, countryCode) {
-    const button = document.querySelector('.relative button');
-    const img = button.querySelector('img');
-    const text = button.querySelector('span') || document.createElement('span');
 
-    img.src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${countryCode}.svg`;
-    img.alt = countryCode;
 
-    const shortCodes = {
-      en: 'ENG',
-      fr: 'FRE',
-      pt: 'POR',
-      es: 'ESP',
-      ru: 'RUS'
-    };
-    text.textContent = shortCodes[langCode] || 'LANG';
-
-    if (!button.querySelector('span')) button.appendChild(text);
-
-    // Trigger Google Translate
-    const select = document.querySelector('.goog-te-combo');
-    if (select) {
-      select.value = langCode;
-      select.dispatchEvent(new Event('change'));
-    }
-
-    // Close dropdown
-    toggleDropdown();
-  }
 </script>
 
 

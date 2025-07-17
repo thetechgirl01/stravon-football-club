@@ -8,90 +8,7 @@
     <link rel="icon" href="../assets/images/logo.png" type="image/png" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>geezerz FC | Club Store</title>
-    
-    <style>
-      .cart-badge {
-        position: absolute;
-        top: -8px;
-        right: -8px;
-        background: #FFD100;
-        color: #002B5C;
-        border-radius: 50%;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 12px;
-        font-weight: bold;
-      }
-      
-      #cartModal {
-        position: fixed;
-        top: 0;
-        right: -400px;
-        width: 400px;
-        height: 100vh;
-        background: white;
-        box-shadow: -4px 0 15px rgba(0,0,0,0.1);
-        transition: right 0.3s ease;
-        z-index: 1000;
-        overflow-y: auto;
-      }
-      
-      #cartModal.show {
-        right: 0;
-      }
-      
-      .product-card {
-        transition: all 0.3s ease;
-      }
-      
-      .product-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-      }
-      
-      .pagination-btn {
-        transition: all 0.2s ease;
-      }
-      
-      .pagination-btn:hover {
-        transform: scale(1.05);
-      }
-      
-      .filter-btn {
-        transition: all 0.2s ease;
-      }
-      
-      .filter-btn:hover {
-        transform: scale(1.02);
-      }
-      
-      .loading-skeleton {
-        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
-        background-size: 200% 100%;
-        animation: loading 1.5s infinite;
-      }
-      
-      @keyframes loading {
-        0% { background-position: 200% 0; }
-        100% { background-position: -200% 0; }
-      }
-      
-      .blue-filter {
-        filter: brightness(0) saturate(100%) invert(16%) sepia(100%) saturate(2000%) hue-rotate(207deg) brightness(95%) contrast(106%);
-      }
-      
-      .logo-scroll {
-        animation: scroll 20s linear infinite;
-      }
-      
-      @keyframes scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    </style>
+  
   </head>
   <body class="bg-gray-50">
     <!-- Google Translate Widget (Hidden) -->
@@ -634,37 +551,39 @@
     </section>
 
     <!-- Cart Modal -->
-    <div id="cartModal">
-      <div class="p-6 h-full flex flex-col">
-        <div class="flex justify-between items-center mb-6 border-b pb-4">
-          <h2 class="text-2xl font-bold text-[#002B5C]">Shopping Cart</h2>
-          <button class="close-cart text-gray-500 hover:text-gray-700 text-2xl">×</button>
-        </div>
-        
-        <div id="cartItems" class="flex-1 overflow-y-auto mb-6">
-          <div class="text-center py-12 text-gray-500">
-            <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
-            </svg>
-            <p>Your cart is empty</p>
-          </div>
-        </div>
-        
-        <div class="border-t pt-4">
-          <div class="flex justify-between text-sm mb-2">
-            <span>Items:</span>
-            <span id="itemCount">0</span>
-          </div>
-          <div class="flex justify-between font-bold text-lg mb-4">
-            <span>Subtotal:</span>
-            <span id="cartSubtotal" class="text-yellow-600">$0.00</span>
-          </div>
-          <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-3 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
-            <a href="checkout.html" class="block w-full h-full">Proceed to Checkout</a>
-          </button>
-        </div>
+<div id="cartModal">
+  <div class="p-4 sm:p-6 h-full flex flex-col">
+    <div class="flex justify-between items-center mb-4 sm:mb-6 border-b pb-3 sm:pb-4">
+      <h2 class="text-xl sm:text-2xl font-bold text-[#002B5C]">Shopping Cart</h2>
+      <button class="close-cart text-gray-500 hover:text-gray-700 text-2xl focus:outline-none">×</button>
+    </div>
+    
+    <div id="cartItems" class="flex-1 overflow-y-auto mb-4 sm:mb-6">
+      <div class="text-center py-8 sm:py-12 text-gray-500">
+        <svg class="w-12 h-12 sm:w-16 sm:h-16 mx-auto mb-3 sm:mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+        </svg>
+        <p class="text-sm sm:text-base">Your cart is empty</p>
       </div>
     </div>
+    
+    <div class="border-t pt-3 sm:pt-4">
+      <div class="flex justify-between text-xs sm:text-sm mb-1 sm:mb-2">
+        <span>Items:</span>
+        <span id="itemCount">0</span>
+      </div>
+      <div class="flex justify-between font-bold text-base sm:text-lg mb-3 sm:mb-4">
+        <span>Subtotal:</span>
+        <span id="cartSubtotal" class="text-yellow-600">$0.00</span>
+      </div>
+      <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-2 sm:py-3 rounded-lg sm:rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 focus:outline-none" disabled>
+        <a href="checkout.html" class="block w-full h-full text-sm sm:text-base">Proceed to Checkout</a>
+      </button>
+    </div>
+  </div>
+</div>
+
+
 
 
     <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">

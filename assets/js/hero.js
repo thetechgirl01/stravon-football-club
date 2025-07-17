@@ -187,3 +187,8 @@ document.addEventListener("DOMContentLoaded", function () {
     applyLang();
   }
 });
+  // AOS Init
+  AOS.init({
+    duration: 800,
+    once: true
+  });

@@ -301,17 +301,19 @@
           </div>
 
           <!-- Main Image/Video Container -->
-          <div class="flex-1 relative overflow-hidden rounded-xl shadow-lg">
+          <div class="flex-1 relative overflow-hidden rounded-xl shadow-lg w-full h-auto max-h-[300px] md:max-h-auto">
             <!-- Main Product Image -->
-            <img
+            <div class="w-full h-auto"">
+              <img
               id="mainImage"
               src="../assets/images/players/player1.png"
               alt="Main product view"
               class="w-full h-auto max-h-[500px] md:max-h-[600px] object-contain product-image-hover"
             />
+            </div>
             
-            <!-- Video Container (Hidden by default) -->
-            <div id="videoContainer" class="hidden w-full h-auto max-h-[500px] md:max-h-[600px] relative">
+         <div class="">
+       <div id="videoContainer" class="hidden w-full h-auto max-h-[500px] md:max-h-[600px] relative">
               <video
                 id="productVideo"
                 class="w-full h-full object-contain rounded-lg"
@@ -331,9 +333,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
                 </svg>
               </button>
-            </div>
-            
-            <!-- Product Badge -->
+            </div></div>
             <div class="absolute top-4 right-4 bg-yellow-400 text-[#002B5C] px-3 py-1 rounded-full text-sm font-bold">
               New
             </div>
