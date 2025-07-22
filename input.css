@@ -559,3 +559,96 @@ html {
       max-width: 95%;
     }
   }
+
+  /*css from products page*/
+    
+
+    .size-btn.active {
+      background-color: #facc15;
+      color: #002B5C;
+      transform: scale(1.05);
+      box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3);
+    }
+    
+    .product-image-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .product-image-hover:hover {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+    
+    .thumbnail-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .thumbnail-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 43, 92, 0.2);
+    }
+    
+    .button-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .button-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(250, 204, 21, 0.3);
+    }
+    
+    .button-hover:active {
+      transform: translateY(0);
+    }
+    
+    .card-hover {
+      transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 43, 92, 0.15);
+    }
+    
+    .icon-hover {
+      transition: all 0.3s ease;
+    }
+    
+    .icon-hover:hover {
+      transform: rotate(12deg) scale(1.1);
+    }
+    
+    .logo-scroll {
+      animation: scroll 30s linear infinite;
+    }
+    
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .blue-filter {
+      filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7251%) hue-rotate(212deg) brightness(97%) contrast(108%);
+    }
+    
+    .quantity-btn {
+      transition: all 0.2s ease;
+    }
+    
+    .quantity-btn:hover {
+      background-color: #f3f4f6;
+      transform: scale(1.1);
+    }
+    
+    .quantity-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .back-btn {
+      transition: all 0.3s ease;
+    }
+    
+    .back-btn:hover {
+      transform: translateX(-5px);
+      color: #facc15;
+    }
