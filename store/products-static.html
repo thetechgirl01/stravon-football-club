@@ -9,7 +9,44 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>geezerz FC | Club Store</title>
     
-
+    <style>
+      /* Cart Modal Styles */
+      #cartModal {
+        display: none;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        max-width: 450px;
+        height: 100%;
+        background: white;
+        z-index: 1000;
+        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      #cartModal.show {
+        transform: translateX(0);
+        display: block;
+      }
+      
+      .cart-badge {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        background: #ef4444;
+        color: white;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        font-weight: bold;
+      }
+    </style>
   </head>
   <body class="bg-gray-50">
     <!-- Google Translate Widget (Hidden) -->
@@ -82,14 +119,13 @@
 
           <!-- Right Section -->
           <div class="flex items-center space-x-4">
-           
-
             <!-- Cart Button -->
-            <button id="header-cart-btn" class="bg-yellow-400 text-[#002B5C] p-3 rounded-full hover:bg-yellow-300 transition-all duration-200 hover:scale-110 relative" aria-label="Shopping cart">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+            <button id="cartButton" class="flex items-center gap-3 bg-[#002B5C] text-white px-6 py-3 rounded-xl hover:bg-[#001d3f] transition-all duration-200 hover:scale-105 shadow-lg relative">
+              <svg class="w-6 h-6 text-yellow-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
               </svg>
-              <span class="cart-badge">2</span>
+              <span class="font-semibold">Cart</span>
+              <span id="cartBadge" class="cart-badge hidden">0</span>
             </button>
 
             <!-- Mobile Menu Button -->
@@ -124,107 +160,6 @@
         </div>
       </div>
     </header>
-
-    <!-- Sticky Cart Section (appears on scroll) -->
-    <div id="sticky-cart" class="sticky-cart">
-      <div class="container mx-auto px-4 flex items-center justify-between">
-        <div class="flex items-center space-x-4">
-          <img src="../assets/images/logo.png" alt="geezerz FC" class="w-8 h-8">
-          <span class="text-yellow-400 font-bold text-sm">geezerz FC Store</span>
-        </div>
-        
-        <div class="flex items-center space-x-4">
-          <div class="hidden sm:flex items-center text-white text-sm">
-            <span id="sticky-cart-items">2 items</span>
-            <span class="mx-2">•</span>
-            <span id="sticky-cart-total" class="font-bold text-yellow-400">₦34,500</span>
-          </div>
-          
-          <button id="sticky-cart-btn" class="bg-yellow-400 text-[#002B5C] px-4 py-2 rounded-lg font-bold hover:bg-yellow-300 transition-all duration-200 relative flex items-center space-x-2">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
-            </svg>
-            <span class="hidden sm:inline">View Cart</span>
-            <span class="cart-badge">2</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cart Modal -->
-    <div id="cart-modal" class="cart-modal">
-      <div class="cart-content">
-        <div class="flex flex-col h-full max-h-[80vh]">
-          <!-- Cart Header -->
-          <div class="flex justify-between items-center p-4 border-b border-gray-200 bg-gray-50">
-            <h2 class="text-xl font-bold text-[#002B5C] flex items-center">
-              <svg class="w-6 h-6 mr-2 text-yellow-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
-              </svg>
-              Shopping Cart
-            </h2>
-            <button id="close-cart" class="text-gray-500 hover:text-gray-700 p-2 rounded-full hover:bg-gray-200 transition-all">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-              </svg>
-            </button>
-          </div>
-          
-          <!-- Cart Items -->
-          <div class="flex-1 overflow-y-auto p-4">
-            <!-- Sample Cart Item 1 -->
-            <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg mb-3 bg-white">
-              <img src="../assets/images/products/product1.png" alt="2025 Home Jersey" class="w-16 h-16 object-cover rounded-lg">
-              <div class="flex-1 min-w-0">
-                <h4 class="font-semibold text-gray-800 text-sm truncate">2025 Home Jersey</h4>
-                <p class="text-xs text-gray-600 mb-1">Size: L</p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-bold text-[#002B5C]">₦27,000</span>
-                  <div class="flex items-center gap-2">
-                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">-</button>
-                    <span class="w-8 text-center text-sm">1</span>
-                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Sample Cart Item 2 -->
-            <div class="flex items-center gap-3 p-3 border border-gray-200 rounded-lg mb-3 bg-white">
-              <img src="../assets/images/players/player3.png" alt="Club Scarf" class="w-16 h-16 object-cover rounded-lg">
-              <div class="flex-1 min-w-0">
-                <h4 class="font-semibold text-gray-800 text-sm truncate">Club Scarf</h4>
-                <p class="text-xs text-gray-600 mb-1">Premium wool blend</p>
-                <div class="flex items-center justify-between">
-                  <span class="text-sm font-bold text-[#002B5C]">₦7,500</span>
-                  <div class="flex items-center gap-2">
-                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">-</button>
-                    <span class="w-8 text-center text-sm">1</span>
-                    <button class="w-7 h-7 rounded-full bg-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-300 transition text-sm">+</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-          <!-- Cart Footer -->
-          <div class="border-t border-gray-200 p-4 bg-gray-50">
-            <div class="flex justify-between items-center mb-2">
-              <span class="text-sm text-gray-600">Items:</span>
-              <span class="text-sm font-semibold">2</span>
-            </div>
-            <div class="flex justify-between items-center mb-4">
-              <span class="text-lg font-bold text-gray-800">Total:</span>
-              <span class="text-xl font-bold text-[#002B5C]">₦34,500</span>
-            </div>
-            <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-3 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-[0.98] shadow-md">
-              Proceed to Checkout
-            </button>
-            <p class="text-xs text-gray-500 text-center mt-2">Free shipping on orders over ₦22,500</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Track Order and History Section -->
     <div class="bg-gray-50 border-b border-gray-200">
@@ -287,6 +222,7 @@
             <div class="relative">
               <input
                 type="text"
+                id="productSearch"
                 placeholder="Search products..."
                 class="w-full bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 pl-12 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent transition-all duration-200"
               />
@@ -298,23 +234,26 @@
 
           <!-- Category Filters -->
           <div class="flex flex-wrap gap-3 justify-center">
-            <button class="filter-btn active bg-yellow-400 text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold hover:bg-yellow-300 shadow-md">
+            <button data-category="all" class="filter-btn active bg-yellow-400 text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold hover:bg-yellow-300 shadow-md">
               All Products
             </button>
-            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+            <button data-category="jersey" class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
               Jerseys
             </button>
-            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+            <button data-category="accessory" class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
               Accessories
             </button>
-            <button class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
+            <button data-category="training" class="filter-btn text-white bg-[#002B5C] hover:bg-yellow-400 hover:text-[#002B5C] px-6 py-3 rounded-xl text-sm font-bold transition-all duration-200 shadow-md">
               Training
             </button>
           </div>
 
           <!-- Sort and Per Page -->
           <div class="flex gap-4">
-            <select class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[120px]">
+            <select
+              id="sortProducts"
+              class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[120px]"
+            >
               <option value="default">Default</option>
               <option value="name">Name A-Z</option>
               <option value="name-desc">Name Z-A</option>
@@ -323,7 +262,10 @@
               <option value="newest">Newest First</option>
             </select>
             
-            <select class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[100px]">
+            <select
+              id="perPage"
+              class="bg-gray-50 border border-gray-200 text-gray-800 px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-transparent min-w-[100px]"
+            >
               <option value="6">6 per page</option>
               <option value="12" selected>12 per page</option>
               <option value="24">24 per page</option>
@@ -338,7 +280,7 @@
         <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           
           <!-- Product Card 1 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="1" data-category="jersey">
             <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
             
             <div class="relative overflow-hidden">
@@ -360,7 +302,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦27,000</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -368,8 +310,7 @@
           </div>
 
           <!-- Product Card 2 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
-            
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="2" data-category="jersey">
             <div class="relative overflow-hidden">
               <img src="../assets/images/players/player1.png" alt="2025 Away Jersey" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -389,7 +330,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦27,000</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -397,7 +338,7 @@
           </div>
 
           <!-- Product Card 3 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="3" data-category="training">
             <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
             
             <div class="relative overflow-hidden">
@@ -419,7 +360,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦21,000</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -427,8 +368,7 @@
           </div>
 
           <!-- Product Card 4 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
-            
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="4" data-category="accessory">
             <div class="relative overflow-hidden">
               <img src="../assets/images/players/player3.png" alt="Club Scarf" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -448,7 +388,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦7,500</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -456,8 +396,7 @@
           </div>
 
           <!-- Product Card 5 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
-            
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="5" data-category="accessory">
             <div class="relative overflow-hidden">
               <img src="../assets/images/logo.png" alt="Club Cap" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -477,7 +416,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦6,000</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -485,8 +424,7 @@
           </div>
 
           <!-- Product Card 6 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
-            
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="6" data-category="training">
             <div class="relative overflow-hidden">
               <img src="../assets/images/hero.png" alt="Training Shorts" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -506,7 +444,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦10,500</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -514,7 +452,7 @@
           </div>
 
           <!-- Product Card 7 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="7" data-category="accessory">
             <div class="absolute top-3 left-3 bg-yellow-400 text-[#002B5C] text-xs font-bold px-2 py-1 rounded-full z-10">NEW</div>
             
             <div class="relative overflow-hidden">
@@ -536,7 +474,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦16,500</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -544,8 +482,7 @@
           </div>
 
           <!-- Product Card 8 -->
-          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer">
-            
+          <div class="product-card group bg-white rounded-2xl overflow-hidden shadow-lg border border-gray-100 relative cursor-pointer" data-id="8" data-category="accessory">
             <div class="relative overflow-hidden">
               <img src="../assets/images/pitch.png" alt="Football" class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-500" />
               <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300"></div>
@@ -565,7 +502,7 @@
               
               <div class="flex justify-between items-center">
                 <span class="text-2xl font-bold text-[#002B5C]">₦12,000</span>
-                <button class="bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
+                <button class="add-to-cart bg-yellow-400 text-[#002B5C] font-bold px-6 py-2 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 shadow-md z-10 relative">
                   Add to Cart
                 </button>
               </div>
@@ -579,10 +516,10 @@
       <div class="bg-white rounded-xl shadow-lg p-6">
         <div class="flex flex-col sm:flex-row justify-between items-center gap-4">
           <div class="text-sm text-gray-600">
-            Showing 1-8 of 24 products
+            Showing <span id="showingStart">1</span>-<span id="showingEnd">8</span> of <span id="totalItems">24</span> products
           </div>
           
-          <div class="flex gap-2">
+          <div id="paginationControls" class="flex gap-2">
             <button class="pagination-btn bg-gray-200 text-gray-600 px-4 py-2 rounded-lg cursor-not-allowed" disabled>
               Previous
             </button>
@@ -602,6 +539,39 @@
         </div>
       </div>
     </main>
+
+    <!-- Cart Modal -->
+    <div id="cartModal">
+      <div class="p-6 h-full flex flex-col">
+        <div class="flex justify-between items-center mb-6 border-b pb-4">
+          <h2 class="text-2xl font-bold text-[#002B5C]">Shopping Cart</h2>
+          <button class="close-cart text-gray-500 hover:text-gray-700 text-2xl">×</button>
+        </div>
+        
+        <div id="cartItems" class="flex-1 overflow-y-auto mb-6">
+          <div class="text-center py-12 text-gray-500">
+            <svg class="w-16 h-16 mx-auto mb-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.35 2.7a1 1 0 00.9 1.5h12.6m-11-4h10m-3 6a1 1 0 11-2 0 1 1 0 012 0zm-8 0a1 1 0 11-2 0 1 1 0 012 0z"/>
+            </svg>
+            <p>Your cart is empty</p>
+          </div>
+        </div>
+        
+        <div class="border-t pt-4">
+          <div class="flex justify-between text-sm mb-2">
+            <span>Items:</span>
+            <span id="itemCount">0</span>
+          </div>
+          <div class="flex justify-between font-bold text-lg mb-4">
+            <span>Subtotal:</span>
+            <span id="cartSubtotal" class="text-yellow-600">₦0.00</span>
+          </div>
+          <button class="w-full bg-yellow-400 text-[#002B5C] font-bold py-3 rounded-xl hover:bg-yellow-300 transition-all duration-200 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+            <a href="checkout.html" class="block w-full h-full">Proceed to Checkout</a>
+          </button>
+        </div>
+      </div>
+    </div>
 
     <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -657,87 +627,7 @@
 
  
 
-     <script src="/client/assets/js/hero.js"></script>
-     <script src="/client/assets/js/main.js"></script>
-     <script>
-  // Cart functionality
-  document.addEventListener('DOMContentLoaded', function() {
-    // Cart elements
-    const cartModal = document.getElementById('cart-modal');
-    const headerCartBtn = document.getElementById('header-cart-btn');
-    const stickyCartBtn = document.getElementById('sticky-cart-btn');
-    const closeCartBtn = document.getElementById('close-cart');
-    const stickyCart = document.getElementById('sticky-cart');
-    
-    // Toggle cart modal
-    function toggleCart() {
-      cartModal.classList.toggle('active');
-    }
-    
-    // Show sticky cart on scroll
-    window.addEventListener('scroll', function() {
-      if (window.scrollY > 300) {
-        stickyCart.classList.add('active');
-      } else {
-        stickyCart.classList.remove('active');
-      }
-    });
-    
-    // Event listeners
-    headerCartBtn.addEventListener('click', toggleCart);
-    stickyCartBtn.addEventListener('click', toggleCart);
-    closeCartBtn.addEventListener('click', toggleCart);
-    
-    // Close cart when clicking outside
-    document.addEventListener('click', function(event) {
-      if (!cartModal.contains(event.target) && 
-          event.target !== headerCartBtn && 
-          event.target !== stickyCartBtn &&
-          !headerCartBtn.contains(event.target) &&
-          !stickyCartBtn.contains(event.target)) {
-        cartModal.classList.remove('active');
-      }
-    });
-    
-    // Add to cart functionality
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        const productCard = this.closest('.product-card');
-        const productId = productCard.dataset.id;
-        const productName = productCard.querySelector('h3').textContent;
-        const productPrice = productCard.querySelector('span.text-2xl').textContent;
-        const productImage = productCard.querySelector('img').src;
-        
-        // Here you would normally add to cart logic
-        // For now, we'll just update the badge count
-        const badges = document.querySelectorAll('.cart-badge');
-        badges.forEach(badge => {
-          const currentCount = parseInt(badge.textContent) || 0;
-          badge.textContent = currentCount + 1;
-          badge.style.display = 'flex';
-        });
-        
-        // Update sticky cart info
-        document.getElementById('sticky-cart-items').textContent = `${parseInt(badges[0].textContent)} items`;
-        document.getElementById('sticky-cart-total').textContent = `₦${parseInt(badges[0].textContent) * 27000}`;
-        
-        // Show a quick notification
-        const notification = document.createElement('div');
-        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg';
-        notification.textContent = `${productName} added to cart!`;
-        document.body.appendChild(notification);
-        
-        setTimeout(() => {
-          notification.remove();
-        }, 3000);
-      });
-    });
-    
-    // Update year in footer
-    document.getElementById('year').textContent = new Date().getFullYear();
-  });
-</script>
-     
+    <script src="/client/assets/js/hero.js"></script>
+    <script src="/client/assets/js/main.js"></script>
   </body>
 </html>
