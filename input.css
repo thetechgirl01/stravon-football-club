@@ -945,12 +945,12 @@ html {
       }
     }
     
-    /* Smooth scrolling */
+    /* Smooth scrolling 
     html {
       scroll-behavior: smooth;
     }
     
-    /* Custom scrollbar */
+    /* Custom scrollbar *
     ::-webkit-scrollbar {
       width: 8px;
     }
@@ -967,3 +967,4 @@ html {
     ::-webkit-scrollbar-thumb:hover {
       background: #e6b800;
     }
+*/

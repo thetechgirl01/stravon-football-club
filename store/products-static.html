@@ -657,6 +657,87 @@
 
  
 
-    <script src="../assets/js/hero.js"></script>
+     <script src="/client/assets/js/hero.js"></script>
+     <script src="/client/assets/js/main.js"></script>
+     <script>
+  // Cart functionality
+  document.addEventListener('DOMContentLoaded', function() {
+    // Cart elements
+    const cartModal = document.getElementById('cart-modal');
+    const headerCartBtn = document.getElementById('header-cart-btn');
+    const stickyCartBtn = document.getElementById('sticky-cart-btn');
+    const closeCartBtn = document.getElementById('close-cart');
+    const stickyCart = document.getElementById('sticky-cart');
+    
+    // Toggle cart modal
+    function toggleCart() {
+      cartModal.classList.toggle('active');
+    }
+    
+    // Show sticky cart on scroll
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 300) {
+        stickyCart.classList.add('active');
+      } else {
+        stickyCart.classList.remove('active');
+      }
+    });
+    
+    // Event listeners
+    headerCartBtn.addEventListener('click', toggleCart);
+    stickyCartBtn.addEventListener('click', toggleCart);
+    closeCartBtn.addEventListener('click', toggleCart);
+    
+    // Close cart when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!cartModal.contains(event.target) && 
+          event.target !== headerCartBtn && 
+          event.target !== stickyCartBtn &&
+          !headerCartBtn.contains(event.target) &&
+          !stickyCartBtn.contains(event.target)) {
+        cartModal.classList.remove('active');
+      }
+    });
+    
+    // Add to cart functionality
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const productCard = this.closest('.product-card');
+        const productId = productCard.dataset.id;
+        const productName = productCard.querySelector('h3').textContent;
+        const productPrice = productCard.querySelector('span.text-2xl').textContent;
+        const productImage = productCard.querySelector('img').src;
+        
+        // Here you would normally add to cart logic
+        // For now, we'll just update the badge count
+        const badges = document.querySelectorAll('.cart-badge');
+        badges.forEach(badge => {
+          const currentCount = parseInt(badge.textContent) || 0;
+          badge.textContent = currentCount + 1;
+          badge.style.display = 'flex';
+        });
+        
+        // Update sticky cart info
+        document.getElementById('sticky-cart-items').textContent = `${parseInt(badges[0].textContent)} items`;
+        document.getElementById('sticky-cart-total').textContent = `₦${parseInt(badges[0].textContent) * 27000}`;
+        
+        // Show a quick notification
+        const notification = document.createElement('div');
+        notification.className = 'fixed bottom-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg';
+        notification.textContent = `${productName} added to cart!`;
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+          notification.remove();
+        }, 3000);
+      });
+    });
+    
+    // Update year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  });
+</script>
+     
   </body>
 </html>
