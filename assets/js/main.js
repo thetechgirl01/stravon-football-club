@@ -245,3 +245,95 @@
       window.updateTicketQuantity = updateTicketQuantity;
       window.toggleDropdown = toggleDropdown;
       window.changeLanguage = changeLanguage;
+
+  //this function is used on the profile page to toggle the visibility of the password input field etc
+
+
+        // Sidebar navigation functionality
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all sidebar items
+                document.querySelectorAll('.sidebar-item').forEach(i => {
+                    i.classList.remove('active');
+                });
+                
+                // Add active class to clicked item
+                this.classList.add('active');
+                
+                // Hide all sections
+                document.querySelectorAll('.section-content').forEach(section => {
+                    section.classList.add('hidden');
+                });
+                
+                // Show the selected section
+                const sectionId = this.getAttribute('data-section') + '-section';
+                document.getElementById(sectionId).classList.remove('hidden');
+            });
+        });
+
+        // Password toggle functionality
+        document.querySelectorAll('.password-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const targetId = toggle.getAttribute('data-target');
+                const input = document.getElementById(targetId);
+                const isPassword = input.type === 'password';
+                
+                input.type = isPassword ? 'text' : 'password';
+                
+                // Toggle eye icon
+                if (isPassword) {
+                    toggle.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path fill-rule="evenodd" d="M3.707 2.293a1 1 0 00-1.414 1.414l14 14a1 1 0 001.414-1.414l-1.473-1.473A10.014 10.014 0 0019.542 10C18.268 5.943 14.478 3 10 3a9.958 9.958 0 00-4.512 1.074l-1.78-1.781zm4.261 4.26l1.514 1.515a2.003 2.003 0 012.45 2.45l1.514 1.514a4 4 0 00-5.478-5.478z" clip-rule="evenodd" />
+                            <path d="M12.454 16.697L9.75 13.992a4 4 0 01-3.742-3.741L2.335 6.578A9.98 9.98 0 00.458 10c1.274 4.057 5.065 7 9.542 7 .847 0 1.669-.105 2.454-.303z" />
+                        </svg>
+                    `;
+                } else {
+                    toggle.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                            <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                            <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                        </svg>
+                    `;
+                }
+            });
+        });
+
+        // Profile picture upload functionality
+        document.getElementById('uploadTrigger').addEventListener('click', function() {
+            document.getElementById('profileUpload').click();
+        });
+
+        document.getElementById('profileUpload').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    document.getElementById('profileImage').src = event.target.result;
+                    showSuccessMessage('Profile picture updated successfully!');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                showSuccessMessage('Changes saved successfully!');
+            });
+        });
+
+        // Show success message function
+        function showSuccessMessage(message) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.querySelector('p').textContent = message;
+            successMessage.style.display = 'block';
+            
+            // Hide after 3 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 3000);
+        }

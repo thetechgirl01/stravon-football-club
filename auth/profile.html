@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile  - Geezerz FC</title>
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="../input.css">
+    <link rel="icon" href="../assets/images/logo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      
+    </style>
+</head>
+<body class="bg-gray-50">
+  
+<nav class="navbar bg-[#002B5C] text-white p-4 sticky top-0 z-50">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Desktop Menu Left -->
+        <div class="hidden md:flex space-x-6">
+            <a href="../post/blog-posts.html"  >Latest News</a>
+            <a href="../store/products.html"  >Store</a>
+            <a href="../home/fixtures.html"  >Fixtures</a>
+        </div>
+
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+            <img src="../assets/images/logo.png" alt="Logo" class="h-12 w-12">
+        </div>
+
+        <!-- Desktop Menu Right -->
+        <div class="hidden md:flex space-x-6">
+            <a href=""  >Tickets & Hospitality</a>
+            
+            <a href="../home/players.html"  >Players</a>
+             <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+
+            
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden flex items-center">
+            <button id="hamburger" class="text-2xl focus:outline-none transition-transform duration-300">☰</button>
+        </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-gray-900 bg-opacity-90 z-40 transition-all duration-300 transform translate-x-full">
+        <div class="absolute top-4 right-4">
+            <button id="closeBtn" class="text-3xl text-white focus:outline-none transition-transform hover:scale-110">×</button>
+        </div>
+        <div class="h-full flex flex-col items-center justify-center space-y-8">
+            <a href="./post/blog-posts.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Latest News</a>
+           
+            <a href="../store/products.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Store</a>
+            <a href="../home/fixtures.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Fixtures</a>
+            <a href="#" class="text-2xl text-white hover:text-FFD100 transition-colors">Tickets & Hospitality</a>
+            
+            <a href="./home/players.html" class="text-2xl text-white hover:text-FFD100 transition-colors">Players</a>  <button class="">
+           
+  <svg class="w-7 h-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M15.5 14H14.71L14.43 13.73C15.41 12.59 16 11.11 16 9.5C16 5.91 13.09 3 9.5 3C5.91 3 3 5.91 3 9.5C3 13.09 5.91 16 9.5 16C11.11 16 12.59 15.41 13.73 14.43L14 14.71V15.5L19 20.49L20.49 19L15.5 14Z"/>
+  </svg>
+</button>
+            
+
+        </div>
+    </div>
+</nav>
+
+    <main class="container mx-auto px-4 py-8">
+        <div class="flex flex-col md:flex-row gap-8">
+            <!-- Sidebar Navigation -->
+            <div class="w-full md:w-64 flex-shrink-0">
+                <div class="bg-white rounded-xl shadow-md overflow-hidden">
+                    <div class="p-6 text-center border-b">
+                        <div class="relative mx-auto w-24 h-24 mb-4">
+                            <img id="profileImage" src="../assets/images/default-avatar.jpg" alt="Profile" class="w-full h-full rounded-full object-cover border-2 border-[#002B5C]">
+                            <button id="uploadTrigger" class="absolute bottom-0 right-0 bg-[#002B5C] text-white rounded-full p-1 hover:bg-[#00172b] transition">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+                                </svg>
+                            </button>
+                            <input type="file" id="profileUpload" accept="image/*">
+                        </div>
+                        <h2 class="text-xl font-bold">John Doe</h2>
+                        <p class="text-gray-500 text-sm">Premium Member</p>
+                    </div>
+                    <nav class="p-4">
+                        <ul class="space-y-1">
+                            <li>
+                                <a href="#" class="sidebar-item active block px-4 py-2 rounded-md" data-section="profile">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                                        </svg>
+                                        Profile Details
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-item block px-4 py-2 rounded-md" data-section="security">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                                        </svg>
+                                        Password & Security
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-item block px-4 py-2 rounded-md" data-section="preferences">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                                        </svg>
+                                        Preferences
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="sidebar-item block px-4 py-2 rounded-md" data-section="notifications">
+                                    <div class="flex items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                                        </svg>
+                                        Notifications
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="flex-1">
+                <!-- Success Message -->
+                <div id="successMessage" class="success-message bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6 rounded">
+                    <p>Changes saved successfully!</p>
+                </div>
+
+                <!-- Profile Details Section -->
+                <div id="profile-section" class="section-content">
+                    <div class="bg-white rounded-xl shadow-md form-card p-6 mb-6">
+                        <h2 class="text-xl font-bold text-[#002B5C] mb-6 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+                            </svg>
+                            Personal Information
+                        </h2>
+                        <form id="profileForm">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                    <input type="text" id="firstName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]" value="John">
+                                </div>
+                                <div>
+                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                    <input type="text" id="lastName" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]" value="Doe">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+                                    <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]" value="john.doe@example.com">
+                                </div>
+                                <div>
+                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]" value="+1234567890">
+                                </div>
+                            </div>
+                            
+                            
+                            
+                            <div class="flex justify-end mt-8 space-x-3">
+                                <button type="button" class="px-6 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="px-6 py-2 bg-[#002B5C] text-white font-medium rounded-lg hover:bg-[#00172b] transition">
+                                    Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Password & Security Section -->
+                <div id="security-section" class="section-content hidden">
+                    <div class="bg-white rounded-xl shadow-md form-card p-6">
+                        <h2 class="text-xl font-bold text-[#002B5C] mb-6 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                            </svg>
+                            Change Password
+                        </h2>
+                        <form id="securityForm">
+                            <div class="space-y-6">
+                                <div>
+                                    <label for="currentPassword" class="block text-sm font-medium text-gray-700 mb-1">Current Password</label>
+                                    <div class="relative">
+                                        <input type="password" id="currentPassword" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]">
+                                        <span class="password-toggle absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" data-target="currentPassword">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <label for="newPassword" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                                    <div class="relative">
+                                        <input type="password" id="newPassword" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]">
+                                        <span class="password-toggle absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" data-target="newPassword">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <p class="text-xs text-gray-500 mt-2">Password must be at least 8 characters long and include a number</p>
+                                </div>
+                                
+                                <div>
+                                    <label for="confirmPassword" class="block text-sm font-medium text-gray-700 mb-1">Confirm New Password</label>
+                                    <div class="relative">
+                                        <input type="password" id="confirmPassword" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]">
+                                        <span class="password-toggle absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer" data-target="confirmPassword">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
+                                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd" />
+                                            </svg>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end mt-8 space-x-3">
+                                <button type="button" class="px-6 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="px-6 py-2 bg-[#002B5C] text-white font-medium rounded-lg hover:bg-[#00172b] transition">
+                                    Update Password
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Preferences Section -->
+                <div id="preferences-section" class="section-content hidden">
+                    <div class="bg-white rounded-xl shadow-md form-card p-6">
+                        <h2 class="text-xl font-bold text-[#002B5C] mb-6 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd" />
+                            </svg>
+                            Account Preferences
+                        </h2>
+                        <form id="preferencesForm">
+                            <div class="space-y-8">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-[#002B5C] mb-4">Communication Preferences</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="emailNews" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded" checked>
+                                            <label for="emailNews" class="ml-3 text-sm text-gray-700">Email Newsletter</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="matchUpdates" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded" checked>
+                                            <label for="matchUpdates" class="ml-3 text-sm text-gray-700">Match Updates</label>
+                                        </div>
+                                        <div class="flex items-center">
+                                            <input type="checkbox" id="promoOffers" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded">
+                                            <label for="promoOffers" class="ml-3 text-sm text-gray-700">Promotional Offers</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-lg font-semibold text-[#002B5C] mb-4">Favorite Team</h3>
+                                    <select id="favoriteTeam" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]">
+                                        <option value="first-team">First Team</option>
+                                        <option value="u21">Under-21 Team</option>
+                                        <option value="u18">Under-18 Team</option>
+                                        <option value="womens">Women's Team</option>
+                                    </select>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-lg font-semibold text-[#002B5C] mb-4">Language Preference</h3>
+                                    <select id="language" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#002B5C]">
+                                        <option value="en">English</option>
+                                        <option value="es">Spanish</option>
+                                        <option value="fr">French</option>
+                                        <option value="de">German</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end mt-8 space-x-3">
+                                <button type="button" class="px-6 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition">
+                                    Reset
+                                </button>
+                                <button type="submit" class="px-6 py-2 bg-[#002B5C] text-white font-medium rounded-lg hover:bg-[#00172b] transition">
+                                    Save Preferences
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Notifications Section -->
+                <div id="notifications-section" class="section-content hidden">
+                    <div class="bg-white rounded-xl shadow-md form-card p-6">
+                        <h2 class="text-xl font-bold text-[#002B5C] mb-6 flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
+                            </svg>
+                            Notification Settings
+                        </h2>
+                        <form id="notificationsForm">
+                            <div class="space-y-6">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-[#002B5C] mb-4">Email Notifications</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label for="ticketUpdates" class="text-sm text-gray-700">Ticket Updates</label>
+                                                <p class="text-xs text-gray-500">Get notified about your ticket purchases</p>
+                                            </div>
+                                            <input type="checkbox" id="ticketUpdates" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded" checked>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label for="matchReminders" class="text-sm text-gray-700">Match Reminders</label>
+                                                <p class="text-xs text-gray-500">Receive reminders before matches</p>
+                                            </div>
+                                            <input type="checkbox" id="matchReminders" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded" checked>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label for="newsletter" class="text-sm text-gray-700">Club Newsletter</label>
+                                                <p class="text-xs text-gray-500">Weekly updates from the club</p>
+                                            </div>
+                                            <input type="checkbox" id="newsletter" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div>
+                                    <h3 class="text-lg font-semibold text-[#002B5C] mb-4">Push Notifications</h3>
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label for="goals" class="text-sm text-gray-700">Goal Alerts</label>
+                                                <p class="text-xs text-gray-500">Get instant goal notifications</p>
+                                            </div>
+                                            <input type="checkbox" id="goals" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded" checked>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <label for="kickoff" class="text-sm text-gray-700">Match Start</label>
+                                                <p class="text-xs text-gray-500">When the match begins</p>
+                                            </div>
+                                            <input type="checkbox" id="kickoff" class="h-4 w-4 text-[#002B5C] focus:ring-[#002B5C] border-gray-300 rounded">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-end mt-8 space-x-3">
+                                <button type="button" class="px-6 py-2 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 transition">
+                                    Reset
+                                </button>
+                                <button type="submit" class="px-6 py-2 bg-[#002B5C] text-white font-medium rounded-lg hover:bg-[#00172b] transition">
+                                    Save Settings
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+      <!-- Footer -->
+    <footer class="bg-[#00172b] text-white pt-12 pb-6 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+                <img src="../assets/images/logo.png" alt="geezerz FC Logo" class="w-24 h-24 mb-4" />
+                <p class="text-sm text-gray-400">
+                    Geezerz FC – Passion. Power. Pride. <br>
+                    United by football. Driven by legacy.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-yellow-400 mb-4">Quick Links</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li><a href="#Team" class="hover:text-yellow-400 transition">Meet the Team</a></li>
+                    <li><a href="#store" class="hover:text-yellow-400 transition">Merch Store</a></li>
+                    <li><a href="#gallery" class="hover:text-yellow-400 transition">Fan Gallery</a></li>
+                    <li><a href="#highlights" class="hover:text-yellow-400 transition">Match Highlights</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold text-yellow-400 mb-4">Club Info</h3>
+                <ul class="space-y-2 text-sm text-gray-300">
+                    <li>📍 1 Bouar street, off Bangui Street, Wuse 2, Abuja, Federal Capital Territory</li>
+                    <li>📞 +234 706 583 2821</li>
+                    <li>✉️ contact@geezerzfc.com</li>
+                    <li><a href="#" class="hover:text-yellow-400 transition">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Media -->
+            <div>
+                <h3 class="text-xl font-bold text-yellow-400 mb-4">Follow Us</h3>
+                <div class="flex space-x-4 text-white">
+                    <!-- Facebook -->
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Facebook">
+                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.6 9.87v-6.99h-2.32v-2.88h2.32V9.41c0-2.3 1.38-3.57 3.48-3.57.99 0 2.02.18 2.02.18v2.22h-1.14c-1.13 0-1.48.7-1.48 1.41v1.7h2.51l-.4 2.88h-2.11v6.99A10 10 0 0 0 22 12Z"/></svg>
+                    </a>
+                    <!-- Twitter -->
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Twitter">
+                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M22 5.92a8.38 8.38 0 0 1-2.36.65 4.14 4.14 0 0 0 1.8-2.27 8.27 8.27 0 0 1-2.63 1 4.13 4.13 0 0 0-7.1 3.76 11.7 11.7 0 0 1-8.5-4.3 4.1 4.1 0 0 0 1.28 5.51A4.07 4.07 0 0 1 2.8 9v.05a4.13 4.13 0 0 0 3.31 4.05 4.1 4.1 0 0 1-1.85.07 4.14 4.14 0 0 0 3.85 2.86A8.3 8.3 0 0 1 2 18.58a11.72 11.72 0 0 0 6.29 1.84c7.55 0 11.68-6.27 11.68-11.7v-.53A8.34 8.34 0 0 0 22 5.92Z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" class="hover:text-yellow-400 transition" aria-label="Instagram">
+                        <svg class="h-6 w-6 fill-current" viewBox="0 0 24 24"><path d="M12 2.16c3.2 0 3.584.012 4.85.07 1.17.056 1.98.24 2.44.41a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.17.46.354 1.27.41 2.44.058 1.27.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.98-.41 2.44a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.17-1.27.354-2.44.41-1.27.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.98-.24-2.44-.41a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.17-.46-.354-1.27-.41-2.44C2.172 15.585 2.16 15.2 2.16 12s.012-3.584.07-4.85c.056-1.17.24-1.98.41-2.44A4.9 4.9 0 0 1 3.79 3.94 4.9 4.9 0 0 1 5.56 2.79c.46-.17 1.27-.354 2.44-.41C8.416 2.172 8.8 2.16 12 2.16Zm0 1.68c-3.13 0-3.49.012-4.72.068-1.01.048-1.56.215-1.92.36a3.2 3.2 0 0 0-1.16.76 3.2 3.2 0 0 0-.76 1.16c-.145.36-.312.91-.36 1.92-.056 1.23-.068 1.59-.068 4.72s.012 3.49.068 4.72c.048 1.01.215 1.56.36 1.92.18.42.42.8.76 1.16.36.34.74.58 1.16.76.36.145.91.312 1.92.36 1.23.056 1.59.068 4.72.068s3.49-.012 4.72-.068c1.01-.048 1.56-.215 1.92-.36.42-.18.8-.42 1.16-.76.34-.36.58-.74.76-1.16.145-.36.312-.91.36-1.92.056-1.23.068-1.59.068-4.72s-.012-3.49-.068-4.72c-.048-1.01-.215-1.56-.36-1.92a3.2 3.2 0 0 0-.76-1.16 3.2 3.2 0 0 0-1.16-.76c-.36-.145-.91-.312-1.92-.36-1.23-.056-1.59-.068-4.72-.068Zm0 3.52a6.32 6.32 0 1 1 0 12.64 6.32 6.32 0 0 1 0-12.64Zm0 1.68a4.64 4.64 0 1 0 0 9.28 4.64 4.64 0 0 0 0-9.28Zm5.52-1.12a1.12 1.12 0 1 1 0 2.24 1.12 1.12 0 0 1 0-2.24Z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer bottom -->
+        <div class="mt-10 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">
+            &copy; <span id="year"></span> geezerz FC. All rights reserved.
+        </div>
+    </footer>
+
+   <script src="../assets/js/hero.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>
