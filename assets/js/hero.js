@@ -41,9 +41,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Countdown Timer 
-
-
-
 const countdown = () => {
   const endTime = new Date("2025-07-01T20:00:00").getTime();
   const interval = setInterval(() => {
@@ -71,10 +68,8 @@ const countdown = () => {
 };
 countdown();
 
-
 // Footer Year 
 document.getElementById('year').textContent = new Date().getFullYear();
-
 
 // Lightbox Logic 
 function openLightbox(src) {
@@ -92,7 +87,6 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeLightbox();
 });
 
-
 // Background Image Slider 
 const section = document.getElementById('heroSection');
 const flash = document.getElementById('flashOverlay');
@@ -102,7 +96,6 @@ const images = [
   "url('assets/images/hero2.png')",
   "url('assets/images/players/player1.png')"
 ];
-
 
 let current = 0;
 
@@ -127,69 +120,8 @@ section.style.backgroundImage = images[current];
 // Auto-change background every 4s
 setInterval(changeBackground, 4000);
 
-
-// Dropdown Toggle ==========
-function toggleDropdown() {
-  const menu = document.getElementById('dropdown-menu');
-  menu.classList.toggle('hidden');
-}
-
-window.addEventListener('click', function (e) {
-  const menu = document.getElementById('dropdown-menu');
-  const button = e.target.closest('button');
-  if (!e.target.closest('#dropdown-menu') && !button) {
-    menu.classList.add('hidden');
-  }
+// AOS Init
+AOS.init({
+  duration: 800,
+  once: true
 });
-
-function toggleMenu() {
-  const isOpen = mobileMenu.classList.contains('translate-x-0');
-  
-  if (isOpen) {
-    // Close menu
-    mobileMenu.classList.remove('translate-x-0');
-    mobileMenu.classList.add('translate-x-full');
-    body.classList.remove('overflow-hidden');
-  } else {
-    // Open menu
-    mobileMenu.classList.remove('translate-x-full', 'hidden');
-    mobileMenu.classList.add('translate-x-0');
-    body.classList.add('overflow-hidden');
-  }
-}
-
-
-//this is the  function changes the language of the Google Translate widget
-
-function changeLanguage(lang) {
-  const selectField = document.querySelector("select.goog-te-combo");
-
-  if (selectField) {
-    selectField.value = lang;
-    selectField.dispatchEvent(new Event("change"));
-    localStorage.setItem("preferredLang", lang);
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const savedLang = localStorage.getItem("preferredLang");
-
-  if (savedLang) {
-    const applyLang = () => {
-      const selectField = document.querySelector("select.goog-te-combo");
-      if (selectField) {
-        selectField.value = savedLang;
-        selectField.dispatchEvent(new Event("change"));
-      } else {
-        setTimeout(applyLang, 500);
-      }
-    };
-    applyLang();
-  }
-});
-  // AOS Init
-  AOS.init({
-    duration: 800,
-    once: true
-  });
-
