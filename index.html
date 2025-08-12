@@ -9,6 +9,8 @@
   <!-- AOS Library CSS -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://translate.google.com">
+  <link rel="preconnect" href="https://translate.googleapis.com">
   
 
 
@@ -30,8 +32,7 @@
       <!-- LEFT: Sign in / Register / Language Dropdown -->
       <div class="left-nav-contents flex items-center gap-4 relative">
         
-        <!-- Hidden Google Translate Element -->
-        <div id="google_translate_element"></div>
+  
 
        <!-- Language Dropdown -->
 <div id="language-selector-container">
@@ -157,91 +158,125 @@
     #language-selector-container .cursor-pointer {
       cursor: pointer;
     }
+    /* Add this to your existing styles */
+#language-selector-container .goog-te-banner {
+  display: none !important; /* Hide Google's default banner */
+}
+
+#language-selector-container .goog-te-gadget {
+  color: transparent !important; /* Hide default text */
+}
+
+/* Style the language selector dropdown */
+#language-selector-container .goog-te-combo {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  background: white;
+  color: #002B5C;
+}
   </style>
 
-  <script>
-    // Initialize Google Translate
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en',
-        includedLanguages: 'en,fr,pt,es,ru',
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-      
-      // Set default language to English
-      setTimeout(function() {
-        const combo = document.querySelector(".goog-te-combo");
-        if (combo) combo.value = 'en';
-      }, 500);
+<script>
+  // Initialize Google Translate
+  function googleTranslateElementInit() {
+    if (!window.google || !window.google.translate) {
+      console.error('Google Translate API not loaded');
+      return;
     }
+    
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      includedLanguages: 'en,fr,pt,es,ru',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+    
+    // Set default language to English
+    setTimeout(function() {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) combo.value = 'en';
+    }, 500);
+  }
 
-    // Load Google Translate API
-    function loadGoogleTranslate() {
-      const script = document.createElement('script');
-      script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
-      script.async = true;
-      document.body.appendChild(script);
+  // Load Google Translate API with error handling
+  function loadGoogleTranslate() {
+    const script = document.createElement('script');
+    script.src = '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    script.onerror = function() {
+      console.error('Failed to load Google Translate');
+      document.getElementById('dropdown-menu').style.display = 'block'; // Show manual dropdown
+    };
+    document.body.appendChild(script);
+  }
+
+  // Toggle dropdown visibility
+  function toggleDropdown() {
+    const dropdown = document.getElementById("dropdown-menu");
+    dropdown.classList.toggle("hidden");
+  }
+
+  // Change language function
+  function changeLanguage(langCode, flagCode, shortCode) {
+    // Update UI elements
+    document.getElementById("current-flag").src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${flagCode}.svg`;
+    document.getElementById("current-lang").textContent = shortCode;
+    
+    // Change Google Translate language if available
+    const targetLang = langCode.split('|')[1];
+    const combo = document.querySelector(".goog-te-combo");
+    
+    if (combo) {
+      combo.value = targetLang;
+      combo.dispatchEvent(new Event('change'));
+    } else {
+      // If Google Translate isn't loaded, store preference
+      localStorage.setItem('preferredLanguage', targetLang);
+      loadGoogleTranslate(); // Try loading again
     }
+    
+    // Close dropdown
+    document.getElementById("dropdown-menu").classList.add("hidden");
+    
+    // Store selection
+    localStorage.setItem('selectedLanguage', JSON.stringify({
+      flagCode: flagCode,
+      shortCode: shortCode
+    }));
+  }
 
-    // Toggle dropdown visibility
-    function toggleDropdown() {
-      const dropdown = document.getElementById("dropdown-menu");
-      dropdown.classList.toggle("hidden");
-    }
-
-    // Change language function
-    function changeLanguage(langCode, flagCode, shortCode) {
-      // Update UI elements
+  // Check for saved language preference on page load
+  document.addEventListener('DOMContentLoaded', function() {
+    // First try to load Google Translate
+    loadGoogleTranslate();
+    
+    // Check for saved language selection
+    const savedLanguage = localStorage.getItem('selectedLanguage');
+    if (savedLanguage) {
+      const { flagCode, shortCode } = JSON.parse(savedLanguage);
       document.getElementById("current-flag").src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${flagCode}.svg`;
       document.getElementById("current-lang").textContent = shortCode;
-      
-      // Change Google Translate language
-      const targetLang = langCode.split('|')[1];
-      const combo = document.querySelector(".goog-te-combo");
-      
-      if (combo) {
-        combo.value = targetLang;
-        combo.dispatchEvent(new Event('change'));
-      } else {
-        // If Google Translate isn't loaded yet, store preference and initialize
-        localStorage.setItem('preferredLanguage', targetLang);
-        loadGoogleTranslate();
-      }
-      
-      // Close dropdown
-      document.getElementById("dropdown-menu").classList.add("hidden");
-      
-      // Store selection in localStorage
-      localStorage.setItem('selectedLanguage', JSON.stringify({
-        flagCode: flagCode,
-        shortCode: shortCode
-      }));
     }
-
-    // Check for saved language preference on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      // Load Google Translate
-      loadGoogleTranslate();
-      
-      // Check for saved language selection
-      const savedLanguage = localStorage.getItem('selectedLanguage');
-      if (savedLanguage) {
-        const { flagCode, shortCode } = JSON.parse(savedLanguage);
-        document.getElementById("current-flag").src = `https://cdn.jsdelivr.net/gh/hampusborgos/country-flags/svg/${flagCode}.svg`;
-        document.getElementById("current-lang").textContent = shortCode;
+    
+    // Verify if Google Translate loaded after 2 seconds
+    setTimeout(function() {
+      if (!window.google || !window.google.translate) {
+        console.warn('Google Translate not loaded - may be blocked');
+        document.getElementById('dropdown-menu').style.display = 'block';
       }
+    }, 2000);
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      const dropdown = document.getElementById("dropdown-menu");
+      const button = document.querySelector("#language-selector-container button");
       
-      // Close dropdown when clicking outside
-      document.addEventListener('click', function(event) {
-        const dropdown = document.getElementById("dropdown-menu");
-        const button = document.querySelector("#language-selector-container button");
-        
-        if (!dropdown.contains(event.target) && !button.contains(event.target)) {
-          dropdown.classList.add("hidden");
-        }
-      });
+      if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+        dropdown.classList.add("hidden");
+      }
     });
-  </script>
+  });
+</script>
 </div>
 
 
